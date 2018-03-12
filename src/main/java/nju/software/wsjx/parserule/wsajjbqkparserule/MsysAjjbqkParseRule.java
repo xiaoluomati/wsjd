@@ -1,21 +1,18 @@
 package nju.software.wsjx.parserule.wsajjbqkparserule;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import nju.software.wsjx.business.WsAnalyse;
-import nju.software.wsjx.exception.ParseException;
 import nju.software.wsjx.model.wsSegmentationModel.WsajjbqkModel;
 import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
-import nju.software.wsjx.model.wsSegmentationModel.relateModel.PjjeModel;
 import nju.software.wsjx.service.impl.jtsg.CltbqkServiceImpl;
 import nju.software.wsjx.service.impl.jtsg.CmssdpreServiceImpl;
 import nju.software.wsjx.service.jtsg.CltbqkService;
 import nju.software.wsjx.service.jtsg.CmssdpreService;
 import nju.software.wsjx.util.FcUtil;
-import nju.software.wsjx.util.MoneyUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  * 民事一审案件基本信息解析
  * @author wangzh
@@ -508,8 +505,8 @@ public class MsysAjjbqkParseRule extends GeneralAjjbqkCommonRule implements Ajjb
 		wsajjbqkModel.setGajgrdyj(gajgrdyj);
 		wsajjbqkModel.setShrjzd(shrjzd);
 		wsajjbqkModel.setShrzy(shrzy);
-		List<PjjeModel> jeModels = MoneyUtil.getJeModels(wsajjbqkModel.getYgscd(), true);
-		wsajjbqkModel.setSsqqjeList(jeModels);
+//		List<PjjeModel> jeModels = MoneyUtil.getJeModels(wsajjbqkModel.getYgscd(), true);
+//		wsajjbqkModel.setSsqqjeList(jeModels);
 		return wsajjbqkModel;
 	}
 	public boolean likeZjd(String content){

@@ -1,13 +1,5 @@
 package nju.software.wsjx.facade.impl;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.mail.internet.ParseException;
-
-import org.jdom.JDOMException;
-
 import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.facade.WsModelFacade;
@@ -20,7 +12,12 @@ import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.scanner.WsParser;
 import nju.software.wsjx.util.ExceptionUtil;
 import nju.software.wsjx.util.FileUtil;
-import nju.software.wsjx.util.XmlUtil;
+import org.jdom.JDOMException;
+
+import javax.mail.internet.ParseException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 /**
  * 文书model的外观实现类
  * @author lr12
@@ -48,7 +45,7 @@ public class WsModelFacadeImpl implements WsModelFacade{
 			//分段
 			WsAnalyse wsAnalyse=new WsAnalyse(wswjm,content);
 			//根据解析类型从工厂器获取文书Model 
-			WsModel wsModel=WsModelFactory.getWsModel(parseName,wsAnalyse);			//*lijie
+			WsModel wsModel=WsModelFactory.getWsModel(parseName,wsAnalyse);
 			return wsModel;
 			
 		}

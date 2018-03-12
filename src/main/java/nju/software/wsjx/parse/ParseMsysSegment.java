@@ -1,22 +1,14 @@
 package nju.software.wsjx.parse;
 
-import java.util.List;
-
 import nju.software.wsjx.business.WsAnalyse;
-import nju.software.wsjx.model.wsSegmentationModel.WsModel;
-import nju.software.wsjx.model.wsSegmentationModel.WsajjbqkModel;
-import nju.software.wsjx.model.wsSegmentationModel.WscpfxgcModel;
-import nju.software.wsjx.model.wsSegmentationModel.WscpjgModel;
-import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
-import nju.software.wsjx.model.wsSegmentationModel.WsssjlModel;
-import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
-import nju.software.wsjx.model.wsSegmentationModel.WswwModel;
+import nju.software.wsjx.model.wsSegmentationModel.*;
 import nju.software.wsjx.parserule.wsajjbqkparserule.MsysAjjbqkParseRule;
 import nju.software.wsjx.parserule.wscpfxgcparserule.MsysCpfxgcParseRule;
 import nju.software.wsjx.parserule.wscpjgparserule.MsysCpjgParseRule;
 import nju.software.wsjx.parserule.wssscyrparserule.MsysSscyrParseRule;
 import nju.software.wsjx.parserule.wsssjlparserule.MsysSsjlParseRule;
-import nju.software.wsjx.util.ListToString;
+
+import java.util.List;
 
 /**
  * 民事一审解析逻辑
