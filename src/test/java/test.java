@@ -10,14 +10,13 @@ import java.io.InputStream;
 
 public class test {
 	public static void main(String[] args) throws IOException, JDOMException{
-		FileUtil fileUtil=new FileUtil();
 		
-		File file = new File("E:\\毕业设计\\文书");
+		File file = new File("file");
 		File[] files = file.listFiles();
 		for(File f:files){
 			System.out.println(f.getAbsolutePath());
 			String name = f.getAbsolutePath();
-			byte[] wsnr=fileUtil.getContent(name);
+			byte[] wsnr= FileUtil.getContent(name);
 			InputStream is=new ByteArrayInputStream(wsnr);
 			WsModelFacadeImpl wsModelFacadeImpl=new WsModelFacadeImpl();
 			WsModel wsModel=wsModelFacadeImpl.jxDocument(is, name);
@@ -25,7 +24,7 @@ public class test {
 			int posb = name.lastIndexOf('\\');
 			String fname = name.substring(posb+1,posa);
 			if(wsModel!=null)
-				wsModel.transformToXml("E:\\毕业设计\\xml",fname);
+				wsModel.transformToXml("xml", fname);
 			else {
 				System.out.println("error");
 			}
