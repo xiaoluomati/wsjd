@@ -109,20 +109,20 @@
   </CPJG>
   <WW value="审判长杨立初&#xA;代理审判员李盛烨&#xA;代理审判员沈佳&#xA;二〇一六年十二月××日&#xA;书记员张闻&#xA;" nameCN="文尾">
     <SPZZCY nameCN="审判组织成员">
-      <SPRYXM value="沈佳" nameCN="审判人员姓名" />
+      <SPRYXM value="李盛烨" nameCN="审判人员姓名" />
       <SPRYJS value="代理审判员" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
-      <SPRYXM value="张闻" nameCN="审判人员姓名" />
-      <SPRYJS value="书记员" nameCN="审判人员角色" />
+      <SPRYXM value="沈佳" nameCN="审判人员姓名" />
+      <SPRYJS value="代理审判员" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="杨立初" nameCN="审判人员姓名" />
       <SPRYJS value="审判长" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
-      <SPRYXM value="李盛烨" nameCN="审判人员姓名" />
-      <SPRYJS value="代理审判员" nameCN="审判人员角色" />
+      <SPRYXM value="张闻" nameCN="审判人员姓名" />
+      <SPRYJS value="书记员" nameCN="审判人员角色" />
     </SPZZCY>
     <CPSJ value="2016年12月××日" nameCN="裁判时间">
       <Year value="2016" nameCN="结案年度" />

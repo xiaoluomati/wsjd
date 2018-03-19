@@ -93,6 +93,10 @@
   </CPJG>
   <WW value="审判长曲海涛&#xA;审判员周志杰&#xA;审判员端木繁辉&#xA;二〇一八年一月十六日&#xA;书记员马欣悦&#xA;" nameCN="文尾">
     <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="马欣悦" nameCN="审判人员姓名" />
+      <SPRYJS value="书记员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="端木繁辉" nameCN="审判人员姓名" />
       <SPRYJS value="审判员" nameCN="审判人员角色" />
     </SPZZCY>
@@ -103,10 +107,6 @@
     <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="周志杰" nameCN="审判人员姓名" />
       <SPRYJS value="审判员" nameCN="审判人员角色" />
-    </SPZZCY>
-    <SPZZCY nameCN="审判组织成员">
-      <SPRYXM value="马欣悦" nameCN="审判人员姓名" />
-      <SPRYJS value="书记员" nameCN="审判人员角色" />
     </SPZZCY>
     <CPSJ value="2018年1月16日" nameCN="裁判时间">
       <Year value="2018" nameCN="结案年度" />
