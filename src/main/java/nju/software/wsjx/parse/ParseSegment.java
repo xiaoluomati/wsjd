@@ -10,9 +10,7 @@ import java.util.List;
 
 
 import nju.software.wsjx.business.WsAnalyse;
-import nju.software.wsjx.model.wsSegmentationModel.WsModel;
-import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
-import nju.software.wsjx.model.wsSegmentationModel.WswwModel;
+import nju.software.wsjx.model.wsSegmentationModel.*;
 import nju.software.wsjx.parserule.wsajjbqkparserule.AjjbqkParseRule;
 import nju.software.wsjx.parserule.wscpfxgcparserule.CpfxgcParseRule;
 import nju.software.wsjx.parserule.wscpjgparserule.CpjgParseRule;
@@ -48,7 +46,6 @@ public abstract class ParseSegment implements ParseFixedSegment{
 	
 	//解析后转换成文书Model
 	public abstract WsModel transformToWsModel();
-	
 
 
 	@Override

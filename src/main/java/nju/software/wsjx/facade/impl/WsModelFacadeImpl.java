@@ -1,5 +1,6 @@
 package nju.software.wsjx.facade.impl;
 
+import nju.software.wsjd.classify.ParseMap;
 import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.facade.WsModelFacade;
@@ -36,12 +37,14 @@ public class WsModelFacadeImpl implements WsModelFacade{
 			PreWsAnalyse preWsAnalyse=new PreWsAnalyse(wswjm, content);
 			//获取文书的解析类型
 			WswsModel wswsModel=preWsAnalyse.handleWsws();
-			if(wswsModel==null||wswsModel.getParseName()==null)
-				throw new ParseException("未定义解析该类文档");
-			String parseName=wswsModel.getParseName();
-			ParseEnum parseEnum=ParseEnum.getParseEnumByParse(parseName);
-			if(parseEnum==null)
-				throw new ParseException("未定义解析该类文档");			
+//			if(wswsModel==null||wswsModel.getParseName()==null)
+//				throw new ParseException("未定义解析该类文档");
+//			String parseName=wswsModel.getParseName();
+			ParseMap parseMap = ParseMap.getInstance();
+			String parseName = parseMap.get("第一审普通程序");
+//			ParseEnum parseEnum=ParseEnum.getParseEnumByParse(parseName);
+//			if(parseEnum==null)
+//				throw new ParseException("未定义解析该类文档");
 			//分段
 			WsAnalyse wsAnalyse=new WsAnalyse(wswjm,content);
 			//根据解析类型从工厂器获取文书Model 

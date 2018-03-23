@@ -2,29 +2,29 @@ package nju.software.wsjx.parse;
 
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.*;
-import nju.software.wsjx.parserule.wsajjbqkparserule.MsgxAjjbqkParseRule;
-import nju.software.wsjx.parserule.wscpfxgcparserule.MsgxCpfxgcParseRule;
+import nju.software.wsjx.parserule.wsajjbqkparserule.YsptAjjbqkParseRule;
+import nju.software.wsjx.parserule.wscpfxgcparserule.YsptCpfxgcParseRule;
 import nju.software.wsjx.parserule.wscpjgparserule.MsysCpjgParseRule;
 import nju.software.wsjx.parserule.wssscyrparserule.MsysSscyrParseRule;
-import nju.software.wsjx.parserule.wsssjlparserule.MsgxSsjlParseRule;
+import nju.software.wsjx.parserule.wsssjlparserule.YsptSsjlParseRule;
 
 import java.util.List;
 
 /**
- * 民事管辖解析逻辑
- * Created by zhuding
+ * 第一审普通程序（含简易程序转普通）裁定书解析逻辑
+ * Created by zhuding on 2018/3/20.
  */
-public class ParseMsgxSegment extends ParseSegment implements ParseflexibleSegment{
+public class ParseYsptSegment extends ParseSegment implements ParseflexibleSegment {
 
     @Override
     public WsajjbqkModel jxWsajjbqkModel(WsAnalyse wsAnalyse, List<WssscyrModel> wssscyrModellist) {
-        ajjbqkParseRule = new MsgxAjjbqkParseRule();
+        ajjbqkParseRule = new YsptAjjbqkParseRule();
         return ajjbqkParseRule.jxWsajjbqkModel(wsAnalyse, wssscyrModellist);
     }
 
     @Override
     public WscpfxgcModel jxWscpfxgcModel(WsAnalyse wsAnalyse) {
-        cpfxgcParseRule = new MsgxCpfxgcParseRule();
+        cpfxgcParseRule = new YsptCpfxgcParseRule();
         return cpfxgcParseRule.jxWscpfxgcModel(wsAnalyse);
     }
 
@@ -42,7 +42,7 @@ public class ParseMsgxSegment extends ParseSegment implements ParseflexibleSegme
 
     @Override
     public WsssjlModel jxWsssjlModel(List<WssscyrModel> wssscyrModellist, String wsssjl) {
-        ssjlParseRule = new MsgxSsjlParseRule();
+        ssjlParseRule = new YsptSsjlParseRule();
         return ssjlParseRule.jxWsssjlModel(wssscyrModellist, wsssjl);
     }
 
@@ -62,20 +62,4 @@ public class ParseMsgxSegment extends ParseSegment implements ParseflexibleSegme
 
         return wsModel;
     }
-
-//    public WsModel defaultTransformToWsModel(){
-//        WswsModel wswsModel = jxWswsModel(wsAnalyse.getWs());
-//        List<WssscyrModel> wssscyrModels = jxWssscyrModel(wsAnalyse);
-//        WsssjlModel wsssjlModel = jxWsssjlModel(wssscyrModels,wsAnalyse.getSsjl());
-//        WsajjbqkModel wsajjbqkModel = jxWsajjbqkModel(wsAnalyse,wssscyrModels);
-//        WscpfxgcModel wscpfxgcModel = jxWscpfxgcModel(wsAnalyse);
-//        WscpjgModel wscpjgModel = jxWscpjgModel(wsAnalyse,wssscyrModels);
-//        WswwModel wswwModel = jxWswwModel(wsAnalyse.getWw());
-//        WsModel wsModel = new WsModel(wswsModel, wssscyrModels, wsajjbqkModel, wsssjlModel, wscpfxgcModel, wscpjgModel, wswwModel);
-//
-//        //填充wsModel的各个String段落
-//        fillWsModelSegment(wsModel, wsAnalyse);
-//
-//        return wsModel;
-//    }
 }

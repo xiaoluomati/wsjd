@@ -1,5 +1,10 @@
 package nju.software.wsjx.util;
 
+import nju.software.wsjd.model.ysptWsModel.ajjbqk.FsqqModel;
+import nju.software.wsjd.model.ysptWsModel.ajjbqk.SsqqModel;
+import nju.software.wsjd.model.ysptWsModel.ajjbqk.ZjdsrModel;
+import nju.software.wsjd.model.ysptWsModel.ssjl.FsModel;
+import nju.software.wsjd.model.ysptWsModel.ssjl.SsrqydsrModel;
 import nju.software.wsjx.model.Enum.ParseEnum;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.WsajjbqkModel;
@@ -585,7 +590,71 @@ public class XmlUtil {
 			Element ssjl = new Element("SSJL").setAttribute("value",
 					wsModel.getWsssjlSegment());
 			ssjl.setAttribute("nameCN", "诉讼记录");
-
+			//-----18.3.22----
+			//起诉状
+			if(wsssjlModel.getQsz() != null){
+				SsrqydsrModel qsz1 = wsssjlModel.getQsz();
+				Element qsz = new Element("QSZ").setAttribute("nameCN", "起诉状");
+				Element name = new Element("QSR").setAttribute("nameCN", qsz1.getSf());
+				name.setAttribute("value", qsz1.getName());
+				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
+				rq.setAttribute("value", qsz1.getDate());
+				qsz.addContent(name);
+				qsz.addContent(rq);
+				ssjl.addContent(qsz);
+			}
+			//反诉状
+			if(wsssjlModel.getFsz() != null){
+				SsrqydsrModel fsz1 = wsssjlModel.getFsz();
+				Element fsz = new Element("FSZ").setAttribute("nameCN", "反诉状");
+				Element name = new Element("FSR").setAttribute("nameCN", fsz1.getSf());
+				name.setAttribute("value", fsz1.getName());
+				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
+				rq.setAttribute("value", fsz1.getDate());
+				fsz.addContent(name);
+				fsz.addContent(rq);
+				ssjl.addContent(fsz);
+			}
+			//拒绝出庭
+			if(wsssjlModel.getJjct() != null){
+				SsrqydsrModel jjct1 = wsssjlModel.getJjct();
+				Element jjct = new Element("JJCT").setAttribute("nameCN", "拒绝出庭");
+				Element name = new Element("DSR").setAttribute("nameCN", jjct1.getSf());
+				name.setAttribute("value", jjct1.getName());
+				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
+				rq.setAttribute("value", jjct1.getDate());
+				jjct.addContent(name);
+				jjct.addContent(rq);
+				ssjl.addContent(jjct);
+			}
+			//撤诉
+			if(wsssjlModel.getCs() != null){
+				SsrqydsrModel cs1 = wsssjlModel.getCs();
+				Element cs = new Element("CS").setAttribute("nameCN", "撤诉");
+				Element name = new Element("SSR").setAttribute("nameCN", cs1.getSf());
+				name.setAttribute("value", cs1.getName());
+				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
+				rq.setAttribute("value", cs1.getDate());
+				cs.addContent(name);
+				cs.addContent(rq);
+				ssjl.addContent(cs);
+			}
+			//反诉
+			if (wsssjlModel.getFs() != null){
+				FsModel fs = wsssjlModel.getFs();
+				Element e_fs = new Element("FS").setAttribute("nameCN", "反诉");
+				Element yg = new Element("YG").setAttribute("nameCN", "原告");
+				yg.setAttribute("value", fs.getYg());
+				Element bg = new Element("BG").setAttribute("nameCN", "被告");
+				bg.setAttribute("value", fs.getBg());
+				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
+				rq.setAttribute("value", fs.getFsrq());
+				e_fs.addContent(yg);
+				e_fs.addContent(bg);
+				e_fs.addContent(rq);
+				ssjl.addContent(e_fs);
+			}
+			//-----end 18.3.22-----
 			//-----18.3.8-----
 			// 创建原告节点
 			if (wsssjlModel.getYg() != null) {
@@ -1151,6 +1220,56 @@ public class XmlUtil {
 						}
 					}
 				}
+				//-----18.3.23-----
+				//反诉请求段
+				if (wsajjbqkModel.getFsqqModel() != null){
+					FsqqModel fsqqModel = wsajjbqkModel.getFsqqModel();
+					Element e_fs = new Element("FSQQD").setAttribute("nameCN", "反诉请求段");
+					Element fsr = new Element("FSR").setAttribute("nameCN", "反诉人");
+					fsr.setAttribute("value", fsqqModel.getFsr());
+					Element fsqq = new Element("FSQQ").setAttribute("nameCN", "反诉请求");
+					fsqq.setAttribute("value", fsqqModel.getFsqq());
+					Element sshly = new Element("SSHLY").setAttribute("nameCN", "事实和理由");
+					sshly.setAttribute("value", fsqqModel.getSshly());
+					e_fs.addContent(fsr);
+					e_fs.addContent(fsqq);
+					e_fs.addContent(sshly);
+					ajjbqk.addContent(e_fs);
+				}
+				//诉讼请求段
+				if (wsajjbqkModel.getSsqqModel() != null){
+					SsqqModel ssqqModel = wsajjbqkModel.getSsqqModel();
+					Element e_ssqq = new Element("SSQQD").setAttribute("nameCN", "诉讼请求段");
+					Element qsr = new Element("QSR").setAttribute("nameCN", "起诉人");
+					qsr.setAttribute("value", ssqqModel.getQsr());
+					Element ssqq = new Element("FSQQ").setAttribute("nameCN", "诉讼请求");
+					ssqq.setAttribute("value", ssqqModel.getSsqq());
+					Element sshly = new Element("SSHLY").setAttribute("nameCN", "事实和理由");
+					sshly.setAttribute("value", ssqqModel.getSshly());
+					e_ssqq.addContent(qsr);
+					e_ssqq.addContent(ssqq);
+					e_ssqq.addContent(sshly);
+					ajjbqk.addContent(e_ssqq);
+				}
+				//追加当事人段
+				if (wsajjbqkModel.getZjdsrModel() != null){
+					ZjdsrModel zjdsrModel = wsajjbqkModel.getZjdsrModel();
+					Element e_zjdsr = new Element("ZJDSRD").setAttribute("nameCN", "追加当事人段");
+					Element dsr = new Element("DSR").setAttribute("nameCN", "当事人");
+					dsr.setAttribute("value", zjdsrModel.getDsr());
+					Element sqr = new Element("SQR").setAttribute("nameCN", "申请人");
+					sqr.setAttribute("value", zjdsrModel.getSqr());
+					Element sqsj = new Element("SQSJ").setAttribute("nameCN", "申请时间");
+					sqsj.setAttribute("value", zjdsrModel.getSqsj());
+					Element sshly = new Element("SSHLY").setAttribute("nameCN", "事实和理由");
+					sshly.setAttribute("value", zjdsrModel.getSshly());
+					e_zjdsr.addContent(dsr);
+					e_zjdsr.addContent(sqr);
+					e_zjdsr.addContent(sqsj);
+					e_zjdsr.addContent(sshly);
+					ajjbqk.addContent(e_zjdsr);
+				}
+				//-----end 18.3.23-----
 				//-----18.3-------
 				if(wsajjbqkModel.getYsfylyd() != null){
 					Element ysfyly = new Element("YSFYLYD").setAttribute(

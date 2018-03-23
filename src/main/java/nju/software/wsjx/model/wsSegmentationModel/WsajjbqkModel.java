@@ -2,6 +2,9 @@ package nju.software.wsjx.model.wsSegmentationModel;
 
 import java.util.List;
 
+import nju.software.wsjd.model.ysptWsModel.ajjbqk.FsqqModel;
+import nju.software.wsjd.model.ysptWsModel.ajjbqk.SsqqModel;
+import nju.software.wsjd.model.ysptWsModel.ajjbqk.ZjdsrModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.PjjeModel;
 
 /**
@@ -52,27 +55,51 @@ public class WsajjbqkModel {
 	
 	private String ysfylyd;//移送法院理由段 管辖
 	private String bqfylyd;//报请法院理由段 管辖
-
 	public String getYsfylyd() {
 		return ysfylyd;
 	}
-
 	public void setYsfylyd(String ysfylyd) {
 		this.ysfylyd = ysfylyd;
 	}
-
 	public String getBqfylyd() {
 		return bqfylyd;
 	}
-
 	public void setBqfylyd(String bqfylyd) {
 		this.bqfylyd = bqfylyd;
 	}
-
 	public String gxString() {
 		return "temo{" +
 				"ysfylyd='" + ysfylyd + '\'' +
 				", bqfylyd='" + bqfylyd + '\'' +
+				'}';
+	}
+
+	private FsqqModel fsqqModel;//反诉请求 第一审普通程序
+	private SsqqModel ssqqModel;//诉讼请求 第一审普通程序
+	private ZjdsrModel zjdsrModel;//追加当事人段 第一审普通程序
+	public FsqqModel getFsqqModel() {
+		return fsqqModel;
+	}
+	public void setFsqqModel(FsqqModel fsqqModel) {
+		this.fsqqModel = fsqqModel;
+	}
+	public SsqqModel getSsqqModel() {
+		return ssqqModel;
+	}
+	public void setSsqqModel(SsqqModel ssqqModel) {
+		this.ssqqModel = ssqqModel;
+	}
+	public ZjdsrModel getZjdsrModel() {
+		return zjdsrModel;
+	}
+	public void setZjdsrModel(ZjdsrModel zjdsrModel) {
+		this.zjdsrModel = zjdsrModel;
+	}
+	public String ysptString(){
+		return "yspt{" +
+				"fsqqModel=" + fsqqModel +
+				", ssqqModel=" + ssqqModel +
+				", zjdsrModel=" + zjdsrModel +
 				'}';
 	}
 

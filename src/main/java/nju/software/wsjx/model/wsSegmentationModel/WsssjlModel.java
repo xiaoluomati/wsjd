@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import nju.software.wsjd.model.gxWsModel.ZyfyModel;
+import nju.software.wsjd.model.ysptWsModel.ssjl.FsModel;
+import nju.software.wsjd.model.ysptWsModel.ssjl.SsrqydsrModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WsssjlZkjlModel;
 
 /**
@@ -73,8 +75,8 @@ public class WsssjlModel {
 	private String bzfymc;//标准法院名称
 	private String qsgsjg;//原公诉机关
 
-	private String yg;//原告 管辖
-	private String bg;//被告 管辖
+	private String yg;//原告 管辖 第一审
+	private String bg;//被告 管辖 第一审
 	private String lafy;//立案法院 管辖
 	private String ssr;//上诉人 管辖
 	private String sscdfymc;//上诉裁定法院名称 管辖
@@ -95,6 +97,52 @@ public class WsssjlModel {
 				", bqfymc='" + bqfymc + '\'' +
 				", bqsj='" + bqsj + '\'' +
 				'}';
+	}
+
+	private SsrqydsrModel qsz;
+	private SsrqydsrModel fsz;
+	private SsrqydsrModel jjct;
+	private SsrqydsrModel cs;
+	private FsModel fs;
+
+	public SsrqydsrModel getQsz() {
+		return qsz;
+	}
+
+	public void setQsz(SsrqydsrModel qsz) {
+		this.qsz = qsz;
+	}
+
+	public SsrqydsrModel getFsz() {
+		return fsz;
+	}
+
+	public void setFsz(SsrqydsrModel fsz) {
+		this.fsz = fsz;
+	}
+
+	public SsrqydsrModel getJjct() {
+		return jjct;
+	}
+
+	public void setJjct(SsrqydsrModel jjct) {
+		this.jjct = jjct;
+	}
+
+	public SsrqydsrModel getCs() {
+		return cs;
+	}
+
+	public void setCs(SsrqydsrModel cs) {
+		this.cs = cs;
+	}
+
+	public FsModel getFs() {
+		return fs;
+	}
+
+	public void setFs(FsModel fs) {
+		this.fs = fs;
 	}
 
 	public String getXzzsqsah() {

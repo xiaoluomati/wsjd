@@ -18,10 +18,11 @@ public class WsModelFactory {
 	
 		StringBuilder pareseName=new StringBuilder();
 		pareseName.append("nju.software.wsjx.parse.");
-		ParseEnum parseEnum=ParseEnum.getParseEnumByParse(parseName);
-		if(parseEnum==null)
-			throw new ParseException("无法找寻加载类，未定义该解析类型");
-		pareseName.append(parseEnum.getParseDocumentName());
+		pareseName.append(parseName);
+//		ParseEnum parseEnum=ParseEnum.getParseEnumByParse(parseName);
+//		if(parseEnum==null)
+//			throw new ParseException("无法找寻加载类，未定义该解析类型");
+//		pareseName.append(parseEnum.getParseDocumentName());
 		Class<?> parseDocumentClass = Class.forName(pareseName.toString());
 		//创建解析类
 		ParseSegment parseCaseinfo = (ParseSegment) parseDocumentClass.newInstance();
