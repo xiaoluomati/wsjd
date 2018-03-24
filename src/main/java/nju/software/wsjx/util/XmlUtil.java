@@ -204,6 +204,16 @@ public class XmlUtil {
 		}		
 		
 	}
+	private static Element buildElement(Element root, String name, String nameCN, String value){
+		Element element = new Element(name);
+		if(value != null)
+			element.setAttribute("value", value);
+		if(nameCN != null)
+			element.setAttribute("nameCN", nameCN);
+		root.addContent(element);
+		return element;
+	}
+
 	/**
 	 * 创建诉讼参与人节点
 	 * @param root
@@ -594,109 +604,62 @@ public class XmlUtil {
 			//起诉状
 			if(wsssjlModel.getQsz() != null){
 				SsrqydsrModel qsz1 = wsssjlModel.getQsz();
-				Element qsz = new Element("QSZ").setAttribute("nameCN", "起诉状");
-				Element name = new Element("QSR").setAttribute("nameCN", qsz1.getSf());
-				name.setAttribute("value", qsz1.getName());
-				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
-				rq.setAttribute("value", qsz1.getDate());
-				qsz.addContent(name);
-				qsz.addContent(rq);
-				ssjl.addContent(qsz);
+				Element element = buildElement(ssjl, "QSZ", "起诉状", null);
+				buildElement(element, "QSR", qsz1.getSf(), qsz1.getName());
+				buildElement(element, "RQ", "日期", qsz1.getDate());
 			}
 			//反诉状
 			if(wsssjlModel.getFsz() != null){
 				SsrqydsrModel fsz1 = wsssjlModel.getFsz();
-				Element fsz = new Element("FSZ").setAttribute("nameCN", "反诉状");
-				Element name = new Element("FSR").setAttribute("nameCN", fsz1.getSf());
-				name.setAttribute("value", fsz1.getName());
-				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
-				rq.setAttribute("value", fsz1.getDate());
-				fsz.addContent(name);
-				fsz.addContent(rq);
-				ssjl.addContent(fsz);
+				Element element = buildElement(ssjl, "FSZ", "反诉状", null);
+				buildElement(element, "FSR", fsz1.getSf(), fsz1.getName());
+				buildElement(element, "RQ", "日期", fsz1.getDate());
 			}
 			//拒绝出庭
 			if(wsssjlModel.getJjct() != null){
 				SsrqydsrModel jjct1 = wsssjlModel.getJjct();
-				Element jjct = new Element("JJCT").setAttribute("nameCN", "拒绝出庭");
-				Element name = new Element("DSR").setAttribute("nameCN", jjct1.getSf());
-				name.setAttribute("value", jjct1.getName());
-				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
-				rq.setAttribute("value", jjct1.getDate());
-				jjct.addContent(name);
-				jjct.addContent(rq);
-				ssjl.addContent(jjct);
+				Element element = buildElement(ssjl, "JJCT", "拒绝出庭", null);
+				buildElement(element, "DSR", jjct1.getSf(), jjct1.getName());
+				buildElement(element, "RQ", "日期", jjct1.getDate());
 			}
 			//撤诉
 			if(wsssjlModel.getCs() != null){
 				SsrqydsrModel cs1 = wsssjlModel.getCs();
-				Element cs = new Element("CS").setAttribute("nameCN", "撤诉");
-				Element name = new Element("SSR").setAttribute("nameCN", cs1.getSf());
-				name.setAttribute("value", cs1.getName());
-				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
-				rq.setAttribute("value", cs1.getDate());
-				cs.addContent(name);
-				cs.addContent(rq);
-				ssjl.addContent(cs);
+				Element cs = buildElement(ssjl, "CS","撤诉",null);
+				buildElement(cs, "CSR", cs1.getSf(), cs1.getName());
+				buildElement(cs, "RQ", "日期", cs1.getDate());
 			}
 			//反诉
 			if (wsssjlModel.getFs() != null){
 				FsModel fs = wsssjlModel.getFs();
-				Element e_fs = new Element("FS").setAttribute("nameCN", "反诉");
-				Element yg = new Element("YG").setAttribute("nameCN", "原告");
-				yg.setAttribute("value", fs.getYg());
-				Element bg = new Element("BG").setAttribute("nameCN", "被告");
-				bg.setAttribute("value", fs.getBg());
-				Element rq = new Element("RQ").setAttribute("nameCN", "日期");
-				rq.setAttribute("value", fs.getFsrq());
-				e_fs.addContent(yg);
-				e_fs.addContent(bg);
-				e_fs.addContent(rq);
-				ssjl.addContent(e_fs);
+				Element element = buildElement(ssjl, "FS", "反诉", null);
+				buildElement(element, "YG", "原告", fs.getYg());
+				buildElement(element, "BG", "被告", fs.getBg());
+				buildElement(element, "RQ", "日期", fs.getFsrq());
 			}
 			//-----end 18.3.22-----
 			//-----18.3.8-----
 			// 创建原告节点
 			if (wsssjlModel.getYg() != null) {
-				Element yg = new Element("YG").setAttribute("value",
-						wsssjlModel.getYg());
-				yg.setAttribute("nameCN", "原告");
-				ssjl.addContent(yg);
+				buildElement(ssjl, "YG", "原告", wsssjlModel.getYg());
 			}
 			// 创建被告节点
 			if (wsssjlModel.getBg() != null) {
-				Element bg = new Element("BG").setAttribute("value",
-						wsssjlModel.getBg());
-				bg.setAttribute("nameCN", "被告");
-				ssjl.addContent(bg);
+				buildElement(ssjl, "BG", "被告", wsssjlModel.getBg());
 			}
 			// 创建立案法院节点
 			if (wsssjlModel.getLafy() != null) {
-				Element lafy = new Element("LAFY").setAttribute("value",
-						wsssjlModel.getLafy());
-				lafy.setAttribute("nameCN", "立案法院");
-				ssjl.addContent(lafy);
+				buildElement(ssjl, "LAFY", "立案法院", wsssjlModel.getLafy());
 			}
 			// 创建上诉人节点
 			if (wsssjlModel.getSsr() != null) {
-				Element ssr = new Element("SSR").setAttribute("value",
-						wsssjlModel.getSsr());
-				ssr.setAttribute("nameCN", "上诉人");
-				ssjl.addContent(ssr);
+				buildElement(ssjl, "SSR", "上诉人", wsssjlModel.getSsr());
 			}
 			// 创建上诉裁定节点
 			if (wsssjlModel.getSscdah() != null && wsssjlModel.getSscdfymc() != null) {
-				Element sscd = new Element("SSCD");
-				Element sscdah = new Element("SSCDAH").setAttribute("value",
-						wsssjlModel.getSscdah());
-				sscdah.setAttribute("nameCN", "案号");
-				Element sscdfymc = new Element("SSCDFYMC").setAttribute("value",
-						wsssjlModel.getSscdfymc());
-				sscdfymc.setAttribute("nameCN", "法院名称");
-				sscd.setAttribute("nameCN", "上诉裁定");
-				sscd.addContent(sscdah);
-				sscd.addContent(sscdfymc);
-				ssjl.addContent(sscd);
+				Element sscd = buildElement(ssjl, "SSCD", "上诉裁定", null);
+				buildElement(sscd, "SSCDAH", "案号", wsssjlModel.getSscdah());
+				buildElement(sscd, "SSCDFYMC", "法院名称", wsssjlModel.getSscdfymc());
 			}
 			//-------end 18.3.8------
 			// 创建案由节点

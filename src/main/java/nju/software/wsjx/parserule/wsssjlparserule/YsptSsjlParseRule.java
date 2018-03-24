@@ -74,15 +74,26 @@ public class YsptSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
                     }
                 }
                 wsssjlModel.setJjct(ssrqydsrModel);
-            }else if(s.contains("撤诉申请")){
+            }else if(s.contains("撤诉申请")||s.contains("撤回")){
                 ssrqydsrModel.setSf("撤诉人");
                 for (String s1 : detail) {
-                    if (ssrqydsrModel.getDate() == null && s1.contains("年") && s1.contains("月")) {
-                        ssrqydsrModel.setDate(s1.substring(s1.indexOf("于")+1, s1.indexOf("向")));
+                    if (ssrqydsrModel.getDate() == null && s1.contains("年") && s1.contains("日")&&!s1.contains(ay)) {
+                        ssrqydsrModel.setDate(s1.substring(s1.indexOf("年")-4, s1.indexOf("日")+1));
+                        s1 = s1.substring(0, s1.indexOf("于"));
                     }
-                    if(ssrqydsrModel.getName() ==null&&s1.contains("原告")){
-                        ssrqydsrModel.setName(s1.substring(s.indexOf("原告") + 2, s1.indexOf("于")));
+                    if(s1.contains("以")&&s1.contains("为由")){
+                        s1 = s1.substring(0, s1.indexOf("以"));
+
                     }
+                    if(ssrqydsrModel.getName() ==null&&s1.contains("原告")&&!s1.contains(ay)){
+                        ssrqydsrModel.setName(s1.substring(s1.indexOf("原告") + 2));
+
+                        if(ssrqydsrModel.getName().equals("")){
+                            ssrqydsrModel.setName("*未写出");
+                        }
+                    }
+
+
                 }
                 wsssjlModel.setCs(ssrqydsrModel);
             }

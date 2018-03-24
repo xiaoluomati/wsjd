@@ -107,7 +107,7 @@ System.out.println(num);
 		System.out.println(st.length);
 		for(int i=0;i<st.length;i++)
 		System.out.println(st[i]);
-		System.out.println(getWholeToken("上述两原审第三人的共同委托代理人苏广毅"));
+		System.out.println(getTokens("原告苏广毅以被告已经履行支付义务为由"));
 //		String str="原告刘莹（反诉被告），女，1971年10月18日出生，汉族，厦门国际银行北京分行干部，"
 //				+ "住天津市河西区黑牛城道与紫金山路交口新世纪20-2-401，公民身份号码130705197110180964。";
 //		String str1="原告刘莹（反诉被告），女，1971年10月18日出生。"+str;

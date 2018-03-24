@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QW value="贵州省兴仁县人民法院&#xA;民事裁定书&#xA;（2016）黔2322民初2580号&#xA;原告：刘忠琴，女，1947年10月7日生，汉族，住贵州省兴仁县。&#xA;被告：贵州省泰格服饰有限公司，住所地兴仁县瓦窑寨工业园区。&#xA;法定代表人：张传丰&#xA;本院在审理原告刘忠琴与被告贵州省泰格服饰有限公司追索劳动报酬纠纷一案中，原告以被告已经履行支付义务为由，于2016年12月6日向本院提出撤诉申请。&#xA;本院认为，原告刘忠琴提出的撤诉申请符合法律规定的准许撤诉条件，应准许撤诉。依照《中华人民共和国民事诉讼法》第一百四十五条第一款、第一百五十四条第一款第（五）项之规定，裁定如下：&#xA;准许原告刘忠琴撤回起诉。&#xA;案件受理费10元，减半收取计5元，由原告刘忠琴负担。&#xA;审判员刘文安&#xA;&#xA;二〇一六年十二月六日&#xA;书记员韦祖流&#xA;&#xA;" nameCN="全文">
+  <WS value="贵州省兴仁县人民法院&#xA;民事裁定书&#xA;（2016）黔2322民初2580号&#xA;" nameCN="文首">
+    <WSZZDW value="法院" nameCN="文书制作单位" />
+    <JBFY value="贵州省兴仁县人民法院" nameCN="经办法院">
+      <FYJB value="基层" nameCN="法院级别" />
+      <XZQH_P value="贵州" nameCN="行政区划(省)" />
+      <XZQH_C value="贵州" nameCN="行政区划(市)" />
+    </JBFY>
+    <WSMC value="民事裁定书" nameCN="文书名称" />
+    <AH value="(2016)黔2322民初2580号" nameCN="案号" />
+    <LAND value="2016" nameCN="立案年度" />
+    <AJXZ value="民事案件" nameCN="案件性质" />
+    <WSZL value="裁定书" nameCN="文书种类" />
+    <SPCX value="一审案件" nameCN="审判程序" />
+    <AJLX value="民事一审案件" nameCN="案件类型" />
+  </WS>
+  <SSCYRQJ value="原告：刘忠琴，女，1947年10月7日生，汉族，住贵州省兴仁县。&#xA;被告：贵州省泰格服饰有限公司，住所地兴仁县瓦窑寨工业园区。&#xA;法定代表人：张传丰&#xA;" nameCN="诉讼参与人全集">
+    <SSCYR value="原告：刘忠琴，女，1947年10月7日生，汉族，住贵州省兴仁县。" nameCN="诉讼参与人">
+      <SSCYRMC value="刘忠琴" nameCN="诉讼参与人名称" />
+      <SSSF value="原告" nameCN="诉讼身份" />
+      <SSDW value="原告" nameCN="诉讼地位" />
+      <DSRLB value="原告" nameCN="当事人类别" />
+      <DSRLX value="自然人" nameCN="当事人类型" />
+      <XB value="女" nameCN="性别" />
+      <MZ value="汉族" nameCN="民族" />
+      <CSRQ value="1947年10月7日" nameCN="出生日期">
+        <Year value="1947" nameCN="年" />
+        <Month value="10" nameCN="月" />
+        <Day value="7" nameCN="日" />
+      </CSRQ>
+      <GJ value="中国" nameCN="国籍" />
+      <DSRDZ value="贵州省兴仁县" nameCN="当事人地址" />
+    </SSCYR>
+    <SSCYR value="被告：贵州省泰格服饰有限公司，住所地兴仁县瓦窑寨工业园区。" nameCN="诉讼参与人">
+      <SSCYRMC value="贵州省泰格服饰有限公司" nameCN="诉讼参与人名称" />
+      <SSSF value="被告" nameCN="诉讼身份" />
+      <SSDW value="被告" nameCN="诉讼地位" />
+      <DSRLB value="被告" nameCN="当事人类别" />
+      <DSRLX value="法人" nameCN="当事人类型" />
+      <DSRDZ value="兴仁县瓦窑寨工业园区" nameCN="当事人地址" />
+      <DWXZ value="有限责任公司" nameCN="单位性质" />
+      <FDDBR value="张传丰" nameCN="单位法定代表人" />
+    </SSCYR>
+    <SSCYR value="法定代表人：张传丰" nameCN="诉讼参与人">
+      <SSCYRMC value="张传丰" nameCN="诉讼参与人名称" />
+      <SSSF value="法定代表人" nameCN="诉讼身份" />
+      <DSRLX value="自然人" nameCN="当事人类型" />
+      <GJ value="中国" nameCN="国籍" />
+      <DWZWFZ nameCN="单位职务分组">
+        <DWMC value="贵州省泰格服饰有限公司" nameCN="单位名称" />
+        <DWXZ value="有限责任公司" nameCN="单位性质" />
+      </DWZWFZ>
+    </SSCYR>
+    <SSCYRQJ value="错误" nameCN="保险公司是否作为被告" />
+  </SSCYRQJ>
+  <SSJL value="本院在审理原告刘忠琴与被告贵州省泰格服饰有限公司追索劳动报酬纠纷一案中，原告以被告已经履行支付义务为由，于2016年12月6日向本院提出撤诉申请。" nameCN="诉讼记录">
+    <CS nameCN="撤诉">
+      <CSR value="*未写出" nameCN="撤诉人" />
+      <RQ value="2016年12月6日" nameCN="日期" />
+    </CS>
+    <YG value="刘忠琴" nameCN="原告" />
+    <BG value="贵州省泰格服饰有限公司" nameCN="被告" />
+    <AY value="追索劳动报酬纠纷" nameCN="案由" />
+    <KTSL value="否" nameCN="开庭审理" />
+    <WZAY value="追索劳动报酬纠纷" nameCN="完整案由" />
+    <AYDM value="9468" nameCN="案由代码" />
+    <YSAJSYCX value="普通程序" nameCN="一审案件适用程序" />
+    <JYZPT value="否" nameCN="简易转普通" />
+    <SPZZ value="独任庭" nameCN="审判组织" />
+    <YSAJLY value="新收" nameCN="一审案件来源" />
+    <SQCSRQ value="2016年12月6日" nameCN="申请撤诉日期" />
+  </SSJL>
+  <AJJBQK value="" nameCN="案件基本情况" />
+  <CPFXGC value="本院认为，原告刘忠琴提出的撤诉申请符合法律规定的准许撤诉条件，应准许撤诉。依照《中华人民共和国民事诉讼法》第一百四十五条第一款、第一百五十四条第一款第（五）项之规定，裁定如下：&#xA;" nameCN="裁判分析过程">
+    <JAFSLX value="裁定" nameCN="结案方式类型" />
+    <FLFTMC value="中华人民共和国民事诉讼法" nameCN="法律法条名称">
+      <TM value="一百五十四" nameCN="条目">
+        <KM value="第一款第（五）项" nameCN="款目" />
+      </TM>
+      <TM value="一百四十五" nameCN="条目">
+        <KM value="第一款" nameCN="款目" />
+      </TM>
+      <SFCXF value="是程序法" nameCN="是否是程序法" />
+    </FLFTMC>
+  </CPFXGC>
+  <CPJG value="准许原告刘忠琴撤回起诉。&#xA;案件受理费10元，减半收取计5元，由原告刘忠琴负担。&#xA;" nameCN="裁判结果">
+    <JAFS value="准予撤诉" nameCN="结案方式" />
+    <PCSFSXZQ value="正确" nameCN="同时起诉侵权人与保险公司的赔偿顺序" />
+    <JTPJJG value="准许原告刘忠琴撤回起诉。" nameCN="具体裁判段" />
+    <SSFCD nameCN="诉讼费承担">
+      <SSFCDJL value="案件受理费10元，减半收取计5元，由原告刘忠琴负担。" nameCN="诉讼费承担记录">
+        <SSFJE value="5元" nameCN="诉讼费金额" />
+        <SSFZL value="受理费" nameCN="诉讼费种类" />
+        <SSFCDR value="刘忠琴" nameCN="承担人">
+          <SSFCDJE value="5元" nameCN="承担金额" />
+          <SSFCDFS value="个人独立承担该金额" nameCN="承担方式" />
+          <SSFCDDW value="原告" nameCN="承担人地位" />
+        </SSFCDR>
+      </SSFCDJL>
+    </SSFCD>
+    <SFFHCS value="否" nameCN="是否发回重审" />
+    <CSRJH nameCN="撤诉人集合">
+      <CSR value="刘忠琴" nameCN="撤诉人" />
+    </CSRJH>
+    <CSLX value="原告主动撤诉" nameCN="撤诉类型" />
+    <TCGXQYY value="否" nameCN="是否提出管辖权异议" />
+  </CPJG>
+  <WW value="审判员刘文安&#xA;二〇一六年十二月六日&#xA;书记员韦祖流&#xA;" nameCN="文尾">
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="刘文安" nameCN="审判人员姓名" />
+      <SPRYJS value="审判员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="韦祖流" nameCN="审判人员姓名" />
+      <SPRYJS value="书记员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <CPSJ value="2016年12月6日" nameCN="裁判时间">
+      <Year value="2016" nameCN="结案年度" />
+      <JANYR value="2016年12月6日" nameCN="结案年月日" />
+      <JANY value="2016-12" nameCN="结案年月" />
+      <Month value="12" nameCN="月" />
+      <Day value="6" nameCN="日" />
+    </CPSJ>
+  </WW>
+  <FL value="" nameCN="附录" />
+</QW>
+
