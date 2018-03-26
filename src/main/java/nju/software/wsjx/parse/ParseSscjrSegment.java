@@ -2,35 +2,34 @@ package nju.software.wsjx.parse;
 
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.*;
-import nju.software.wsjx.parserule.wsajjbqkparserule.YsptAjjbqkParseRule;
-import nju.software.wsjx.parserule.wscpfxgcparserule.YsptCpfxgcParseRule;
-import nju.software.wsjx.parserule.wscpjgparserule.MsysCpjgParseRule;
+import nju.software.wsjx.parserule.wsajjbqkparserule.MsysAjjbqkParseRule;
+import nju.software.wsjx.parserule.wscpfxgcparserule.MsgxCpfxgcParseRule;
+import nju.software.wsjx.parserule.wscpjgparserule.SscjrCpjgParseRule;
 import nju.software.wsjx.parserule.wssscyrparserule.MsysSscyrParseRule;
-import nju.software.wsjx.parserule.wsssjlparserule.YsptSsjlParseRule;
+import nju.software.wsjx.parserule.wsssjlparserule.SscjrSsjlParseRule;
 
 import java.util.List;
 
 /**
- * 第一审普通程序（含简易程序转普通）裁定书解析逻辑
- * Created by zhuding on 2018/3/20.
+ * Created by zhuding on 2018/3/25.
  */
-public class ParseYsptSegment extends DefaultParseSegment {
+public class ParseSscjrSegment extends DefaultParseSegment{
 
     @Override
     public WsajjbqkModel jxWsajjbqkModel(WsAnalyse wsAnalyse, List<WssscyrModel> wssscyrModellist) {
-        ajjbqkParseRule = new YsptAjjbqkParseRule();
+        ajjbqkParseRule = new MsysAjjbqkParseRule();
         return ajjbqkParseRule.jxWsajjbqkModel(wsAnalyse, wssscyrModellist);
     }
 
     @Override
     public WscpfxgcModel jxWscpfxgcModel(WsAnalyse wsAnalyse) {
-        cpfxgcParseRule = new YsptCpfxgcParseRule();
+        cpfxgcParseRule = new MsgxCpfxgcParseRule();
         return cpfxgcParseRule.jxWscpfxgcModel(wsAnalyse);
     }
 
     @Override
     public WscpjgModel jxWscpjgModel(WsAnalyse wsAnalyse, List<WssscyrModel> wssscyrModellist) {
-        cpjgParseRule = new MsysCpjgParseRule();
+        cpjgParseRule = new SscjrCpjgParseRule();
         return cpjgParseRule.jxWscpjgModel(wsAnalyse, wssscyrModellist);
     }
 
@@ -42,9 +41,8 @@ public class ParseYsptSegment extends DefaultParseSegment {
 
     @Override
     public WsssjlModel jxWsssjlModel(List<WssscyrModel> wssscyrModellist, String wsssjl) {
-        ssjlParseRule = new YsptSsjlParseRule();
-        return ssjlParseRule.jxWsssjlModel(wssscyrModellist, wsssjl);
+        ssjlParseRule = new SscjrSsjlParseRule();
+        return ssjlParseRule.jxWsssjlModel(wssscyrModellist,wsssjl);
     }
-
 
 }

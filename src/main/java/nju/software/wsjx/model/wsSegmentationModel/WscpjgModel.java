@@ -59,7 +59,44 @@ public class WscpjgModel {
 	private String dfdmspccl;//对附带民事赔偿处理
 	private FdmspjfzModel fdmspjfzModel;//附带民事判决结果分组
 	private String jtfz;//集团犯罪
-	
+
+	private String tdr;//替代人 诉讼参加人
+	private String btdr;//被替代人 诉讼参加人
+	private String ssdw;//诉讼地位 诉讼参加人
+	private String tcssr;//退出诉讼人 诉讼参加人
+
+	public String getTdr() {
+		return tdr;
+	}
+
+	public void setTdr(String tdr) {
+		this.tdr = tdr;
+	}
+
+	public String getBtdr() {
+		return btdr;
+	}
+
+	public void setBtdr(String btdr) {
+		this.btdr = btdr;
+	}
+
+	public String getSsdw() {
+		return ssdw;
+	}
+
+	public void setSsdw(String ssdw) {
+		this.ssdw = ssdw;
+	}
+
+	public String getTcssr() {
+		return tcssr;
+	}
+
+	public void setTcssr(String tcssr) {
+		this.tcssr = tcssr;
+	}
+
 	public String getAjslf() {
 		return ajslf;
 	}

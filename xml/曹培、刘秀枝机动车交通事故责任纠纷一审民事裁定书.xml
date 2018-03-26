@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QW value="河南省上蔡县人民法院&#xA;民事裁定书&#xA;（2016）豫1722民初3045号之一&#xA;申请人曹培，男，1987年8月12日出生，汉族，住上蔡县。&#xA;申请人刘秀枝，女，1959年6月2日出生，汉族，住址同上。&#xA;申请人曹叶，女，1985年11月18日出生，汉族，住址同上。&#xA;原告ＸＸ成与被告张凯伦、阳光财产保险股份有限公司驻马店中心支公司机动车交通事故责任纠纷一案，本院于2016年9月5日立案，2016年11月8日，曹培、刘秀枝、曹叶向本院提出申请变更当事人。&#xA;曹培、刘秀枝、曹叶称，原告ＸＸ成系刘秀枝丈夫，曹培、曹叶之父亲。ＸＸ成于2016年11月2日死亡，其系ＸＸ成的法定继承人，为此提出参加诉讼。&#xA;本院经审查认为，原告ＸＸ成于2016年11月2日死亡，曹培、刘秀枝、曹叶系ＸＸ成的法定继承人，向本院提出申请变更当事人符合法律规定，应予准许。&#xA;依照《中华人民共和国民事诉讼法》第一百四十五条第一款《最高人民法院关于适用的解释》第二百四十九条、第二百五十条规定，裁定如下：&#xA;准予原告曹培、刘秀枝、曹叶替代ＸＸ成作为本案原告参加诉讼，ＸＸ成退出诉讼。&#xA;审判长刘存社&#xA;人民陪审员康琳琳&#xA;人民陪审员周秀根&#xA;&#xA;二〇一六年十一月八日&#xA;书记员康凌华&#xA;&#xA;" nameCN="全文">
+  <WS value="河南省上蔡县人民法院&#xA;民事裁定书&#xA;（2016）豫1722民初3045号之一&#xA;" nameCN="文首">
+    <WSZZDW value="法院" nameCN="文书制作单位" />
+    <JBFY value="河南省上蔡县人民法院" nameCN="经办法院">
+      <FYJB value="基层" nameCN="法院级别" />
+      <XZQH_P value="河南" nameCN="行政区划(省)" />
+      <XZQH_C value="河南" nameCN="行政区划(市)" />
+    </JBFY>
+    <WSMC value="民事裁定书" nameCN="文书名称" />
+    <AH value="(2016)豫1722民初3045号之一" nameCN="案号" />
+    <LAND value="2016" nameCN="立案年度" />
+    <AJXZ value="民事案件" nameCN="案件性质" />
+    <WSZL value="裁定书" nameCN="文书种类" />
+    <SPCX value="一审案件" nameCN="审判程序" />
+    <AJLX value="民事一审案件" nameCN="案件类型" />
+  </WS>
+  <SSCYRQJ value="申请人曹培，男，1987年8月12日出生，汉族，住上蔡县。&#xA;申请人刘秀枝，女，1959年6月2日出生，汉族，住址同上。&#xA;申请人曹叶，女，1985年11月18日出生，汉族，住址同上。&#xA;" nameCN="诉讼参与人全集">
+    <SSCYR value="申请人曹培，男，1987年8月12日出生，汉族，住上蔡县。" nameCN="诉讼参与人">
+      <SSCYRMC value="曹培" nameCN="诉讼参与人名称" />
+      <SSSF value="申请人" nameCN="诉讼身份" />
+      <DSRLX value="自然人" nameCN="当事人类型" />
+      <XB value="男" nameCN="性别" />
+      <MZ value="汉族" nameCN="民族" />
+      <CSRQ value="1987年8月12日" nameCN="出生日期">
+        <Year value="1987" nameCN="年" />
+        <Month value="8" nameCN="月" />
+        <Day value="12" nameCN="日" />
+      </CSRQ>
+      <GJ value="中国" nameCN="国籍" />
+      <DSRDZ value="上蔡县" nameCN="当事人地址" />
+    </SSCYR>
+    <SSCYR value="申请人刘秀枝，女，1959年6月2日出生，汉族，住址同上。" nameCN="诉讼参与人">
+      <SSCYRMC value="刘秀枝" nameCN="诉讼参与人名称" />
+      <SSSF value="申请人" nameCN="诉讼身份" />
+      <DSRLX value="自然人" nameCN="当事人类型" />
+      <XB value="女" nameCN="性别" />
+      <MZ value="汉族" nameCN="民族" />
+      <CSRQ value="1959年6月2日" nameCN="出生日期">
+        <Year value="1959" nameCN="年" />
+        <Month value="6" nameCN="月" />
+        <Day value="2" nameCN="日" />
+      </CSRQ>
+      <GJ value="中国" nameCN="国籍" />
+      <DSRDZ value="址同上" nameCN="当事人地址" />
+    </SSCYR>
+    <SSCYR value="申请人曹叶，女，1985年11月18日出生，汉族，住址同上。" nameCN="诉讼参与人">
+      <SSCYRMC value="曹叶" nameCN="诉讼参与人名称" />
+      <SSSF value="申请人" nameCN="诉讼身份" />
+      <DSRLX value="自然人" nameCN="当事人类型" />
+      <XB value="女" nameCN="性别" />
+      <MZ value="汉族" nameCN="民族" />
+      <CSRQ value="1985年11月18日" nameCN="出生日期">
+        <Year value="1985" nameCN="年" />
+        <Month value="11" nameCN="月" />
+        <Day value="18" nameCN="日" />
+      </CSRQ>
+      <GJ value="中国" nameCN="国籍" />
+      <DSRDZ value="址同上" nameCN="当事人地址" />
+    </SSCYR>
+    <SSCYRQJ value="错误" nameCN="保险公司是否作为被告" />
+  </SSCYRQJ>
+  <SSJL value="原告ＸＸ成与被告张凯伦、阳光财产保险股份有限公司驻马店中心支公司机动车交通事故责任纠纷一案，本院于2016年9月5日立案，2016年11月8日，曹培、刘秀枝、曹叶向本院提出申请变更当事人。" nameCN="诉讼记录">
+    <BGSQR value="曹叶" nameCN="申请人（变更当事人）" />
+    <BGSQRQ value="2016年11月8日" nameCN="申请日期（变更当事人）" />
+    <YG value="ＸＸ成" nameCN="原告" />
+    <BG value="张凯伦" nameCN="被告" />
+    <AY value="机动车交通事故责任纠纷" nameCN="案由" />
+    <KTSL value="否" nameCN="开庭审理" />
+    <WZAY value="机动车交通事故责任纠纷" nameCN="完整案由" />
+    <AYDM value="9722" nameCN="案由代码" />
+    <LARQ value="2016年9月5日" nameCN="立案日期" />
+    <YSAJSYCX value="普通程序" nameCN="一审案件适用程序" />
+    <JYZPT value="否" nameCN="简易转普通" />
+    <SPZZ value="独任庭" nameCN="审判组织" />
+    <YSAJLY value="新收" nameCN="一审案件来源" />
+  </SSJL>
+  <AJJBQK value="曹培、刘秀枝、曹叶称，原告ＸＸ成系刘秀枝丈夫，曹培、曹叶之父亲。ＸＸ成于2016年11月2日死亡，其系ＸＸ成的法定继承人，为此提出参加诉讼。&#xA;" nameCN="案件基本情况">
+    <CMSSD value="曹培、刘秀枝、曹叶称，原告ＸＸ成系刘秀枝丈夫，曹培、曹叶之父亲。ＸＸ成于2016年11月2日死亡，其系ＸＸ成的法定继承人，为此提出参加诉讼。" nameCN="查明事实段">
+      <SGXQ value="未提及" nameCN="事故详情">
+        <SGSJ value="未提及" nameCN="事故时间" />
+        <SGDD value="未提及" nameCN="事故地点" />
+      </SGXQ>
+      <SFTB value="是" nameCN="是否投保" />
+      <SFZBXQN value="是" nameCN="是否在保险期内" />
+      <SFXQPF value="是" nameCN="是否先期赔付" />
+      <JDSFKK value="是" nameCN="鉴定是否可靠" />
+    </CMSSD>
+  </AJJBQK>
+  <CPFXGC value="本院经审查认为，原告ＸＸ成于2016年11月2日死亡，曹培、刘秀枝、曹叶系ＸＸ成的法定继承人，向本院提出申请变更当事人符合法律规定，应予准许。&#xA;依照《中华人民共和国民事诉讼法》第一百四十五条第一款《最高人民法院关于适用的解释》第二百四十九条、第二百五十条规定，裁定如下：&#xA;" nameCN="裁判分析过程">
+    <JAFSLX value="裁定" nameCN="结案方式类型" />
+    <FLFTMC value="中华人民共和国民事诉讼法" nameCN="法律法条名称">
+      <TM value="一百四十五" nameCN="条目">
+        <KM value="第一款" nameCN="款目" />
+      </TM>
+      <SFCXF value="是程序法" nameCN="是否是程序法" />
+    </FLFTMC>
+    <FLFTMC value="最高人民法院关于适用的解释" nameCN="法律法条名称">
+      <TM value="二百四十九" nameCN="条目" />
+      <TM value="二百五十" nameCN="条目" />
+      <SFCXF value="非程序法" nameCN="是否是程序法" />
+    </FLFTMC>
+  </CPFXGC>
+  <CPJG value="准予原告曹培、刘秀枝、曹叶替代ＸＸ成作为本案原告参加诉讼，ＸＸ成退出诉讼。&#xA;" nameCN="裁判结果">
+    <TDR value="原告曹培、刘秀枝、曹叶" nameCN="替代人" />
+    <BTDR value="ＸＸ成" nameCN="被替代人" />
+    <SSDW value="原告" nameCN="诉讼地位" />
+    <TCSSR value="ＸＸ成" nameCN="退出诉讼人" />
+    <JAFS value="其他" nameCN="结案方式" />
+    <PCSFSXZQ value="正确" nameCN="同时起诉侵权人与保险公司的赔偿顺序" />
+    <JTPJJG value="准予原告曹培、刘秀枝、曹叶替代ＸＸ成作为本案原告参加诉讼，ＸＸ成退出诉讼。" nameCN="具体裁判段" />
+    <SFFHCS value="否" nameCN="是否发回重审" />
+    <TCGXQYY value="否" nameCN="是否提出管辖权异议" />
+  </CPJG>
+  <WW value="审判长刘存社&#xA;人民陪审员康琳琳&#xA;人民陪审员周秀根&#xA;二〇一六年十一月八日&#xA;书记员康凌华&#xA;" nameCN="文尾">
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="康凌华" nameCN="审判人员姓名" />
+      <SPRYJS value="书记员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="刘存社" nameCN="审判人员姓名" />
+      <SPRYJS value="审判长" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="周秀根" nameCN="审判人员姓名" />
+      <SPRYJS value="人民陪审员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="康琳琳" nameCN="审判人员姓名" />
+      <SPRYJS value="人民陪审员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <CPSJ value="2016年11月8日" nameCN="裁判时间">
+      <Year value="2016" nameCN="结案年度" />
+      <JANYR value="2016年11月8日" nameCN="结案年月日" />
+      <JANY value="2016-11" nameCN="结案年月" />
+      <Month value="11" nameCN="月" />
+      <Day value="8" nameCN="日" />
+    </CPSJ>
+  </WW>
+  <FL value="" nameCN="附录" />
+</QW>
+

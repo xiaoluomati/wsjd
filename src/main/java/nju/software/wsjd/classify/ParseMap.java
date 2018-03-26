@@ -15,6 +15,7 @@ public class ParseMap {
         hashMap = new HashMap<>();
         hashMap.put("管辖","ParseMsgxSegment");
         hashMap.put("第一审普通程序", "ParseYsptSegment");
+        hashMap.put("诉讼参加人","ParseSscjrSegment");
     }
 
     private HashMap<String, String>  hashMap;

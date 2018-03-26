@@ -75,8 +75,8 @@ public class WsssjlModel {
 	private String bzfymc;//标准法院名称
 	private String qsgsjg;//原公诉机关
 
-	private String yg;//原告 管辖 第一审
-	private String bg;//被告 管辖 第一审
+	private String yg;//原告 管辖 第一审 变更当事人
+	private String bg;//被告 管辖 第一审 变更当事人
 	private String lafy;//立案法院 管辖
 	private String ssr;//上诉人 管辖
 	private String sscdfymc;//上诉裁定法院名称 管辖
@@ -99,11 +99,30 @@ public class WsssjlModel {
 				'}';
 	}
 
-	private SsrqydsrModel qsz;
-	private SsrqydsrModel fsz;
-	private SsrqydsrModel jjct;
-	private SsrqydsrModel cs;
-	private FsModel fs;
+	private SsrqydsrModel qsz;//起诉状 第一审
+	private SsrqydsrModel fsz;//反诉状 第一审
+	private SsrqydsrModel jjct;//拒绝出庭 第一审
+	private SsrqydsrModel cs;//撤诉 第一审
+	private FsModel fs;//反诉 第一审
+
+	private String bgsqr;//申请人 变更当事人
+	private String bgsqrq;//申请日期 变更当事人
+
+	public String getBgsqr() {
+		return bgsqr;
+	}
+
+	public void setBgsqr(String bgsqr) {
+		this.bgsqr = bgsqr;
+	}
+
+	public String getBgsqrq() {
+		return bgsqrq;
+	}
+
+	public void setBgsqrq(String bgsqrq) {
+		this.bgsqrq = bgsqrq;
+	}
 
 	public SsrqydsrModel getQsz() {
 		return qsz;

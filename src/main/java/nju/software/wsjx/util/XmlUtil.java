@@ -600,6 +600,14 @@ public class XmlUtil {
 			Element ssjl = new Element("SSJL").setAttribute("value",
 					wsModel.getWsssjlSegment());
 			ssjl.setAttribute("nameCN", "诉讼记录");
+			//-----18.3.26----
+			if(wsssjlModel.getBgsqr() != null){
+				buildElement(ssjl, "BGSQR", "申请人（变更当事人）", wsssjlModel.getBgsqr());
+			}
+			if(wsssjlModel.getBgsqrq() != null){
+				buildElement(ssjl, "BGSQRQ", "申请日期（变更当事人）", wsssjlModel.getBgsqrq());
+			}
+			//end--18.3.26----
 			//-----18.3.22----
 			//起诉状
 			if(wsssjlModel.getQsz() != null){
@@ -1781,6 +1789,20 @@ public class XmlUtil {
 					wsModel.getWscpjgSegment());
 			cpjg.setAttribute("nameCN", "裁判结果");
 			root.addContent(cpjg);
+			//-----18.3.26----
+			if(wscpjgModel.getTdr() != null){
+				buildElement(cpjg, "TDR", "替代人", wscpjgModel.getTdr());
+			}
+			if(wscpjgModel.getBtdr() != null){
+				buildElement(cpjg, "BTDR", "被替代人", wscpjgModel.getBtdr());
+			}
+			if(wscpjgModel.getSsdw() != null){
+				buildElement(cpjg, "SSDW", "诉讼地位", wscpjgModel.getSsdw());
+			}
+			if(wscpjgModel.getTcssr() != null){
+				buildElement(cpjg, "TCSSR", "退出诉讼人", wscpjgModel.getTcssr());
+			}
+			//end--18.3.26----
 			// 创建结案方式节点
 			if (wscpjgModel.getJafs() != null) {
 				Element jafs = new Element("JAFS").setAttribute("value",
