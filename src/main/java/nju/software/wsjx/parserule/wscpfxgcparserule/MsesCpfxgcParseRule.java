@@ -62,6 +62,14 @@ public class MsesCpfxgcParseRule extends GeneralCpfxgcCommonRule implements Cpfx
 				wscpfxgcModel.setJafslx(jafslx);
 			}
 		}
+
+		for (WscpfxgcFtModel wscpfxgcFtModel : ftModellist) {
+			if (wscpfxgcFtModel.getFlftmc().contains("中华人民共和国民事诉讼法")){
+				wscpfxgcFtModel.setSfcxf("是程序法");
+			}else {
+				wscpfxgcFtModel.setSfcxf("非程序法");
+			}
+		}
 		return wscpfxgcModel;
 	}
 

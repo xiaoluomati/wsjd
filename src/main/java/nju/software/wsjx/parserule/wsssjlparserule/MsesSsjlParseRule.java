@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -228,6 +229,24 @@ public class MsesSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
 			qsah.add(m.group());
 		}
 		wsssjlModel.setQsah(qsah);
+
+		//---解析前审法院
+		HashMap<String, String> map = new HashMap<>();
+		String re = "不服(.*人民法院)(" + reg + ")";
+		Pattern p1 = Pattern.compile(re);
+		Matcher m1 = p1.matcher(wsssjl);
+		while (m1.find()) {
+			map.put(m1.group(1), m1.group(2));
+		}
+		wsssjlModel.setQsahfy(map);
+		//解析上诉人
+		String re1 = "上述人(.*)[因与及]";
+		Pattern p2 = Pattern.compile(re);
+		Matcher m2 = p2.matcher(wsssjl);
+		while (m2.find()) {
+			wsssjlModel.setSsr(m2.group(1));
+		}
+
 
 		// 解析一审案件适用程序
 		// System.out.println(wsssjl);

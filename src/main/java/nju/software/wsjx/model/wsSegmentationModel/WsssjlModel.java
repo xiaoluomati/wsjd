@@ -78,12 +78,21 @@ public class WsssjlModel {
 	private String yg;//原告 管辖 第一审 变更当事人
 	private String bg;//被告 管辖 第一审 变更当事人
 	private String lafy;//立案法院 管辖
-	private String ssr;//上诉人 管辖
 	private String sscdfymc;//上诉裁定法院名称 管辖
 	private String sscdah;//上诉裁定案号 管辖
 	private List<ZyfyModel> zymf;//争议法院 管辖
 	private String bqfymc;//报请时间 管辖
 	private String bqsj;//报请法院 管辖
+	private String ssr;//上诉人 管辖 二审
+	private HashMap<String, String> qsahfy;//<前审案号，前审审理法院> 二审
+
+	public HashMap<String, String> getQsahfy() {
+		return qsahfy;
+	}
+
+	public void setQsahfy(HashMap<String, String> qsahfy) {
+		this.qsahfy = qsahfy;
+	}
 
 	public String gxString(){
 		return "temo{" +
