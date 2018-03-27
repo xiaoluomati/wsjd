@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="head::header(试卷详情)"></head>
+<body>
+<link rel="stylesheet" th:href="@{css/awesome-bootstrap-checkbox.css}"/>
+<div th:include="navigation::common-nav"></div>
+<div class="typo">
+    <div class="container">
+
+        <div class="col-xs-9">
+            <hr/>
+            <h2>
+                <span class="myspan">学号：</span>
+                <span class="myspan" th:text="${username}"></span>
+                <span style="float: right" class="myspan" th:text="${score}"></span>
+                <span style="float: right" class="myspan">成绩：</span>
+            </h2>
+            <hr/>
+            <!--/*@thymesVar id="singleQuesPaper" type="java.util.ArrayList"*/-->
+            <!--/*@thymesVar id="ques" type="cn.edu.nju.vo.QuestionVo"*/-->
+            <h2 id="single">单选</h2><hr/>
+            <div class="panel panel-primary" th:each="ques, quesStat:${singleQuesPaper}">
+                <div class="panel-heading" th:id="'question'+${quesStat.count}">
+                    <h2 class="panel-title"
+                        th:text="${quesStat.count} +'.'+ ${ques.content} +'(' + ${ques.score} +'分)'"></h2>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="mylist-group list-group">
+                        <!--/*@thymesVar id="correctAnswers" type="java.util.List"*/-->
+                        <li class="list-group-item" th:each="answer, answerStat:${ques.correctAnswers}">
+                            <span th:text="${answer}"></span>
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true" style="float: right" data-toggle="tooltip" title="正确答案"></span>
+                        </li>
+                        <!--/*@thymesVar id="wrongAnswers" type="java.util.List"*/-->
+                        <li class="list-group-item" th:each="answer, answerStat:${ques.wrongAnswers}" th:text="${answer}"></li>
+                        <!--/*@thymesVar id="selectedAnswers" type="java.util.List"*/-->
+                        <li class="list-group-item" th:each="answer, answerStat:${ques.selectedAnswers}">
+                            <span class="myspan" th:text="${answer}" th:if="${#lists.contains(ques.correctAnswers, answer)}"></span>
+                            <span class="myspan glyphicon glyphicon-user" aria-hidden="true" style="float: right" data-toggle="tooltip" title="你的答案" th:if="${#lists.contains(ques.correctAnswers, answer)}"></span>
+                            <span class="myspan1" th:text="${answer}" th:unless="${#lists.contains(ques.correctAnswers, answer)}"></span>
+                            <span class="myspan1 glyphicon glyphicon-user" aria-hidden="true" style="float: right" data-toggle="tooltip" title="你的答案" th:unless="${#lists.contains(ques.correctAnswers, answer)}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/*@thymesVar id="mutipleQuesPaper" type="java.util.List"*/-->
+            <!--/*@thymesVar id="mques" type="cn.edu.nju.vo.QuestionVo"*/-->
+            <h2 id="mutiple">多选</h2><hr/>
+            <div class="panel panel-primary" th:each="mques, mquesStat:${mutipleQuesPaper}">
+                <div class="panel-heading" th:id="'mquestion'+${mquesStat.count}">
+                    <h2 class="panel-title"
+                        th:text="${mquesStat.count} +'.'+ ${mques.content} +'(' + ${mques.score} +'分)'"></h2>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="mylist-group list-group">
+                        <!--/*@thymesVar id="correctAnswers" type="java.util.List"*/-->
+                        <li class="list-group-item" th:each="answer, answerStat:${mques.correctAnswers}">
+                            <span th:text="${answer}"></span>
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true" style="float: right" data-toggle="tooltip" title="正确答案"></span>
+                        </li>
+                        <!--/*@thymesVar id="wrongAnswers" type="java.util.List"*/-->
+                        <li class="list-group-item" th:each="answer, answerStat:${mques.wrongAnswers}" th:text="${answer}"></li>
+                        <!--/*@thymesVar id="selectedAnswers" type="java.util.List"*/-->
+                        <li class="list-group-item" th:each="answer, answerStat:${mques.selectedAnswers}">
+                            <span class="myspan" th:text="${answer}" th:if="${#lists.contains(mques.correctAnswers, answer)}"></span>
+                            <span class="myspan glyphicon glyphicon-user" aria-hidden="true" style="float: right" data-toggle="tooltip" title="你的答案" th:if="${#lists.contains(mques.correctAnswers, answer)}"></span>
+                            <span class="myspan1" th:text="${answer}" th:unless="${#lists.contains(mques.correctAnswers, answer)}"></span>
+                            <span class="myspan1 glyphicon glyphicon-user" aria-hidden="true" style="float: right" data-toggle="tooltip" title="你的答案" th:unless="${#lists.contains(mques.correctAnswers, answer)}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+                <ul class="nav bs-docs-sidenav">
+                    <li>
+                        <a href="#single">单选</a>
+                        <ul class="nav"></ul>
+                    </li>
+                    <li>
+                        <a href="#mutiple">多选</a>
+                        <ul class="nav"></ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+</html>
