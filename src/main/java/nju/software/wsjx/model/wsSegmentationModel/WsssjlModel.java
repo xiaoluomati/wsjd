@@ -86,7 +86,116 @@ public class WsssjlModel {
 	private String ssr;//上诉人 管辖 二审
 	private HashMap<String, String> qsahfy;//<前审案号，前审审理法院> 二审
 
-	public HashMap<String, String> getQsahfy() {
+	private String sqr;//申请人 证据
+    private String sqrq;//申请日期 证据
+    private String zjbqcs;//证据保全措施 证据
+    private String dbr;//担保人 证据
+    private String tjr;//提交人 证据
+    private String zjmc;//证据名称 证据
+    private String zjdx;//证明对象 证据
+    private String dbcc;//担保财产 证据
+    private String cdfy;//裁定法院 证据
+    private String cdrq;//裁定日期 证据
+    private String cdah;//裁定案号 证据
+    private String cdzw;//裁定主文 证据
+
+    public String getSqr() {
+        return sqr;
+    }
+
+    public void setSqr(String sqr) {
+        this.sqr = sqr;
+    }
+
+    public String getSqrq() {
+        return sqrq;
+    }
+
+    public void setSqrq(String sqrq) {
+        this.sqrq = sqrq;
+    }
+
+    public String getZjbqcs() {
+        return zjbqcs;
+    }
+
+    public void setZjbqcs(String zjbqcs) {
+        this.zjbqcs = zjbqcs;
+    }
+
+    public String getDbr() {
+        return dbr;
+    }
+
+    public void setDbr(String dbr) {
+        this.dbr = dbr;
+    }
+
+    public String getTjr() {
+        return tjr;
+    }
+
+    public void setTjr(String tjr) {
+        this.tjr = tjr;
+    }
+
+    public String getZjmc() {
+        return zjmc;
+    }
+
+    public void setZjmc(String zjmc) {
+        this.zjmc = zjmc;
+    }
+
+    public String getZjdx() {
+        return zjdx;
+    }
+
+    public void setZjdx(String zjdx) {
+        this.zjdx = zjdx;
+    }
+
+    public String getDbcc() {
+        return dbcc;
+    }
+
+    public void setDbcc(String dbcc) {
+        this.dbcc = dbcc;
+    }
+
+    public String getCdfy() {
+        return cdfy;
+    }
+
+    public void setCdfy(String cdfy) {
+        this.cdfy = cdfy;
+    }
+
+    public String getCdrq() {
+        return cdrq;
+    }
+
+    public void setCdrq(String cdrq) {
+        this.cdrq = cdrq;
+    }
+
+    public String getCdah() {
+        return cdah;
+    }
+
+    public void setCdah(String cdah) {
+        this.cdah = cdah;
+    }
+
+    public String getCdzw() {
+        return cdzw;
+    }
+
+    public void setCdzw(String cdzw) {
+        this.cdzw = cdzw;
+    }
+
+    public HashMap<String, String> getQsahfy() {
 		return qsahfy;
 	}
 

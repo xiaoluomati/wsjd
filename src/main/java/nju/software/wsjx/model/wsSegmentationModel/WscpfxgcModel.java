@@ -60,7 +60,18 @@ public class WscpfxgcModel {
 	 * 被告人同意认罪程序
 	 */
 	private String bgrtyrzcx;
-	
+
+
+	private String sqr;//申请人 证据
+
+	public String getSqr() {
+		return sqr;
+	}
+
+	public void setSqr(String sqr) {
+		this.sqr = sqr;
+	}
+
 	public String getJafslx() {
 		return Jafslx;
 	}

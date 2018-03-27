@@ -68,8 +68,26 @@ public class WscpjgModel {
 
 	private String ssr;//上诉人 民事二审
 	private QscdModel qscdModel;//前审裁定的处理 民事二审
+	private String jdfy;//鉴定费用 证据
+	private String bbqr;//被保全人 证据
 
-	public String getSsr() {
+    public String getJdfy() {
+        return jdfy;
+    }
+
+    public void setJdfy(String jdfy) {
+        this.jdfy = jdfy;
+    }
+
+    public String getBbqr() {
+        return bbqr;
+    }
+
+    public void setBbqr(String bbqr) {
+        this.bbqr = bbqr;
+    }
+
+    public String getSsr() {
 		return ssr;
 	}
 

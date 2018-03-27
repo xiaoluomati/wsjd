@@ -215,6 +215,12 @@ public class XmlUtil {
 		return element;
 	}
 
+    private static Element buildSingleElement(Element root, String name, String nameCN, String value){
+        if(value == null)
+            return null;
+        return buildElement(root, name,nameCN,value);
+    }
+
 	/**
 	 * 创建诉讼参与人节点
 	 * @param root
@@ -613,6 +619,19 @@ public class XmlUtil {
 					buildElement(element, "QSFY", "前审法院", qsahfy.get(s));
 				}
 			}
+
+            buildSingleElement(ssjl, "SQR", "申请人", wsssjlModel.getSqr());
+            buildSingleElement(ssjl, "SQRQ","申请日期",wsssjlModel.getSqrq());
+            buildSingleElement(ssjl, "ZJBQCS","证据保全措施",wsssjlModel.getZjbqcs());
+            buildSingleElement(ssjl, "DBR","担保人",wsssjlModel.getDbr());
+            buildSingleElement(ssjl, "TJR","提交人",wsssjlModel.getTjr());
+            buildSingleElement(ssjl,"ZJMC","证据名称",wsssjlModel.getZjmc());
+            buildSingleElement(ssjl,"ZJDX","证据对象",wsssjlModel.getZjdx());
+            buildSingleElement(ssjl,"DBCC","担保财产",wsssjlModel.getDbcc());
+            buildSingleElement(ssjl, "CDFY","裁定法院",wsssjlModel.getCdfy());
+            buildSingleElement(ssjl,"CDRQ","裁定日期",wsssjlModel.getCdrq());
+            buildSingleElement(ssjl,"CDAH","裁定案号",wsssjlModel.getCdah());
+            buildSingleElement(ssjl,"CDZW","裁定主文",wsssjlModel.getCdzw());
 			//end--18.3.27----
 			//-----18.3.26----
 			if(wsssjlModel.getBgsqr() != null){
@@ -1610,6 +1629,11 @@ public class XmlUtil {
 			cpfxgc.setAttribute("nameCN", "裁判分析过程");
 			root.addContent(cpfxgc);
 			if (wscpfxgcModel != null) {
+				//-----18.3.27----
+                if(wscpfxgcModel.getSqr() != null){
+                    buildElement(cpfxgc, "SQR", "申请人", wscpfxgcModel.getSqr());
+                }
+                //end--18.3.27----
 				// 创建结案方式类型节点
 				if (wscpfxgcModel.getJafslx() != null) {
 					Element jafslx = new Element("JAFSLX").setAttribute(
@@ -1814,6 +1838,12 @@ public class XmlUtil {
 				buildElement(element, "AH","案号", qscdModel.getAh());
 				buildElement(element, "PJFS","判决方式", qscdModel.getPjfs());
 			}
+			if(wscpjgModel.getJdfy() != null){
+			    buildElement(cpjg, "JDFY", "鉴定费用", wscpjgModel.getJdfy());
+            }
+            if(wscpjgModel.getBbqr() != null){
+			    buildElement(cpjg, "BBQR","被保全人",wscpjgModel.getBbqr());
+            }
 			//end--18.3.27----
 			//-----18.3.26----
 			if(wscpjgModel.getTdr() != null){
