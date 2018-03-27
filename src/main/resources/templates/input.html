@@ -22,10 +22,29 @@
         </ul>
       </nav>
 
-      <form th:action="@{/submitexam}" enctype="multipart/form-data" th:method="post">
-        <span style="color: #999">考生名单<label>*</label></span>
-        <input type="file" name="file" style="display:inline"/>
-      </form>
+      <section id="intro" class="container">
+        <div class="row">
+          <div class="4u 12u(mobile)">
+            <section class="left">
+            </section>
+          </div>
+          <div class="4u 12u(mobile)">
+            <section class="middle">
+              <header>
+                <h2>文书导入</h2>
+              </header>
+              <form th:action="@{/submitdoc}" enctype="multipart/form-data" th:method="post">
+                <input type="file" name="file" style="display:inline;"/>
+                <div class="register-but">
+                  <input type="submit" value="提交" />
+                  <div class="clearfix"></div>
+                </div>
+              </form>
+            </section>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 </div>

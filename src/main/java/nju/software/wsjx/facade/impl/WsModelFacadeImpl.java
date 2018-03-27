@@ -29,9 +29,9 @@ public class WsModelFacadeImpl implements WsModelFacade{
 	@Override
 	public WsModel jxDocument(InputStream inputStream, String wswjm) {
 		try{
-			//获取输入文档解析器
+//			获取输入文档解析器
 			WsParser wsParser=ScannerFactory.getWsParserByWswjm(inputStream, wswjm);
-			//将文档输入流转化成String
+//			将文档输入流转化成String
 			String content=wsParser.getContent();
 			//预处理文书
 			PreWsAnalyse preWsAnalyse=new PreWsAnalyse(wswjm, content);

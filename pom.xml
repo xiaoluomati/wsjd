@@ -40,7 +40,7 @@
         <ezmorph.version>1.0.6</ezmorph.version>
         <ant.version>1.9.0</ant.version>
         <lucene.version>5.2.1</lucene.version>
-        <poi.version>3.9</poi.version>
+        <poi.version>3.17</poi.version>
 
     </properties>
 
@@ -163,6 +163,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--ooxml-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>ooxml-schemas</artifactId>
+            <version>1.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -174,6 +182,7 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                    <encoding>gbk</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -197,6 +206,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
             </plugin>
         </plugins>
     </build>

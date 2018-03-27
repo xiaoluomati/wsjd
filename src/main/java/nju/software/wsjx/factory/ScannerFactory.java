@@ -1,12 +1,5 @@
 package nju.software.wsjx.factory;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
-import org.apache.poi.util.IOUtils;
-
 import nju.software.wsjx.exception.ParseException;
 import nju.software.wsjx.scanner.WsParser;
 import nju.software.wsjx.scanner.impl.DocWsParser;
@@ -14,6 +7,12 @@ import nju.software.wsjx.scanner.impl.DocxWsParser;
 import nju.software.wsjx.scanner.impl.RtfWsParser;
 import nju.software.wsjx.scanner.impl.TxtWsParser;
 import nju.software.wsjx.util.StringUtil;
+import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
+import org.apache.poi.util.IOUtils;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 输入加载器工厂
@@ -69,6 +68,8 @@ public class ScannerFactory {
 			throw new ParseException("未定义解析该格式文书");
 
 		}
+
+
 		return wsParser;
 	}
 	

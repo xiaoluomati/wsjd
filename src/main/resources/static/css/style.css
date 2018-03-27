@@ -818,12 +818,12 @@ a.forgot {
 .news-letter:hover {
 	color:#00BFF0;
 }
-.register-but{
-	margin-top:1em;
+.register-but {
+	margin-top:5em;
 }
 .register-but input {
-  background: #553A99;
-  color: #FFF;
+  background: #d52349;
+  color: #fff !important;
   font-size: 1.2em;
   padding: 0.4em 1.5em;
   transition: 0.5s all;
@@ -834,6 +834,7 @@ a.forgot {
   text-transform: uppercase;
   border: none;
   outline: none;
+  font-weight: 700;
 }
 .register-but input:hover {
 	background:#6cbc35;
@@ -2108,4 +2109,28 @@ select.arrival {
 .details {
     padding: 3em 0 0;
 }
+}
+
+div section p {
+    white-space:pre-wrap;
+    text-align: left;
+    /*text-indent: 2em;*/
+    /*max-width: 1000px;*/
+}
+
+/*div section div {*/
+    /*white-space:pre-wrap;*/
+    /*text-align: left;*/
+    /*!*text-indent: 2em;*!*/
+    /*!*max-width: 1000px;*!*/
+/*}*/
+
+div section h3 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.sec h4 {
+    text-align: left;
+    margin: 15px 0 3px 0;
 }

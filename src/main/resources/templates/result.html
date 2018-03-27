@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="head::header(智能文书校对系统)"></head>
+<body>
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div id="header">
+      <!-- Logo -->
+      <h1><a th:href="@{/index}">智能文书校对系统</a></h1>
+
+      <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li>
+            <a th:href="@{/index}">主页</a></li>
+          <li>
+            <a th:href="@{/input}">导入</a></li>
+          <li class="current">
+            <a href="#">校对结果</a>
+          </li>
+        </ul>
+      </nav>
+      <section id="intro" class="container">
+        <div class="row">
+          <div class="9u 12u(mobile)">
+            <section class="left">
+              <!--/*@thymesVar id="doc" type="nju.software.wsjx.model.wsSegmentationModel.WsModel"*/-->
+              <!--// 文首段落-->
+              <h3 th:text="${doc.getWswsSegment()}"></h3>
+
+              <!--// 诉讼参与人段落-->
+              <div class="sec">
+                <h4>诉讼参与人</h4>
+              </div>
+              <div th:each="sscyr : ${doc.getWssscyrSegment()}">
+                <p th:text="${sscyr}"></p>
+              </div>
+
+              <!--// 诉讼记录段落-->
+              <div class="sec">
+                <h4>诉讼记录</h4>
+              </div>
+              <p th:text="${doc.getWsssjlSegment()}"></p>
+
+              <!--// 案件基本情况段落-->
+              <div class="sec">
+                <h4>案件基本情况</h4>
+              </div>
+              <p th:text="${doc.getWsajjbqSegment()}"></p>
+
+              <!--// 裁判分析过程段落-->
+              <div class="sec">
+                <h4>裁判分析过程</h4>
+              </div>
+              <p th:text="${doc.getWscpfxgcSegment()}"></p>
+
+
+              <!--// 裁判结果段落-->
+              <div class="sec">
+                <h4>裁判结果</h4>
+              </div>
+              <p th:text="${doc.getWscpjgSegment()}"></p>
+
+              <!--// 文尾段落-->
+              <div class="sec">
+                <h4>文尾</h4>
+              </div>
+              <p th:text="${doc.getWswwSegment()}"></p>
+
+              <!--// 附录-->
+              <div class="sec">
+                <h4>附录</h4>
+              </div>
+              <p th:text="${doc.getWsfl()}"></p>
+            </section>
+          </div>
+          <div class="3u">
+            <section class="right mistake">
+              <div>
+                <span>法律法条引用错误 18</span>
+              </div>
+              <div>
+                <span>结构错误 3</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

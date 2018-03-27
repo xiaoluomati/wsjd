@@ -18,8 +18,6 @@
     <SSCYR value="原告：五矿钢铁英国有限公司（MINMETALSIRON＆STEELUKLTD）。法定代表人：彭艺，该公司董事长。" nameCN="诉讼参与人">
       <SSCYRMC value="五矿钢铁英国有限公司" nameCN="诉讼参与人名称" />
       <SSSF value="原告" nameCN="诉讼身份" />
-      <SSDW value="原告" nameCN="诉讼地位" />
-      <DSRLB value="原告" nameCN="当事人类别" />
       <DSRLX value="法人" nameCN="当事人类型" />
       <DWXZ value="有限责任公司" nameCN="单位性质" />
       <DWZWFZ nameCN="单位职务分组">
@@ -38,11 +36,8 @@
     <SSCYR value="被告：日邮大件散货运输有限公司（NYKBulk&amp;ProjectsCarriersLtd）。" nameCN="诉讼参与人">
       <SSCYRMC value="日邮大件散货运输有限公司" nameCN="诉讼参与人名称" />
       <SSSF value="被告" nameCN="诉讼身份" />
-      <SSDW value="被告" nameCN="诉讼地位" />
-      <DSRLB value="被告" nameCN="当事人类别" />
       <DSRLX value="法人" nameCN="当事人类型" />
       <DWXZ value="有限责任公司" nameCN="单位性质" />
-      <FDDBR value="阿部隆" nameCN="单位法定代表人" />
     </SSCYR>
     <SSCYR value="法定代表人：阿部隆（AbeTakashi），该公司董事长。" nameCN="诉讼参与人">
       <SSCYRMC value="阿部隆" nameCN="诉讼参与人名称" />
@@ -51,8 +46,6 @@
       <GJ value="中国" nameCN="国籍" />
       <DWZWFZ nameCN="单位职务分组">
         <ZW value="董事长" nameCN="职务" />
-        <DWMC value="日邮大件散货运输有限公司" nameCN="单位名称" />
-        <DWXZ value="有限责任公司" nameCN="单位性质" />
       </DWZWFZ>
     </SSCYR>
     <SSCYR value="委托诉讼代理人：徐军，广东敬海律师事务所上海分所律师。" nameCN="诉讼参与人">
@@ -76,10 +69,6 @@
     <SSCYRQJ value="错误" nameCN="保险公司是否作为被告" />
   </SSCYRQJ>
   <SSJL value="原告五矿钢铁英国有限公司与被告日邮大件散货运输公司海上货物运输合同纠纷一案，本院于2016年3月15日立案。2016年8月3日，五矿钢铁英国有限公司（以下简称五矿公司）、中国人民财产保险股份有限公司北京市分公司（以下简称人保北京分公司）向本院提出变更当事人申请。" nameCN="诉讼记录">
-    <BGSQR value="五矿钢铁英国有限公司（以下简称五矿公司）、中国人民财产保险股份有限公司北京市分公司（以下简称人保北京分公司）" nameCN="申请人（变更当事人）" />
-    <BGSQRQ value="2016年8月3日" nameCN="申请日期（变更当事人）" />
-    <YG value="五矿钢铁英国有限公司" nameCN="原告" />
-    <BG value="日邮大件散货运输公司海上货物" nameCN="被告" />
     <AY value="运输合同纠纷" nameCN="案由" />
     <KTSL value="否" nameCN="开庭审理" />
     <WZAY value="运输合同纠纷" nameCN="完整案由" />
@@ -87,17 +76,15 @@
     <LARQ value="2016年3月15日" nameCN="立案日期" />
     <YSAJSYCX value="普通程序" nameCN="一审案件适用程序" />
     <JYZPT value="否" nameCN="简易转普通" />
-    <SPZZ value="独任庭" nameCN="审判组织" />
-    <YSAJLY value="新收" nameCN="一审案件来源" />
   </SSJL>
   <AJJBQK value="" nameCN="案件基本情况" />
   <CPFXGC value="本院经审查认为，五矿公司、人保北京分公司提出变更当事人申请并提交了相关证据：提单载明五矿公司为通知人，保险单载明五矿公司为被保险人、人保北京分公司为保险人，以及人保北京分公司向五矿公司支付保险赔偿款的凭证。人保北京分公司已经向五矿公司支付了保险赔偿款，依据《中华人民共和国海事诉讼特别程序法》第九十五条第二款、第九十六条的规定，五矿公司、人保北京分公司向本院提出变更当事人的申请应予准许。&#xA;依照《中华人民共和国海事诉讼特别程序法》第九十五条第一款、第九十六条、《最高人民法院关于适用&lt;中华人民共和国海事诉讼特别程序法&gt;若干问题的解释》第六十六条的规定，裁定如下：&#xA;" nameCN="裁判分析过程">
     <JAFSLX value="裁定" nameCN="结案方式类型" />
     <FLFTMC value="中华人民共和国海事诉讼特别程序法" nameCN="法律法条名称">
-      <TM value="九十六" nameCN="条目" />
       <TM value="九十五" nameCN="条目">
         <KM value="第一款" nameCN="款目" />
       </TM>
+      <TM value="九十六" nameCN="条目" />
       <SFCXF value="非程序法" nameCN="是否是程序法" />
     </FLFTMC>
     <FLFTMC value="最高人民法院关于适用&lt;中华人民共和国海事诉讼特别程序法&gt;若干问题的解释" nameCN="法律法条名称">
@@ -106,18 +93,11 @@
     </FLFTMC>
   </CPFXGC>
   <CPJG value="准许中国人民财产保险股份有限公司北京市分公司替代五矿钢铁英国有限公司作为本案原告参加诉讼，五矿钢铁英国有限公司退出诉讼。&#xA;如不服本裁定，可自裁定书送达之日起三十日内向本院提出上诉状一式五份，上诉于天津市高级人民法院。&#xA;" nameCN="裁判结果">
-    <TDR value="中国人民财产保险股份有限公司北京市分公司" nameCN="替代人" />
-    <BTDR value="五矿钢铁英国有限公司" nameCN="被替代人" />
-    <SSDW value="原告" nameCN="诉讼地位" />
-    <TCSSR value="五矿钢铁英国有限公司" nameCN="退出诉讼人" />
     <JAFS value="其他" nameCN="结案方式" />
     <PCSFSXZQ value="正确" nameCN="同时起诉侵权人与保险公司的赔偿顺序" />
     <JTPJJG value="准许中国人民财产保险股份有限公司北京市分公司替代五矿钢铁英国有限公司作为本案原告参加诉讼，五矿钢铁英国有限公司退出诉讼。" nameCN="具体裁判段" />
     <JTPJJG value="如不服本裁定，可自裁定书送达之日起三十日内向本院提出上诉状一式五份，上诉于天津市高级人民法院。" nameCN="具体裁判段" />
     <SFFHCS value="否" nameCN="是否发回重审" />
-    <KSSZ value="天津市高级人民法院" nameCN="可上诉至" />
-    <SSQX value="三十日" nameCN="上诉期限" />
-    <TCGXQYY value="否" nameCN="是否提出管辖权异议" />
   </CPJG>
   <WW value="审判长王会然&#xA;代理审判员吴文哲&#xA;人民陪审员林榕榕&#xA;二〇一六年十月二十五日&#xA;书记员马吉海&#xA;" nameCN="文尾">
     <SPZZCY nameCN="审判组织成员">
