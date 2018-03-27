@@ -41,7 +41,11 @@
         <ant.version>1.9.0</ant.version>
         <lucene.version>5.2.1</lucene.version>
         <poi.version>3.17</poi.version>
-
+        <!-- 文件拷贝时的编码 -->
+        <project.build.sourceEncoding>gbk</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>gbk</project.reporting.outputEncoding>
+        <!-- 编译时的编码 -->
+        <maven.compiler.encoding>gbk</maven.compiler.encoding>
     </properties>
 
     <dependencies>
