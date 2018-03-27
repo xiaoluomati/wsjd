@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import nju.software.wsjd.model.msesWsModel.QscdModel;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.Enum.MsesFhcsyyEnum;
 import nju.software.wsjx.model.Enum.SsfEnum;
@@ -93,6 +94,48 @@ public class MsesCpjgParseRule extends GeneralCpjgCommonRule implements CpjgPars
 		wscpjgModel = setJabdje(wscpjgModel);
 //		民事二审结案方式
 		wscpjgModel = setMsesjafs(wscpjgModel, pjjgnr);
+
+
+		StringBuilder stringBuilder = new StringBuilder();
+		for (String s : cpjg) {
+			stringBuilder.append(s);
+		}
+		String allcpjgnr = stringBuilder.toString();
+		QscdModel qscdModel = new QscdModel();
+		String ahreg = "[（\\(（〔]\\d{4}[）\\)〕）].*号";
+		String re1= "撤销(.*人民法院)("+ahreg+")";
+		Pattern p1 = Pattern.compile(re1);
+		Matcher m1 = p1.matcher(allcpjgnr);
+		if (m1.find()) {
+			qscdModel.setFymc(m1.group(1));
+			qscdModel.setAh(m1.group(2));
+			qscdModel.setPjfs("撤销");
+			wscpjgModel.setQscdModel(qscdModel);
+		}
+
+		String re2 = "一审.*自.*发生法律效力";
+		Pattern p2 = Pattern.compile(re2);
+		Matcher m2 = p2.matcher(allcpjgnr);
+		if (m2.find() || allcpjgnr.contains("维持原裁定")) {
+			qscdModel.setFymc("*未提及");
+			qscdModel.setAh("*未提及");
+			qscdModel.setPjfs("维持");
+			wscpjgModel.setQscdModel(qscdModel);
+		}
+
+		String re3 = "准许(.*)撤回上诉|上诉人(.*)预交|按上诉人(.*)撤回上诉处理";
+		Pattern p3 = Pattern.compile(re3);
+		Matcher m3 = p3.matcher(allcpjgnr);
+		if (m3.find()) {
+			for (int i = 0; i < m3.groupCount(); i++) {
+				if(m3.group(1+i) != null){
+					wscpjgModel.setSsr(m3.group(1+i));
+					break;
+				}
+			}
+		}
+
+
 //		wscpjgModel = setJafsByAjlx(wscpjgModel, pjjgnr,allnr, ajlxEnum,wsAnalyse);
 //		是否发回重审
 		wscpjgModel.setSffhcs(StringUtil.equals(wscpjgModel.getSffhcs(), "是")?"是":"否");
@@ -343,7 +386,7 @@ public class MsesCpjgParseRule extends GeneralCpjgCommonRule implements CpjgPars
 	
 	/**
 	 * 解析权利人、义务人
-	 * @param model
+	 * @param
 	 */
 	public static void setQlywr(PjjgnrModel pjjgnrModel,List<WssscyrModel> wssscyrModellist){
 		String pjjg = pjjgnrModel.getPjjgnr();
@@ -480,7 +523,7 @@ public class MsesCpjgParseRule extends GeneralCpjgCommonRule implements CpjgPars
 	}
 	/**
 	 * 找出一句话里的金额
-	 * @param content
+	 * @param
 	 * @return 包含金额的List,例如“本金20元，利息10元”，返回{“20元”，“10元”}
 	 */
 	public static  void setPjje(PjjgnrModel pjjgnrModel,List<String> jelxList){

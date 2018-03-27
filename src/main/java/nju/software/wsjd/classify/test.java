@@ -26,16 +26,15 @@ public class test {
     }
 
     public static void main(String[] args) {
-        String wsssjl = "不服内蒙古自治区高级人民法院（2012）民初字第38号民事判决";
-        String reg = "[（\\(（〔]\\d{4}[）\\)〕）].+?[^鉴]字第?\\d+-?\\d+号";
-        String re = "不服(.*人民法院)(" + reg + ")";
-        Pattern p1 = Pattern.compile(re);
-        Matcher m1 = p1.matcher(wsssjl);
-        while (m1.find()) {
-            System.out.println(m1.group(1));
-            System.out.println(m1.group(2));
+        String wsssjl = "一、撤销吉林省敦化市人民法院（2017）吉2403民初2405号民事判决；二、本案发回吉林省敦化市人民法院重审。上诉人关明华预交的二审案件受理费100元予以退还。";
+//        String re3 = "不准许(.*)撤回上诉|上诉人(.*)预交";
+        String ahreg = "[（\\(（〔]\\d{4}[）\\)〕）].*号";
+        String re1= "撤销(.*人民法院)("+ahreg+")";
+        Pattern p3 = Pattern.compile(re1);
+        Matcher m3 = p3.matcher(wsssjl);
+        if (m3.find()) {
+            System.out.println(m3.group(2));
         }
-
     }
 
 }

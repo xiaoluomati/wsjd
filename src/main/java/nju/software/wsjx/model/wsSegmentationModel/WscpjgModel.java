@@ -4,6 +4,7 @@ package nju.software.wsjx.model.wsSegmentationModel;
 import java.util.List;
 import java.util.Map;
 
+import nju.software.wsjd.model.msesWsModel.QscdModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.PjjgnrModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WsCpjgssfModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.XspjjgfzModel;
@@ -64,6 +65,25 @@ public class WscpjgModel {
 	private String btdr;//被替代人 诉讼参加人
 	private String ssdw;//诉讼地位 诉讼参加人
 	private String tcssr;//退出诉讼人 诉讼参加人
+
+	private String ssr;//上诉人 民事二审
+	private QscdModel qscdModel;//前审裁定的处理 民事二审
+
+	public String getSsr() {
+		return ssr;
+	}
+
+	public void setSsr(String ssr) {
+		this.ssr = ssr;
+	}
+
+	public QscdModel getQscdModel() {
+		return qscdModel;
+	}
+
+	public void setQscdModel(QscdModel qscdModel) {
+		this.qscdModel = qscdModel;
+	}
 
 	public String getTdr() {
 		return tdr;

@@ -1,5 +1,6 @@
 package nju.software.wsjx.util;
 
+import nju.software.wsjd.model.msesWsModel.QscdModel;
 import nju.software.wsjd.model.ysptWsModel.ajjbqk.FsqqModel;
 import nju.software.wsjd.model.ysptWsModel.ajjbqk.SsqqModel;
 import nju.software.wsjd.model.ysptWsModel.ajjbqk.ZjdsrModel;
@@ -600,6 +601,19 @@ public class XmlUtil {
 			Element ssjl = new Element("SSJL").setAttribute("value",
 					wsModel.getWsssjlSegment());
 			ssjl.setAttribute("nameCN", "诉讼记录");
+			//-----18.3.27----
+			if(wsssjlModel.getSsr() != null){
+				buildElement(ssjl, "SSR", "上诉人", wsssjlModel.getSsr());
+			}
+			if(wsssjlModel.getQsahfy() != null && !wsssjlModel.getQsahfy().isEmpty()){
+				final HashMap<String, String> qsahfy = wsssjlModel.getQsahfy();
+				for (String s : qsahfy.keySet()) {
+					Element element = buildElement(ssjl, "zjcd", "争议裁定",null);
+					buildElement(element, "QSAH", "前审案号", s);
+					buildElement(element, "QSFY", "前审法院", qsahfy.get(s));
+				}
+			}
+			//end--18.3.27----
 			//-----18.3.26----
 			if(wsssjlModel.getBgsqr() != null){
 				buildElement(ssjl, "BGSQR", "申请人（变更当事人）", wsssjlModel.getBgsqr());
@@ -1789,6 +1803,18 @@ public class XmlUtil {
 					wsModel.getWscpjgSegment());
 			cpjg.setAttribute("nameCN", "裁判结果");
 			root.addContent(cpjg);
+			//-----18.3.27----
+			if(wscpjgModel.getSsr() != null){
+				buildElement(cpjg, "SSR", "上诉人", wscpjgModel.getSsr());
+			}
+			if(wscpjgModel.getQscdModel() != null){
+				QscdModel qscdModel = wscpjgModel.getQscdModel();
+				Element element = buildElement(cpjg, "QSPJ", "前审判决",null);
+				buildElement(element, "FYMC","法院名称", qscdModel.getFymc());
+				buildElement(element, "AH","案号", qscdModel.getAh());
+				buildElement(element, "PJFS","判决方式", qscdModel.getPjfs());
+			}
+			//end--18.3.27----
 			//-----18.3.26----
 			if(wscpjgModel.getTdr() != null){
 				buildElement(cpjg, "TDR", "替代人", wscpjgModel.getTdr());

@@ -222,7 +222,7 @@ public class MsesSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
 		wsssjlModel.setAjsj(ajsj);
 		// 解析前审案号
 		ArrayList<String> qsah = new ArrayList<String>();
-		String reg = "[（\\(（〔]\\d{4}[）\\)〕）].+?[^鉴]字第?\\d+-?\\d+号";
+		String reg = "[（\\(（〔]\\d{4}[）\\)〕）].*号";
 		Pattern p = Pattern.compile(reg);
 		Matcher m = p.matcher(wsssjl);
 		while (m.find()) {
@@ -236,7 +236,7 @@ public class MsesSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
 		Pattern p1 = Pattern.compile(re);
 		Matcher m1 = p1.matcher(wsssjl);
 		while (m1.find()) {
-			map.put(m1.group(1), m1.group(2));
+			map.put(m1.group(2), m1.group(1));
 		}
 		wsssjlModel.setQsahfy(map);
 		//解析上诉人
