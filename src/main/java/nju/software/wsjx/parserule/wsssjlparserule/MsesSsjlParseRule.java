@@ -222,7 +222,7 @@ public class MsesSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
 		wsssjlModel.setAjsj(ajsj);
 		// Ω‚Œˆ«∞…Û∞∏∫≈
 		ArrayList<String> qsah = new ArrayList<String>();
-		String reg = "[£®\\(£®°≤]\\d{4}[£©\\)°≥£©].*∫≈";
+		String reg = "[£®\\(£®°≤]\\d{4}[£©\\)°≥£©].*\\d{2,4}∫≈";
 		Pattern p = Pattern.compile(reg);
 		Matcher m = p.matcher(wsssjl);
 		while (m.find()) {

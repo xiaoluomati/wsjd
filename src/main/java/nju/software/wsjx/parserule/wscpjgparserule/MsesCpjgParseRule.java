@@ -102,7 +102,7 @@ public class MsesCpjgParseRule extends GeneralCpjgCommonRule implements CpjgPars
 		}
 		String allcpjgnr = stringBuilder.toString();
 		QscdModel qscdModel = new QscdModel();
-		String ahreg = "[（\\(（〔]\\d{4}[）\\)〕）].*号";
+		String ahreg = "[（\\(（〔]\\d{4}[）\\)〕）].*\\d{2,4}号";
 		String re1= "撤销(.*人民法院)("+ahreg+")";
 		Pattern p1 = Pattern.compile(re1);
 		Matcher m1 = p1.matcher(allcpjgnr);
