@@ -1,5 +1,6 @@
 package nju.software.service.impl;
 
+import nju.software.repository.TemplateRepository;
 import nju.software.service.ErrorCheckService;
 import nju.software.util.JsonParserUtil;
 import nju.software.util.XmlParserUtil;
@@ -7,22 +8,28 @@ import nju.software.vo.CheckInfoItemVO;
 import nju.software.vo.CheckInfoVO;
 import nju.software.vo.DocInfoVO;
 import nju.software.vo.ErrorType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 /**
  * Created by zhuding on 2018/3/28.
  */
+@Service
 public class ErrorCheckServiceImpl implements ErrorCheckService {
 
     private JsonParserUtil jsonParserUtil;
 
     private XmlParserUtil xmlParserUtil;
 
+    @Autowired
+    private TemplateRepository templateRepository;
+
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
         CheckInfoVO checkInfoVO = new CheckInfoVO();
-        jsonParserUtil = new JsonParserUtil(docInfoVO.getJsonString());
+        jsonParserUtil = new JsonParserUtil(templateRepository.getJson(docInfoVO.getJsonName()));
         xmlParserUtil = new XmlParserUtil(docInfoVO.getXmlFileName());
         checkInfoVO.setWS(this.checkWs());
         checkInfoVO.setSSCYR(this.checkSscyr());
