@@ -36,7 +36,8 @@ public class XmlParserUtil {
     }
 
     public String getAh(){
-        return root.getChild("WS").getChild("AH").getAttribute("value").getValue();
+        Element child = root.getChild("WS").getChild("AH");
+        return child==null?null:child.getAttribute("value").getValue();
     }
 
     public List<String> getDsr(){
@@ -50,15 +51,15 @@ public class XmlParserUtil {
         return strings;
     }
 
-    public List<String> getCpfxgcQt(){
-        List<String> strings = new ArrayList<>();
+    public Map<String, String> getCpfxgcQt(){
+        Map<String, String> map = new HashMap<>();
         for (Object cpfxgc : root.getChild("CPFXGC").getChildren()) {
             Element element = (Element)cpfxgc;
             if(!element.getName().equals("FLFTMC")){
-                strings.add(element.getAttribute("nameCN").getValue());
+                map.put(element.getAttribute("nameCN").getValue(), element.getAttribute("value").getValue());
             }
         }
-        return strings;
+        return map;
     }
 
     public Map<String, String> getSsjl(){

@@ -5,7 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.lang.reflect.Array;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 /**
@@ -30,10 +31,15 @@ public class JsonParserUtil {
         init();
     }
 
-    private void init(){
+    private void init() {
         JsonParser parser=new JsonParser();
-        JsonObject object=(JsonObject) parser.parse(jsonString);
-        this.jsonElement = object.entrySet().iterator().next().getValue().getAsJsonObject();
+        JsonObject object= null;
+        try {
+            object = (JsonObject) parser.parse(new FileReader(jsonString));
+            this.jsonElement = object.entrySet().iterator().next().getValue().getAsJsonObject();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<String> getSsjlRequirements(){
