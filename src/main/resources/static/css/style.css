@@ -2160,9 +2160,9 @@ div section h3 {
 
 div .badge {
     background: #5d5d5d;
-    font-size: 1em;
+    /*font-size: 1em;*/
     margin-right: 0 !important;
-    margin-left: 0.7em;
+    margin-left: 0.4em;
 }
 
 .sec-title {
@@ -2198,4 +2198,8 @@ div .badge {
     border-radius: 6px;
     -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+section p {
+    color: #333333;
 }

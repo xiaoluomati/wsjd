@@ -1,7 +1,7 @@
 package nju.software.service.impl;
 
+import nju.software.factory.WsModelFactory;
 import nju.software.service.DocManagerService;
-import nju.software.wsjx.facade.impl.WsModelFacadeImpl;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,9 +26,8 @@ public class DocManagerServiceImpl implements DocManagerService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        WsModelFacadeImpl wsModelFacadeImpl=new WsModelFacadeImpl();
-        WsModel wsModel=wsModelFacadeImpl.jxDocument(is, file.getOriginalFilename());
 
+        WsModel wsModel = WsModelFactory.getInstance(is, file.getOriginalFilename());
         // 将没有的内容设为无
         if (wsModel.getWsfl().equals("")) {
             wsModel.setWsfl("无");
