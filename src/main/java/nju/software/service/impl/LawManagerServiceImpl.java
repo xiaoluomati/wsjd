@@ -18,12 +18,12 @@ import java.util.*;
 public class LawManagerServiceImpl implements LawManagerService {
 
     @Autowired
-    LawRepository lawRepository;
+    private LawRepository lawRepository;
 
     @Override
     public List<LawItemVO> getLaw(List<LawItemVO> lawItemVOS) {
 
-        List<LawItemVO> results = new ArrayList<LawItemVO>();
+        List<LawItemVO> results = new ArrayList<>();
         for (LawItemVO vo : lawItemVOS){
             LawModel lawModel = lawRepository.findByLawname(vo.getName());
             if (lawModel == null) {
@@ -31,25 +31,25 @@ public class LawManagerServiceImpl implements LawManagerService {
             }
             Map<String,String> lawmap = vo.getLawMap();
             Set<String> keys = lawmap.keySet();
-            HashMap<String,TiaoModel> tiaoModels = lawModel.getTiao();
+            HashMap<String,TiaoModel> tiaoModels = lawModel.getContent();
             for (String key:keys){
-                String content = "";
+                StringBuilder content = new StringBuilder();
                 if (key.contains("¿î")){
                     int tmp = key.indexOf("Ìõ")+1;
                     String tiao = key.substring(0,tmp);
                     String kuan = key.substring(tmp);
                     KuanModel kuanModel = tiaoModels.get(tiao).getKuan().get(kuan);
-                    content = kuanModel.getContent();
+                    content.append(kuanModel.getContent());
                     List<String> xiang = kuanModel.getXiang();
                     for (String str :xiang){
-                        content += str;
+                        content.append(str);
                     }
 
                 }else {
                     KuanModel kuanModel = tiaoModels.get(key).getKuan().get("¿î1");
-                    content = kuanModel.getContent();
+                    content.append(kuanModel.getContent());
                 }
-                lawmap.put(key,content);
+                lawmap.put(key,content.toString());
             }
             vo.setLawMap(lawmap);
             results.add(vo);

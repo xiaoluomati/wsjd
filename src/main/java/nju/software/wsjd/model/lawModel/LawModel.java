@@ -1,5 +1,6 @@
 package nju.software.wsjd.model.lawModel;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,52 +11,45 @@ import java.util.LinkedHashMap;
 /**
  * Created by 69401 on 2018/3/18.
  */
-@Document(collection = "lawModel")
+@Document
 public class LawModel {
 
     @Id
     private String _id;
 
     @Indexed
-    @Field("æ³•å¾‹åç§°")
-    private String lawname;//æ³•å¾‹åç§°
+    @Field("·¨ÂÉÃû³Æ")
+    private String lawname;
 
-    @Field("æ³•å¾‹å†…å®¹")
-    private LinkedHashMap<String,TiaoModel> content;//æ³•å¾‹å†…å®¹
+    @Field("·¨ÂÉÄÚÈİ")
+    private LinkedHashMap<String,TiaoModel> content;
 
-    @Field("æ—¶æ•ˆæ€§")
-    private String timelimit;//æ³•å¾‹æ—¶æ•ˆæ€§
+    @Field("Ê±Ğ§ĞÔ")
+    private String timelimit;
 
-    @Field("æ•ˆåŠ›çº§åˆ«")
-    private String level;//æ³•å¾‹æ•ˆåŠ›çº§åˆ«ï¼›
+    @Field("Ğ§Á¦¼¶±ğ")
+    private String level;
 
-    @Field("å‘å¸ƒæ—¥æœŸ")
-    private String publishtime;//å‘å¸ƒæ—¥æœŸ
+    @Field("·¢²¼ÈÕÆÚ")
+    private String publishtime;
 
-    @Field("å®æ–½æ—¥æœŸ")
-    private String starttime;//å®æ–½æ—¥æœŸ
+    @Field("ÊµÊ©ÈÕÆÚ")
+    private String starttime;
 
-    public LawModel() {
-    }
-
-    public LawModel(String name) {
-        this.lawname = name;
-    }
-
-    public String getName() {
+    public String getLawname() {
         return lawname;
     }
 
-    public void setName(String name) {
-        this.lawname = name;
+    public void setLawname(String lawname) {
+        this.lawname = lawname;
     }
 
-    public LinkedHashMap<String,TiaoModel> getTiao() {
+    public LinkedHashMap<String, TiaoModel> getContent() {
         return content;
     }
 
-    public void setTiao(LinkedHashMap<String,TiaoModel> tiao) {
-        this.content = tiao;
+    public void setContent(LinkedHashMap<String, TiaoModel> content) {
+        this.content = content;
     }
 
     public String getTimelimit() {
@@ -89,21 +83,4 @@ public class LawModel {
     public void setStarttime(String starttime) {
         this.starttime = starttime;
     }
-
-//    @Override
-//    public String toString() {
-//        String strtiao = "";
-//        Set<String> keys = this.content.keySet();
-//        for(String key :keys){
-//            strtiao += key+":"+this.content.get(key).toString()+"ï¼Œ";
-//        }
-//        return "Model.Law{" +
-//                "name='" + lawname + '\'' +
-//                ", tiao=" +strtiao+
-//                ", timelimit='" + timelimit + '\'' +
-//                ", level='" + level + '\'' +
-//                ", publishtime='" + publishtime + '\'' +
-//                ", starttime='" + starttime + '\'' +
-//                '}';
-//    }
 }

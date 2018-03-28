@@ -11,27 +11,14 @@ import java.util.LinkedHashMap;
 @Document
 public class TiaoModel {
 
-    @Field("æ¬¾")
+    @Field("¿î")
     private LinkedHashMap<String,KuanModel> kuan;
 
-    public LinkedHashMap<String,KuanModel> getKuan() {
+    public LinkedHashMap<String, KuanModel> getKuan() {
         return kuan;
     }
 
-    public void setKuan(LinkedHashMap<String,KuanModel> kuan) {
+    public void setKuan(LinkedHashMap<String, KuanModel> kuan) {
         this.kuan = kuan;
     }
-
-//    @Override
-//    public String toString() {
-//
-//        String strkuan = "";
-//        Set<String> keys = this.kuan.keySet();
-//        for(String key :keys){
-//            strkuan += key+":"+this.kuan.get(key).toString()+"ï¼Œ";
-//        }
-//        return "Model.Tiao{" +
-//                ", kuan=" + strkuan +
-//                '}';
-//    }
 }
