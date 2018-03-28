@@ -28,4 +28,12 @@ public class CheckInfoItemVO {
     public void setError(String error) {
         this.error = error;
     }
+
+    @Override
+    public String toString() {
+        return "CheckInfoItemVO{" +
+                "errorType=" + errorType +
+                ", error='" + error + '\'' +
+                '}';
+    }
 }

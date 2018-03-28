@@ -82,4 +82,18 @@ public class CheckInfoVO {
     public void setFL(List<CheckInfoItemVO> FL) {
         this.FL = FL;
     }
+
+    @Override
+    public String toString() {
+        return "CheckInfoVO{" +
+                "WS=" + WS +
+                ",\n SSCYR=" + SSCYR +
+                ",\n SSJL=" + SSJL +
+                ",\n AJJBQK=" + AJJBQK +
+                ",\n CPFXGC=" + CPFXGC +
+                ",\n CPJG=" + CPJG +
+                ",\n WW=" + WW +
+                ",\n FL=" + FL +
+                '}';
+    }
 }

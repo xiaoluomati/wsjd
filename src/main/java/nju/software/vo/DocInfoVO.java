@@ -8,11 +8,11 @@ public class DocInfoVO {
 
     private String xmlFileName;
 
-    private String jsonFileName;
+    private String jsonString;
 
-    public DocInfoVO(String xmlFileName, String jsonFileName) {
+    public DocInfoVO(String xmlFileName, String jsonString) {
         this.xmlFileName = xmlFileName;
-        this.jsonFileName = jsonFileName;
+        this.jsonString = jsonString;
     }
 
     public String getXmlFileName() {
@@ -23,11 +23,12 @@ public class DocInfoVO {
         this.xmlFileName = xmlFileName;
     }
 
-    public String getJsonFileName() {
-        return jsonFileName;
+
+    public String getJsonString() {
+        return jsonString;
     }
 
-    public void setJsonFileName(String jsonFileName) {
-        this.jsonFileName = jsonFileName;
+    public void setJsonString(String jsonString) {
+        this.jsonString = jsonString;
     }
 }

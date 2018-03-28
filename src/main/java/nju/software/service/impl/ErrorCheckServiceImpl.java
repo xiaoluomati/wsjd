@@ -22,13 +22,16 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
         CheckInfoVO checkInfoVO = new CheckInfoVO();
-        jsonParserUtil = new JsonParserUtil(docInfoVO.getJsonFileName());
+        jsonParserUtil = new JsonParserUtil(docInfoVO.getJsonString());
         xmlParserUtil = new XmlParserUtil(docInfoVO.getXmlFileName());
         checkInfoVO.setWS(this.checkWs());
         checkInfoVO.setSSCYR(this.checkSscyr());
         checkInfoVO.setSSJL(this.checkSSJL());
         checkInfoVO.setAJJBQK(this.checkAjjbqk());
         checkInfoVO.setCPFXGC(this.checkCpfxgc());
+        checkInfoVO.setCPJG(this.checkCpjg());
+        checkInfoVO.setWW(new ArrayList<CheckInfoItemVO>());
+        checkInfoVO.setFL(new ArrayList<CheckInfoItemVO>());
         return checkInfoVO;
     }
 
@@ -99,13 +102,16 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     //Todo 文尾和附录
 
     private static List<CheckInfoItemVO> checkYS(String name, List<String> requirements, Collection<String> keys){
+        System.out.println("-----"+name+"-----");
+        System.out.println("要求:" + requirements);
+        System.out.println("已有:" + keys);
         List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
         if(keys.isEmpty() && !requirements.isEmpty()){
             checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "缺少" + name));
         }else{
             for (String requirement : requirements) {
                 if(!keys.contains(requirement)){
-                    checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSQS, name + "缺少" + requirement + "项"));
+                    checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSQS, "缺少" + requirement + "项"));
                 }
             }
         }

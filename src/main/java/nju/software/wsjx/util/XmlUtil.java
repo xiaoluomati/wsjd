@@ -207,8 +207,7 @@ public class XmlUtil {
 	}
 	private static Element buildElement(Element root, String name, String nameCN, String value){
 		Element element = new Element(name);
-		if(value != null)
-			element.setAttribute("value", value);
+		element.setAttribute("value", value==null?"":value);
 		if(nameCN != null)
 			element.setAttribute("nameCN", nameCN);
 		root.addContent(element);
@@ -1833,7 +1832,7 @@ public class XmlUtil {
 			}
 			if(wscpjgModel.getQscdModel() != null){
 				QscdModel qscdModel = wscpjgModel.getQscdModel();
-				Element element = buildElement(cpjg, "QSPJ", "前审判决",null);
+				Element element = buildElement(cpjg, "QSPJ", "判决",null);
 				buildElement(element, "FYMC","法院名称", qscdModel.getFymc());
 				buildElement(element, "AH","案号", qscdModel.getAh());
 				buildElement(element, "PJFS","判决方式", qscdModel.getPjfs());

@@ -34,12 +34,8 @@ public class JsonParserUtil {
     private void init() {
         JsonParser parser=new JsonParser();
         JsonObject object= null;
-        try {
-            object = (JsonObject) parser.parse(new FileReader(jsonString));
-            this.jsonElement = object.entrySet().iterator().next().getValue().getAsJsonObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        object = (JsonObject) parser.parse(jsonString);
+        this.jsonElement = object.entrySet().iterator().next().getValue().getAsJsonObject();
     }
 
     public List<String> getSsjlRequirements(){

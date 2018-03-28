@@ -99,7 +99,7 @@
   </SSCYRQJ>
   <SSJL value="上诉人保定天威英利新能源有限公司（以下简称天威英利公司）因与被上诉人华泰证券股份有限公司（以下简称华泰证券公司）证券纠纷一案，不服江苏省南京市建邺区人民法院(2017)苏0105民初3602号民事裁定，向本院提起上诉。" nameCN="诉讼记录">
     <SSR value="江苏省南京市建邺区人民法院" nameCN="上诉人" />
-    <zjcd nameCN="争议裁定">
+    <zjcd value="" nameCN="争议裁定">
       <QSAH value="(2017)苏0105民初3602号" nameCN="前审案号" />
       <QSFY value="江苏省南京市建邺区人民法院" nameCN="前审法院" />
     </zjcd>
@@ -128,7 +128,7 @@
     </FLFTMC>
   </CPFXGC>
   <CPJG value="驳回上诉，维持原裁定。&#xA;本裁定为终审裁定。&#xA;" nameCN="裁判结果">
-    <QSPJ nameCN="前审判决">
+    <QSPJ value="" nameCN="判决">
       <FYMC value="*未提及" nameCN="法院名称" />
       <AH value="*未提及" nameCN="案号" />
       <PJFS value="维持" nameCN="判决方式" />
@@ -147,16 +147,16 @@
       <SPRYJS value="书记员" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="李伟" nameCN="审判人员姓名" />
+      <SPRYJS value="审判长" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="韦韬" nameCN="审判人员姓名" />
       <SPRYJS value="审判员" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="杨敏" nameCN="审判人员姓名" />
       <SPRYJS value="审判员" nameCN="审判人员角色" />
-    </SPZZCY>
-    <SPZZCY nameCN="审判组织成员">
-      <SPRYXM value="李伟" nameCN="审判人员姓名" />
-      <SPRYJS value="审判长" nameCN="审判人员角色" />
     </SPZZCY>
     <CPSJ value="2018年1月8日" nameCN="裁判时间">
       <Year value="2018" nameCN="结案年度" />
