@@ -27,9 +27,22 @@
               <section class="left">
                 <!--/*@thymesVar id="doc" type="nju.software.wsjx.model.wsSegmentationModel.WsModel"*/-->
                 <!--// 文首段落-->
-                <h3 th:text="${doc.getWswsSegment()}"></h3>
+                <!--/*@thymesVar id="docName" type="java.lang.String"*/-->
+                <h3 th:text="${docName}"></h3>
+
+                <!--// 文首段落-->
+                <hr>
+                <div class="sec">
+                  <span class="sec-title">文首</span>
+                  <button id="ws" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <h3 th:text="${doc.getWswsModel().getWsmc()}"></h3>
+                <h3 th:text="${doc.getWswsModel().getAh()}"></h3>
+                <!--<h3 th:text="${doc.getWswsModel().get}"></h3>-->
 
                 <!--// 诉讼参与人段落-->
+                <hr>
                 <div class="sec">
                   <span class="sec-title">诉讼参与人</span>
                   <button id="sscyr" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
@@ -40,6 +53,7 @@
                 </div>
 
                 <!--// 诉讼记录段落-->
+                <hr>
                 <div class="sec">
                   <span class="sec-title">诉讼记录</span>
                   <button id="ssjl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
@@ -48,6 +62,7 @@
                 <p th:text="${doc.getWsssjlSegment()}"></p>
 
                 <!--// 案件基本情况段落-->
+                <hr>
                 <div class="sec">
                   <span class="sec-title">案件基本情况</span>
                   <button id="ajjbqk" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
@@ -64,6 +79,7 @@
                 <p th:text="${doc.getWscpfxgcSegment()}"></p>
 
                 <!--// 裁判结果段落-->
+                <hr>
                 <div class="sec">
                   <span class="sec-title">裁判结果</span>
                   <button id="cpjg" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
@@ -72,6 +88,7 @@
                 <p th:text="${doc.getWscpjgSegment()}"></p>
 
                 <!--// 文尾段落-->
+                <hr>
                 <div class="sec">
                   <span class="sec-title">文尾</span>
                   <button id="ww" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
@@ -80,6 +97,7 @@
                 <p th:text="${doc.getWswwSegment()}"></p>
 
                 <!--// 附录-->
+                <hr>
                 <div class="sec">
                   <span class="sec-title">附录</span>
                   <button id="fl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
@@ -114,7 +132,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="titleLabel">法律依据</h4>
+          <h3 class="modal-title" id="titleLabel">法律依据</h3>
         </div>
         <!--/*@thymesVar id="lawList" type="java.util.List"*/-->
         <!--/*@thymesVar id="law" type="nju.software.vo.LawItemVO"*/-->
@@ -135,6 +153,28 @@
 </body>
 <script>
   $(function () {
+    $('#ws').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
     $('#sscyr').popover({
       html: true,      //实现对html可写
       title: '错误分析',

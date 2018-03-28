@@ -43,9 +43,16 @@ public class DocController {
         // 包含了内容的 law
 //        lawItemVOList = lawManagerService.getLaw(lawItemVOList);
 
+        model.addAttribute("docName", getFileNameWithoutSuffix(file));
         model.addAttribute("doc", doc);
         model.addAttribute("lawList", lawItemVOList);
         return "result";
+    }
+
+    private String getFileNameWithoutSuffix(MultipartFile file) {
+        String name = file.getOriginalFilename();
+        int index = name.indexOf(".");
+        return name.substring(0, index);
     }
 
     @Autowired
