@@ -11,7 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by away on 2018/3/26.
@@ -44,8 +47,19 @@ public class DocManagerServiceImpl implements DocManagerService {
     @Override
     @Transactional
     public List<LawItemVO> getLaw(List<WscpfxgcFtModel> lawList) {
+        List<LawItemVO> lawItemVOList = new ArrayList<>();
         for (WscpfxgcFtModel law : lawList) {
-            LawItemVO lawItemVO = new LawItemVO();
+            String name = law.getFlftmc();
+            Map<String, String> lawMap = law.getFtMap();
+            List<Map<String, String>> lawMapList= new ArrayList<>();
+            for (String s : lawMap.keySet()) {
+                Map<String, String> m = new HashMap<>();
+                m.put(s, "");
+                lawMapList.add(m);
+            }
+            LawItemVO lawItemVO = new LawItemVO(name, lawMapList);
+            lawItemVOList.add(lawItemVO);
         }
+        return lawItemVOList;
     }
 }
