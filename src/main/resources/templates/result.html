@@ -116,24 +116,16 @@
         <div class="modal-header">
           <h4 class="modal-title" id="titleLabel">法律依据</h4>
         </div>
-        <div class="modal-body">
-          <h4>中华人民共和国民事诉讼法</h4>
-          <ol>
+        <!--/*@thymesVar id="lawList" type="java.util.List"*/-->
+        <!--/*@thymesVar id="law" type="nju.software.vo.LawItemVO"*/-->
+        <div class="modal-body" th:each="law : ${lawList}">
+          <h4 th:text="${law.getName()}"></h4>
+          <!--/*@thymesVar id="item" type="java.util.Map"*/-->
+          <ol th:each="item : ${law.getLawMap()}">
             <li>
-              <h5>第二百零四条第一款</h5>
-              人民法院应当自收到再审申请书之日起三个月内审查，符合本法规定的，裁定再审；不符合本法规定的，裁定驳回申请。有特殊情况需要延长的，由本院院长批准。
-            </li>
-            <li>
-              <h5>第二百零四条第一款</h5>
-              人民法院应当自收到再审申请书之日起三个月内审查，符合本法规定的，裁定再审；不符合本法规定的，裁定驳回申请。有特殊情况需要延长的，由本院院长批准。
-            </li>
-            <li>
-              <h5>第二百零四条第一款</h5>
-              人民法院应当自收到再审申请书之日起三个月内审查，符合本法规定的，裁定再审；不符合本法规定的，裁定驳回申请。有特殊情况需要延长的，由本院院长批准。
-            </li>
-            <li>
-              <h5>第二百零四条第一款</h5>
-              人民法院应当自收到再审申请书之日起三个月内审查，符合本法规定的，裁定再审；不符合本法规定的，裁定驳回申请。有特殊情况需要延长的，由本院院长批准。
+              <h5 th:text="${item.key}"></h5>
+              <span th:text="${item.value}"></span>
+              人民法院应当自收到再审申请书之日起...
             </li>
           </ol>
         </div>

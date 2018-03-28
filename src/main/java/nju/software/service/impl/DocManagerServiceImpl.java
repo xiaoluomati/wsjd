@@ -51,13 +51,11 @@ public class DocManagerServiceImpl implements DocManagerService {
         for (WscpfxgcFtModel law : lawList) {
             String name = law.getFlftmc();
             Map<String, String> lawMap = law.getFtMap();
-            List<Map<String, String>> lawMapList= new ArrayList<>();
+            Map<String, String> lawMapEmpty= new HashMap<>();
             for (String s : lawMap.keySet()) {
-                Map<String, String> m = new HashMap<>();
-                m.put(s, "");
-                lawMapList.add(m);
+                lawMapEmpty.put(s, "");
             }
-            LawItemVO lawItemVO = new LawItemVO(name, lawMapList);
+            LawItemVO lawItemVO = new LawItemVO(name, lawMapEmpty);
             lawItemVOList.add(lawItemVO);
         }
         return lawItemVOList;
