@@ -1,7 +1,10 @@
 package nju.software.controller;
 
 import nju.software.service.DocManagerService;
+import nju.software.service.ErrorCheckService;
 import nju.software.service.LawManagerService;
+import nju.software.vo.CheckInfoVO;
+import nju.software.vo.DocInfoVO;
 import nju.software.vo.LawItemVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +44,14 @@ public class DocController {
         // 空的law, 里面是要取的条目
         List<LawItemVO> lawItemVOList = docManagerService.getLaw(doc.getWscpfxgcModel().getFtModellist());
         // 包含了内容的 law
-//        lawItemVOList = lawManagerService.getLaw(lawItemVOList);
+        lawItemVOList = lawManagerService.getLaw(lawItemVOList);
+
+        CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\丁立德与李炳祥、李炳恕民间借贷纠纷二审民事裁定书.xml", "民事裁定书(二审驳回起诉用)"));
 
         model.addAttribute("docName", getFileNameWithoutSuffix(file));
         model.addAttribute("doc", doc);
         model.addAttribute("lawList", lawItemVOList);
+        model.addAttribute("error", checkInfoVO);
         return "result";
     }
 
@@ -60,4 +66,7 @@ public class DocController {
 
     @Autowired
     LawManagerService lawManagerService;
+
+    @Autowired
+    ErrorCheckService errorCheckService;
 }

@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 /**
  * Created by 69401 on 2018/3/18.
  */
-@Document
+@Document(collection = "lawModel")
 public class LawModel {
 
     @Id

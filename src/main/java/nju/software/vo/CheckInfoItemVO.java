@@ -7,10 +7,11 @@ public class CheckInfoItemVO {
 
     private ErrorType errorType;
     private String error;
+    private String errorTypeName;
 
     public CheckInfoItemVO(ErrorType errorType, String error) {
-        this.errorType = errorType;
         this.error = error;
+        setErrorType(errorType);
     }
 
     public ErrorType getErrorType() {
@@ -19,6 +20,7 @@ public class CheckInfoItemVO {
 
     public void setErrorType(ErrorType errorType) {
         this.errorType = errorType;
+        this.errorTypeName = errorType.getName();
     }
 
     public String getError() {
@@ -27,6 +29,10 @@ public class CheckInfoItemVO {
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    public String getErrorTypeName() {
+        return errorTypeName;
     }
 
     @Override
