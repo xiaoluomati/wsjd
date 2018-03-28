@@ -11,16 +11,18 @@ import java.io.InputStream;
 // 同一份文书只存在一篇
 public class WsModelFactory {
 
-    private static String name;
+    private static volatile String name;
     private static volatile WsModel wsModel;
     private WsModelFactory() {}
 
     public static WsModel getInstance(InputStream is, String filename) {
-        if (!filename.equals(name) && wsModel == null) {
+        // 文书改变或第一次初始化文书时生成
+        if (!filename.equals(name) || wsModel == null) {
             synchronized (WsModel.class) {
-                if (wsModel == null) {
+                if (!filename.equals(name) || wsModel == null) {
                     WsModelFacadeImpl wsModelFacadeImpl = new WsModelFacadeImpl();
                     wsModel = wsModelFacadeImpl.jxDocument(is, filename);
+                    name = filename;
                 }
             }
         }

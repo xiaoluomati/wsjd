@@ -38,8 +38,10 @@ public class DocController {
     String submitdoc(@RequestParam("file") MultipartFile file, Model model) {
         WsModel doc = docManagerService.getContent(file);
 
+        // 空的law, 里面是要取的条目
         List<LawItemVO> lawItemVOList = docManagerService.getLaw(doc.getWscpfxgcModel().getFtModellist());
-        lawItemVOList = lawManagerService.getLaw(lawItemVOList);
+        // 包含了内容的 law
+//        lawItemVOList = lawManagerService.getLaw(lawItemVOList);
 
         model.addAttribute("doc", doc);
         model.addAttribute("lawList", lawItemVOList);

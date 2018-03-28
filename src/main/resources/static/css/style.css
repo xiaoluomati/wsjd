@@ -2203,3 +2203,19 @@ div .badge {
 section p {
     color: #333333;
 }
+
+.modal-body h3 {
+    font-size: 1.17em;
+}
+
+.modal-body h4 {
+    font-size: 1em;
+}
+
+.modal-body h5 {
+    font-size: 0.83em;
+}
+
+.modal-body h6 {
+    font-size: 0.67em;
+}
