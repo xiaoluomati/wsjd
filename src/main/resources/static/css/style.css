@@ -2219,3 +2219,11 @@ section p {
 .modal-body h6 {
     font-size: 0.67em;
 }
+
+.file-preview button {
+    background: none;
+}
+
+.file-footer-caption > .file-caption-info, .file-footer-caption > .file-size-info {
+    height: auto;
+}

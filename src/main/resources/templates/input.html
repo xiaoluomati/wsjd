@@ -24,11 +24,11 @@
 
       <section id="intro" class="container">
         <div class="row">
-          <div class="4u 12u(mobile)">
+          <div class="2u 12u(mobile)">
             <section class="left">
             </section>
           </div>
-          <div class="4u 12u(mobile)">
+          <div class="8u 12u(mobile)">
             <section class="middle">
               <header>
                 <h2>文书导入</h2>
@@ -56,7 +56,8 @@
     $("input:file").fileinput({
       language: 'zh',
       allowedFileExtensions : [ 'doc','docx' ],
-      showUpload: false
+      showUpload: false,
+      showPreview: false
     });
   });
 </script>
