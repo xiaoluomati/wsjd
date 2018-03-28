@@ -117,11 +117,27 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
             checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "»±…Ÿ" + name));
         }else{
             for (String requirement : requirements) {
-                if(!keys.contains(requirement)){
+                if(!isMatch(keys, requirement)){
                     checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSQS, "»±…Ÿ" + requirement + "œÓ"));
                 }
             }
         }
         return checkInfoItemVOS;
+    }
+
+    private static boolean isMatch(Collection<String> keys, String requirement){
+        if(requirement.contains("(")){
+            requirement = requirement.substring(0,requirement.indexOf("("));
+        }
+        for (String key : keys) {
+            String s = key;
+            if(s.contains("(")){
+                s = s.substring(0,s.indexOf("("));
+            }
+            if(key.equals(requirement)){
+                return true;
+            }
+        }
+        return false;
     }
 }
