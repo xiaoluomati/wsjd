@@ -2,94 +2,266 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="head::header(智能文书校对系统)"></head>
 <body>
-<div id="page-wrapper">
+  <div id="page-wrapper">
 
-  <!-- Header -->
-  <div id="header-wrapper">
-    <div id="header">
-      <!-- Logo -->
-      <h1><a th:href="@{/index}">智能文书校对系统</a></h1>
+    <!-- Header -->
+    <div id="header-wrapper">
+      <div id="header">
+        <!-- Logo -->
+        <h1><a th:href="@{/index}">智能文书校对系统</a></h1>
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li>
+              <a th:href="@{/index}">主页</a></li>
+            <li>
+              <a th:href="@{/input}">导入</a></li>
+            <li class="current">
+              <a href="#">校对结果</a>
+            </li>
+          </ul>
+        </nav>
+        <section id="intro" class="container">
+          <div class="row">
+            <div class="9u 12u(mobile)">
+              <section class="left">
+                <!--/*@thymesVar id="doc" type="nju.software.wsjx.model.wsSegmentationModel.WsModel"*/-->
+                <!--// 文首段落-->
+                <h3 th:text="${doc.getWswsSegment()}"></h3>
 
-      <!-- Nav -->
-      <nav id="nav">
-        <ul>
-          <li>
-            <a th:href="@{/index}">主页</a></li>
-          <li>
-            <a th:href="@{/input}">导入</a></li>
-          <li class="current">
-            <a href="#">校对结果</a>
-          </li>
-        </ul>
-      </nav>
-      <section id="intro" class="container">
-        <div class="row">
-          <div class="9u 12u(mobile)">
-            <section class="left">
-              <!--/*@thymesVar id="doc" type="nju.software.wsjx.model.wsSegmentationModel.WsModel"*/-->
-              <!--// 文首段落-->
-              <h3 th:text="${doc.getWswsSegment()}"></h3>
+                <!--// 诉讼参与人段落-->
+                <div class="sec">
+                  <span class="sec-title">诉讼参与人</span>
+                  <button id="sscyr" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <div th:each="sscyr : ${doc.getWssscyrSegment()}">
+                  <p th:text="${sscyr}"></p>
+                </div>
 
-              <!--// 诉讼参与人段落-->
-              <div class="sec">
-                <h4>诉讼参与人</h4>
-              </div>
-              <div th:each="sscyr : ${doc.getWssscyrSegment()}">
-                <p th:text="${sscyr}"></p>
-              </div>
+                <!--// 诉讼记录段落-->
+                <div class="sec">
+                  <span class="sec-title">诉讼记录</span>
+                  <button id="ssjl" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <p th:text="${doc.getWsssjlSegment()}"></p>
 
-              <!--// 诉讼记录段落-->
-              <div class="sec">
-                <h4>诉讼记录</h4>
-              </div>
-              <p th:text="${doc.getWsssjlSegment()}"></p>
+                <!--// 案件基本情况段落-->
+                <div class="sec">
+                  <span class="sec-title">案件基本情况</span>
+                  <button id="ajjbqk" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <p th:text="${doc.getWsajjbqSegment()}"></p>
 
-              <!--// 案件基本情况段落-->
-              <div class="sec">
-                <h4>案件基本情况</h4>
-              </div>
-              <p th:text="${doc.getWsajjbqSegment()}"></p>
+                <!--// 裁判分析过程段落-->
+                <div class="sec">
+                  <span class="sec-title">裁判分析过程</span>
+                  <button id="cpfxgc" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <p th:text="${doc.getWscpfxgcSegment()}"></p>
 
-              <!--// 裁判分析过程段落-->
-              <div class="sec">
-                <h4>裁判分析过程</h4>
-              </div>
-              <p th:text="${doc.getWscpfxgcSegment()}"></p>
+                <!--// 裁判结果段落-->
+                <div class="sec">
+                  <span class="sec-title">裁判结果</span>
+                  <button id="cpjg" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <p th:text="${doc.getWscpjgSegment()}"></p>
 
+                <!--// 文尾段落-->
+                <div class="sec">
+                  <span class="sec-title">文尾</span>
+                  <button id="ww" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <p th:text="${doc.getWswwSegment()}"></p>
 
-              <!--// 裁判结果段落-->
-              <div class="sec">
-                <h4>裁判结果</h4>
-              </div>
-              <p th:text="${doc.getWscpjgSegment()}"></p>
-
-              <!--// 文尾段落-->
-              <div class="sec">
-                <h4>文尾</h4>
-              </div>
-              <p th:text="${doc.getWswwSegment()}"></p>
-
-              <!--// 附录-->
-              <div class="sec">
-                <h4>附录</h4>
-              </div>
-              <p th:text="${doc.getWsfl()}"></p>
-            </section>
+                <!--// 附录-->
+                <div class="sec">
+                  <span class="sec-title">附录</span>
+                  <button id="fl" class="btn btn-sm btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <span class="badge">4</span>
+                </div>
+                <p th:text="${doc.getWsfl()}"></p>
+              </section>
+            </div>
+            <div class="3u">
+              <section class="right mistake">
+                <h3>  </h3>
+                <div>
+                  <span>法律法条引用错误 18</span>
+                </div>
+                <div>
+                  <span>结构错误 3</span>
+                </div>
+              </section>
+            </div>
           </div>
-          <div class="3u">
-            <section class="right mistake">
-              <div>
-                <span>法律法条引用错误 18</span>
-              </div>
-              <div>
-                <span>结构错误 3</span>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </div>
-</div>
 </body>
+<script>
+  $(function () {
+    $('#sscyr').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+    $('#ssjl').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+    $('#ajjbqk').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+    $('#cpfxgc').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+    $('#cpjg').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+    $('#ww').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+    $('#fl').popover({
+      html: true,      //实现对html可写
+      title: '错误分析',
+      content: function() {
+        return '<div class="table-responsive"> ' +
+            '<table class="table table-striped"> ' +
+            '<thead> ' +
+            '<tr> ' +
+            '<th>错误内容</th> ' +
+            '<th>错误类型</th> ' +
+            '</tr> ' +
+            '</thead> ' +
+            '<tbody> ' +
+            '<tr> ' +
+            '<td>1,001</td> ' +
+            '<td>Lorem</td> ' +
+            '</tr> ' +
+            '</tbody> ' +
+            '</table> ' +
+            '</div>'
+      }
+    });
+  });
+
+</script>
 </html>

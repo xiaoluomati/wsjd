@@ -147,16 +147,16 @@
       <SPRYJS value="书记员" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
-      <SPRYXM value="李伟" nameCN="审判人员姓名" />
-      <SPRYJS value="审判长" nameCN="审判人员角色" />
-    </SPZZCY>
-    <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="韦韬" nameCN="审判人员姓名" />
       <SPRYJS value="审判员" nameCN="审判人员角色" />
     </SPZZCY>
     <SPZZCY nameCN="审判组织成员">
       <SPRYXM value="杨敏" nameCN="审判人员姓名" />
       <SPRYJS value="审判员" nameCN="审判人员角色" />
+    </SPZZCY>
+    <SPZZCY nameCN="审判组织成员">
+      <SPRYXM value="李伟" nameCN="审判人员姓名" />
+      <SPRYJS value="审判长" nameCN="审判人员角色" />
     </SPZZCY>
     <CPSJ value="2018年1月8日" nameCN="裁判时间">
       <Year value="2018" nameCN="结案年度" />

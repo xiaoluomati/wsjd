@@ -37,6 +37,8 @@ public class DocController {
     String submitdoc(@RequestParam("file") MultipartFile file, Model model) {
         WsModel doc = docManagerService.getContent(file);
         model.addAttribute("doc", doc);
+        System.out.println();
         return "result";
     }
+
 }
