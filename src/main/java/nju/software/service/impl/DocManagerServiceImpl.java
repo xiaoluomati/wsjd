@@ -2,13 +2,16 @@ package nju.software.service.impl;
 
 import nju.software.factory.WsModelFactory;
 import nju.software.service.DocManagerService;
+import nju.software.vo.LawItemVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by away on 2018/3/26.
@@ -36,5 +39,13 @@ public class DocManagerServiceImpl implements DocManagerService {
             wsModel.setWsajjbqSegment("нч");
         }
         return wsModel;
+    }
+
+    @Override
+    @Transactional
+    public List<LawItemVO> getLaw(List<WscpfxgcFtModel> lawList) {
+        for (WscpfxgcFtModel law : lawList) {
+            LawItemVO lawItemVO = new LawItemVO();
+        }
     }
 }
