@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication()
-public class CoolexamApplication {
+public class JudgementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CoolexamApplication.class, args);
+		SpringApplication.run(JudgementApplication.class, args);
 	}
 }

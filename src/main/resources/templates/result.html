@@ -121,7 +121,7 @@
                   法律依据
                 </button>
 
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success mistake-alert" role="alert">
                   <span>test</span>
                   <span class="badge">4</span>
                 </div>
@@ -143,13 +143,12 @@
         <!--/*@thymesVar id="lawList" type="java.util.List"*/-->
         <!--/*@thymesVar id="law" type="nju.software.vo.LawItemVO"*/-->
         <div class="modal-body" th:each="law : ${lawList}">
-          <h4 th:text="${law.getName()}"></h4>
+          <h3 th:text="'《' + ${law.getName()} + '》'"></h3>
           <!--/*@thymesVar id="item" type="java.util.Map"*/-->
           <ol th:each="item : ${law.getLawMap()}">
             <li>
               <h5 th:text="${item.key}"></h5>
-              <span th:text="${item.value}"></span>
-              人民法院应当自收到再审申请书之日起
+              <p th:text="${item.value}"></p>
             </li>
           </ol>
         </div>

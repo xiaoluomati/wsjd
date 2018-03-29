@@ -8,6 +8,7 @@ import nju.software.wsjd.model.lawModel.LawModel;
 import nju.software.wsjd.model.lawModel.TiaoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -21,11 +22,15 @@ public class LawManagerServiceImpl implements LawManagerService {
     private LawRepository lawRepository;
 
     @Override
+    @Transactional
     public List<LawItemVO> getLaw(List<LawItemVO> lawItemVOS) {
 
         List<LawItemVO> results = new ArrayList<>();
         for (LawItemVO vo : lawItemVOS){
             LawModel lawModel = lawRepository.findByLawname(vo.getName());
+            if (lawModel == null) {
+                continue;
+            }
             Map<String,String> lawmap = vo.getLawMap();
             Set<String> keys = lawmap.keySet();
             HashMap<String,TiaoModel> tiaoModels = lawModel.getContent();
@@ -35,6 +40,8 @@ public class LawManagerServiceImpl implements LawManagerService {
                     int tmp = key.indexOf("Ìõ")+1;
                     String tiao = key.substring(0,tmp);
                     String kuan = key.substring(tmp);
+                    System.out.println("tiao = " + tiao);
+                    System.out.println("kuan = " + kuan);
                     KuanModel kuanModel = tiaoModels.get(tiao).getKuan().get(kuan);
                     content.append(kuanModel.getContent());
                     List<String> xiang = kuanModel.getXiang();
@@ -43,8 +50,10 @@ public class LawManagerServiceImpl implements LawManagerService {
                     }
 
                 }else {
-                    KuanModel kuanModel = tiaoModels.get(key).getKuan().get("¿î1");
-                    content.append(kuanModel.getContent());
+                    LinkedHashMap<String, KuanModel> kuan = tiaoModels.get(key).getKuan();
+                    for (Map.Entry<String, KuanModel> stringKuanModelEntry : kuan.entrySet()) {
+                        content.append(stringKuanModelEntry.getValue().getContent());
+                    }
                 }
                 lawmap.put(key,content.toString());
             }

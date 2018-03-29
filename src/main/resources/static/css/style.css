@@ -2235,3 +2235,12 @@ section p {
 .sec-ws {
     margin: 0.3em 0 0.3em 0;
 }
+
+.mistake {
+    position: fixed;
+    max-width: 300px;
+}
+
+.mistake-alert {
+    margin-top: 2em;
+}

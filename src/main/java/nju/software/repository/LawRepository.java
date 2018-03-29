@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by 69401 on 2018/3/28.
  */
-//@Repository
+@Repository
 public interface LawRepository extends MongoRepository<LawModel,String> {
 
     LawModel findByLawname(String name);
