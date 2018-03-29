@@ -26,9 +26,6 @@ public class LawManagerServiceImpl implements LawManagerService {
         List<LawItemVO> results = new ArrayList<LawItemVO>();
         for (LawItemVO vo : lawItemVOS){
             LawModel lawModel = lawRepository.findByLawname(vo.getName());
-            if (lawModel == null) {
-                continue;
-            }
             Map<String,String> lawmap = vo.getLawMap();
             Set<String> keys = lawmap.keySet();
             HashMap<String,TiaoModel> tiaoModels = lawModel.getTiao();
