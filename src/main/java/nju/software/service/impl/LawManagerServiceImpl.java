@@ -36,23 +36,20 @@ public class LawManagerServiceImpl implements LawManagerService {
             HashMap<String,TiaoModel> tiaoModels = lawModel.getContent();
             for (String key:keys){
                 StringBuilder content = new StringBuilder();
+                KuanModel kuanModel;
                 if (key.contains("款")){
                     int tmp = key.indexOf("条")+1;
                     String tiao = key.substring(0,tmp);
                     String kuan = key.substring(tmp);
-                    System.out.println("tiao = " + tiao);
-                    System.out.println("kuan = " + kuan);
-                    KuanModel kuanModel = tiaoModels.get(tiao).getKuan().get(kuan);
-                    content.append(kuanModel.getContent());
-                    List<String> xiang = kuanModel.getXiang();
+                    kuanModel = tiaoModels.get(tiao).getKuan().get(kuan);
+                }else {
+                    kuanModel = tiaoModels.get(key).getKuan().get("第一款");
+                }
+                content.append(kuanModel.getContent());
+                List<String> xiang = kuanModel.getXiang();
+                if (xiang!=null){
                     for (String str :xiang){
                         content.append(str);
-                    }
-
-                }else {
-                    LinkedHashMap<String, KuanModel> kuan = tiaoModels.get(key).getKuan();
-                    for (Map.Entry<String, KuanModel> stringKuanModelEntry : kuan.entrySet()) {
-                        content.append(stringKuanModelEntry.getValue().getContent());
                     }
                 }
                 lawmap.put(key,content.toString());
