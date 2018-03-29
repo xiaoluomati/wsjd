@@ -1,11 +1,15 @@
 package nju.software.vo;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by away on 2018/3/28.
  */
 public class CheckInfoVO {
+
+    private Map<String, Integer> errorTypeMap;
 
     private List<CheckInfoItemVO> WS;
     private List<CheckInfoItemVO> SSCYR;
@@ -17,6 +21,22 @@ public class CheckInfoVO {
     private List<CheckInfoItemVO> FL;
 
     public CheckInfoVO() {
+        this.errorTypeMap = new HashMap<>();
+        this.errorTypeMap.put(ErrorType.JGQS.getName(), 0);
+        this.errorTypeMap.put(ErrorType.SSWBTY.getName(), 0);
+        this.errorTypeMap.put(ErrorType.YSCW.getName(), 0);
+        this.errorTypeMap.put(ErrorType.YSQS.getName(), 0);
+    }
+
+    public Map<String, Integer> getErrorTypeMap() {
+        return errorTypeMap;
+    }
+
+    private void addToMap(List<CheckInfoItemVO> checkInfoItemVOS){
+        for (CheckInfoItemVO checkInfoItemVO : checkInfoItemVOS) {
+            String errorTypeName = checkInfoItemVO.getErrorTypeName();
+            errorTypeMap.put(errorTypeName, 1 + errorTypeMap.get(errorTypeName));
+        }
     }
 
     public List<CheckInfoItemVO> getWS() {
@@ -25,6 +45,7 @@ public class CheckInfoVO {
 
     public void setWS(List<CheckInfoItemVO> WS) {
         this.WS = WS;
+        this.addToMap(getWS());
     }
 
     public List<CheckInfoItemVO> getSSCYR() {
@@ -33,6 +54,7 @@ public class CheckInfoVO {
 
     public void setSSCYR(List<CheckInfoItemVO> SSCYR) {
         this.SSCYR = SSCYR;
+        this.addToMap(getSSCYR());
     }
 
     public List<CheckInfoItemVO> getSSJL() {
@@ -41,6 +63,7 @@ public class CheckInfoVO {
 
     public void setSSJL(List<CheckInfoItemVO> SSJL) {
         this.SSJL = SSJL;
+        this.addToMap(getSSJL());
     }
 
     public List<CheckInfoItemVO> getAJJBQK() {
@@ -49,6 +72,7 @@ public class CheckInfoVO {
 
     public void setAJJBQK(List<CheckInfoItemVO> AJJBQK) {
         this.AJJBQK = AJJBQK;
+        this.addToMap(getAJJBQK());
     }
 
     public List<CheckInfoItemVO> getCPFXGC() {
@@ -57,6 +81,7 @@ public class CheckInfoVO {
 
     public void setCPFXGC(List<CheckInfoItemVO> CPFXGC) {
         this.CPFXGC = CPFXGC;
+        this.addToMap(getCPFXGC());
     }
 
     public List<CheckInfoItemVO> getCPJG() {
@@ -65,6 +90,7 @@ public class CheckInfoVO {
 
     public void setCPJG(List<CheckInfoItemVO> CPJG) {
         this.CPJG = CPJG;
+        this.addToMap(getCPJG());
     }
 
     public List<CheckInfoItemVO> getWW() {
@@ -73,6 +99,7 @@ public class CheckInfoVO {
 
     public void setWW(List<CheckInfoItemVO> WW) {
         this.WW = WW;
+        this.addToMap(getWW());
     }
 
     public List<CheckInfoItemVO> getFL() {
@@ -81,19 +108,21 @@ public class CheckInfoVO {
 
     public void setFL(List<CheckInfoItemVO> FL) {
         this.FL = FL;
+        this.addToMap(getFL());
     }
 
     @Override
     public String toString() {
         return "CheckInfoVO{" +
-                "WS=" + WS +
-                ",\n SSCYR=" + SSCYR +
-                ",\n SSJL=" + SSJL +
-                ",\n AJJBQK=" + AJJBQK +
-                ",\n CPFXGC=" + CPFXGC +
-                ",\n CPJG=" + CPJG +
-                ",\n WW=" + WW +
-                ",\n FL=" + FL +
+                "errorTypeMap=" + errorTypeMap +
+                ", WS=" + WS +
+                ", SSCYR=" + SSCYR +
+                ", SSJL=" + SSJL +
+                ", AJJBQK=" + AJJBQK +
+                ", CPFXGC=" + CPFXGC +
+                ", CPJG=" + CPJG +
+                ", WW=" + WW +
+                ", FL=" + FL +
                 '}';
     }
 }
