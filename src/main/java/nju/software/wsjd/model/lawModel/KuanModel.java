@@ -11,23 +11,14 @@ import java.util.List;
 @Document
 public class KuanModel {
 
-    @Field("å†…å®¹")
+    @Field("ÄÚÈÝ")
     private String content;
 
-    @Field("é¡¹")
+    @Field("Ïî")
     private List<String> xiang;
 
-    @Field("å…³é”®å­—")
+    @Field("¹Ø¼ü´Ê")
     private String keywords;
-
-    public KuanModel() {
-    }
-
-    public KuanModel(KuanModel kuan) {
-        this.content = kuan.getContent();
-        this.xiang = kuan.getXiang();
-        this.keywords = kuan.getKeywords();
-    }
 
     public String getContent() {
         return content;
@@ -52,20 +43,4 @@ public class KuanModel {
     public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
-
-//    @Override
-//    public String toString() {
-//        String strxiang = "";
-////        Set<String> keys = this.xiang.keySet();
-////        if ()
-//        for(String key :this.xiang){
-//            strxiang += key+"ï¼Œ";
-//        }
-//        return "Model.Kuan{" +
-//                "content='" + content + '\'' +
-//                ", Xiang=" + strxiang +
-//                ", Keywords='" + keywords + '\'' +
-//                '}';
-//    }
-
 }
