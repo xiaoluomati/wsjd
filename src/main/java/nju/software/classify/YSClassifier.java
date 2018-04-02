@@ -18,10 +18,7 @@ import java.util.regex.Pattern;
 /**
  * Created by away on 2018/3/31.
  */
-public class YSClassifier implements BaseClassifier {
-
-    private String ssjl;
-    private String cpjg;
+public class YSClassifier extends BaseClassifier {
 
     @Override
     public DocType getType(WsModel wsModel) {
@@ -46,6 +43,12 @@ public class YSClassifier implements BaseClassifier {
         }
         return null;
     }
+
+    @Override
+    public String getParseRuleName() {
+        return ParseMap.getInstance().getParseClassName("第一审普通程序");
+    }
+
 
     // 民事裁定书(驳回追加共同诉讼当事人申请用)
     private boolean isBHZJ() {

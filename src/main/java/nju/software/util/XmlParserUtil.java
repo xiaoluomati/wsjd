@@ -45,8 +45,17 @@ public class XmlParserUtil {
         for (Object o : root.getChild("SSCYRQJ").getChildren()) {
             Element sscyr = (Element) o;
             Element ssdw = sscyr.getChild("SSDW");
-            if (ssdw != null)
+            Element sssf = sscyr.getChild("SSSF");
+            if (ssdw != null && sssf != null){
                 strings.add(ssdw.getAttribute("value").getValue());
+                String s = sssf.getAttribute("value").getValue();
+                if(s.contains("£¨") && s.contains("£©")){
+                    strings.add(s.substring(s.indexOf("£¨") + 1, s.indexOf("£©")));
+                }else{
+                    strings.add(s);
+                }
+            }
+
         }
         return strings;
     }

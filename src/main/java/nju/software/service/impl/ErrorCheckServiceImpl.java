@@ -30,6 +30,8 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
         CheckInfoVO checkInfoVO = new CheckInfoVO();
         jsonParserUtil = new JsonParserUtil(templateRepository.getJson(docInfoVO.getJsonName()));
+//        jsonParserUtil = new JsonParserUtil(docInfoVO.getJsonName());
+
         xmlParserUtil = new XmlParserUtil(docInfoVO.getXmlFileName());
         checkInfoVO.setWS(this.checkWs());
         checkInfoVO.setSSCYR(this.checkSscyr());

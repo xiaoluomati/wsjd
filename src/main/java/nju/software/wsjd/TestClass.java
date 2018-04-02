@@ -1,4 +1,4 @@
-package nju.software.wsjd.classify;
+package nju.software.wsjd;
 
 import nju.software.service.ErrorCheckService;
 import nju.software.service.impl.ErrorCheckServiceImpl;
@@ -30,8 +30,8 @@ public class TestClass {
                 "    ],\n" +
                 "    \"案号\": \"民终\",\n" +
                 "    \"当事人\": [\n" +
-                "      \"上诉人\",\n" +
-                "      \"被上诉人\",\n" +
+                "      \"上诉人(原审诉讼地位)\",\n" +
+                "      \"被上诉人(原审诉讼地位)\",\n" +
                 "      \"原审原告\",\n" +
                 "      \"被告\",\n" +
                 "      \"第三人\"\n" +
@@ -39,10 +39,10 @@ public class TestClass {
                 "    \"案件基本情况\": [\n" +
                 "      \"上诉人诉称段\",\n" +
                 "      \"被上诉人辩称段\",\n" +
-                "      \"前一审原告诉称段\",\n" +
-                "      \"前一审查明事实段\",\n" +
-                "      \"前一审审理段\",\n" +
-                "      \"前一审判决段\",\n" +
+                "      \"前审原告诉称段\",\n" +
+                "      \"前审查明事实段\",\n" +
+                "      \"前审审理段\",\n" +
+                "      \"前审判决段\",\n" +
                 "      \"本审审理段\"\n" +
                 "    ],\n" +
                 "    \"裁判分析过程\": {\n" +

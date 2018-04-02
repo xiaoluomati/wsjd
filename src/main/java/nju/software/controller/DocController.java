@@ -56,6 +56,7 @@ public class DocController {
     String result(@RequestParam("index") int index, Model model) {
         List<File> fileList = MultipartFileUtil.getFileList();
         File file = fileList.get(index);
+
         WsModel doc = docManagerService.getContent(file);
 
         // 空的law, 里面是要取的条目

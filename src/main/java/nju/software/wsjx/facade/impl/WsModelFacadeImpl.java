@@ -1,6 +1,6 @@
 package nju.software.wsjx.facade.impl;
 
-import nju.software.wsjd.classify.ParseMap;
+import nju.software.classify.ParseMap;
 import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.facade.WsModelFacade;
@@ -42,7 +42,7 @@ public class WsModelFacadeImpl implements WsModelFacade{
 //			String parseName=wswsModel.getParseName();
 			ParseMap parseMap = ParseMap.getInstance();
 //			String parseName = parseMap.get("第一审普通程序");
-			String parseName = parseMap.get("第二审程序");
+			String parseName = parseMap.getParseClassName("第二审程序");
 //			ParseEnum parseEnum=ParseEnum.getParseEnumByParse(parseName);
 //			if(parseEnum==null)
 //				throw new ParseException("未定义解析该类文档");

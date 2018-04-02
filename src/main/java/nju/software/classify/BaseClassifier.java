@@ -6,9 +6,17 @@ import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 /**
  * Created by away on 2018/3/31.
  */
-public interface BaseClassifier {
+public abstract class BaseClassifier {
+
+    protected String ssjl;
+
+    protected String cpjg;
+
+    protected String cpgc;
 
     final String CHINESE = "[\\u0391-\\uFFE5]+";
 
-    DocType getType(WsModel wsModel);
+    public abstract DocType getType(WsModel wsModel);
+
+    public abstract String getParseRuleName();
 }

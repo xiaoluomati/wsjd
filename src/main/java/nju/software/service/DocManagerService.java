@@ -18,5 +18,5 @@ public interface DocManagerService {
 
     List<LawItemVO> getLaw(List<WscpfxgcFtModel> lawList);
 
-    DocType getDocType(MultipartFile file);
+    DocType getDocType(File file);
 }
