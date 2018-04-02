@@ -1,5 +1,6 @@
 package nju.software.service;
 
+import nju.software.vo.DocType;
 import nju.software.vo.LawItemVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
@@ -15,4 +16,6 @@ public interface DocManagerService {
     WsModel getContent(MultipartFile file);
 
     List<LawItemVO> getLaw(List<WscpfxgcFtModel> lawList);
+
+    DocType getDocType(MultipartFile file);
 }

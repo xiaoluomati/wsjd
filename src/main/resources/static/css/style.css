@@ -2238,9 +2238,22 @@ section p {
 
 .mistake {
     position: fixed;
-    max-width: 300px;
 }
 
 .mistake-alert {
-    margin-top: 2em;
+    /*margin: 0.2em 0 0.2em 0;*/
+    padding: 0.1em 0.3em 0.1em 0.3em;
+}
+
+.mistake-alert span {
+    color: #d52349;
+    font-weight: 600;
+}
+
+.mistake button {
+    margin-bottom: 2em;
+}
+
+.mistake .badge {
+    color: #ffffff;
 }

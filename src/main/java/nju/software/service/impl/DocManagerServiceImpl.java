@@ -2,6 +2,7 @@ package nju.software.service.impl;
 
 import nju.software.factory.WsModelFactory;
 import nju.software.service.DocManagerService;
+import nju.software.vo.DocType;
 import nju.software.vo.LawItemVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
@@ -70,5 +71,21 @@ public class DocManagerServiceImpl implements DocManagerService {
             lawItemVOList.add(lawItemVO);
         }
         return lawItemVOList;
+    }
+
+    @Override
+    @Transactional
+    public DocType getDocType(MultipartFile file) {
+        InputStream is= null;
+        try {
+            is = file.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        WsModel wsModel = WsModelFactory.getInstance(is, file.getOriginalFilename());
+        System.out.println(wsModel.getWswsModel().getAh());
+
+        return null;
     }
 }
