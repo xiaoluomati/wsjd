@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="head::header(智能文书校对系统)"></head>
+<body>
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <div id="header-wrapper">
+    <div id="header">
+      <!-- Logo -->
+      <h1><a th:href="@{/index}">智能文书校对系统</a></h1>
+      <!-- Nav -->
+      <nav id="nav">
+        <ul>
+          <li>
+            <a th:href="@{/index}">主页</a></li>
+          <li>
+            <a th:href="@{/input}">导入</a></li>
+          <li class="current">
+            <a href="#">校对结果</a>
+          </li>
+        </ul>
+      </nav>
+      <section id="intro" class="container">
+        <div class="row">
+          <div class="10u 12u(mobile)">
+            <section class="left">
+              <ol>
+                <!--/*@thymesVar id="doc" type="org.springframework.web.multipart.MultipartFile"*/-->
+                <!--/*@thymesVar id="docList" type=""*/-->
+                <li th:each="doc : ${docList}">
+                  <div class="row">
+                    <div class="10u">
+                      <p class="title-link" th:text="${doc.getOriginalFilename().substring(0, doc.getOriginalFilename().indexOf('.'))}"></p>
+                    </div>
+                    <div class="2u">
+                      <form th:action="@{/result}"  th:method="post">
+                        <input type="hidden" name="index" th:value="${docStat.index}" />
+                        <input type="submit" th:value="查看" />
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

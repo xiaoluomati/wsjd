@@ -6,6 +6,7 @@ import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface DocManagerService {
 
-    WsModel getContent(MultipartFile file);
+    WsModel getContent(File file);
 
     List<LawItemVO> getLaw(List<WscpfxgcFtModel> lawList);
 

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -25,16 +27,16 @@ public class DocManagerServiceImpl implements DocManagerService {
 
     @Override
     @Transactional
-    public WsModel getContent(MultipartFile file) {
+    public WsModel getContent(File file) {
 
         InputStream is= null;
         try {
-            is = file.getInputStream();
+            is = new FileInputStream(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        WsModel wsModel = WsModelFactory.getInstance(is, file.getOriginalFilename());
+        WsModel wsModel = WsModelFactory.getInstance(is, file.getName());
         // 将没有的内容设为无
         if (wsModel.getWsfl().equals("")) {
             wsModel.setWsfl("无");

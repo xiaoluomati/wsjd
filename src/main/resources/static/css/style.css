@@ -2246,7 +2246,7 @@ section p {
 }
 
 .mistake-alert span {
-    color: #d52349;
+    color: #46a2eb;
     font-weight: 600;
 }
 
@@ -2256,4 +2256,10 @@ section p {
 
 .mistake .badge {
     color: #ffffff;
+}
+
+.title-link {
+    color: #37a;
+    font-weight: 600;
+    font-size: 1.5em;
 }

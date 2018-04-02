@@ -17,7 +17,7 @@
             <li>
               <a th:href="@{/input}">导入</a></li>
             <li class="current">
-              <a href="#">校对结果</a>
+              <a href="#"  onclick="history.back();">校对结果</a>
             </li>
           </ul>
         </nav>
@@ -103,15 +103,15 @@
                 </div>
                 <p th:text="${doc.getWswwSegment()}"></p>
 
-                <!--// 附录-->
-                <hr></hr>
-                <div class="sec">
-                  <span class="sec-title">附录</span>
-                  <button id="fl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
-                  <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
-                  <span class="badge" th:text="${error.getFL().size()}"></span>
-                </div>
-                <p th:text="${doc.getWsfl()}"></p>
+                <!--&lt;!&ndash;// 附录&ndash;&gt;-->
+                <!--<hr></hr>-->
+                <!--<div class="sec">-->
+                  <!--<span class="sec-title">附录</span>-->
+                  <!--<button id="fl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>-->
+                  <!--&lt;!&ndash;/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/&ndash;&gt;-->
+                  <!--<span class="badge" th:text="${error.getFL().size()}"></span>-->
+                <!--</div>-->
+                <!--<p th:text="${doc.getWsfl()}"></p>-->
               </section>
             </div>
             <div class="3u">
