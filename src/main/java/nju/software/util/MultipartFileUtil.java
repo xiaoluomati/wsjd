@@ -38,6 +38,9 @@ public class MultipartFileUtil {
     public static void empty() {
         fileList = new ArrayList<>();
         File file = new File(PATH);
+        if (!file.exists()) {
+            return;
+        }
         for (File file1 : file.listFiles()) {
             if (file1.exists()) {
                 file1.delete();

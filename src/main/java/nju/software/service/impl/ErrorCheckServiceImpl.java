@@ -66,7 +66,7 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 //        checkInfoItemVOS.addAll(checkYS("诉讼当事人",dsrRequirements, dsr));
         System.out.println("dsrRequirementsArray = " + dsrRequirementsArray);
         for (String s : dsrList) {
-//            System.out.println("s = " + s);
+            System.out.println("s = " + s);
             if (!Synonym.isContains(dsrRequirements, s)) {
                 String errMsg = "诉讼参与人地位仅限于" + dsrRequirementsArray;
                 checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSCW, errMsg));
