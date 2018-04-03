@@ -6,6 +6,7 @@ import nju.software.service.LawManagerService;
 import nju.software.util.MultipartFileUtil;
 import nju.software.vo.CheckInfoVO;
 import nju.software.vo.DocInfoVO;
+import nju.software.vo.DocType;
 import nju.software.vo.LawItemVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,7 @@ public class DocController {
         List<File> fileList = MultipartFileUtil.getFileList();
         File file = fileList.get(index);
 
+        DocType docType = docManagerService.getDocType(file);
         WsModel doc = docManagerService.getContent(file);
 
         // 空的law, 里面是要取的条目
@@ -64,7 +66,7 @@ public class DocController {
         // 包含了内容的 law
         lawItemVOList = lawManagerService.getLaw(lawItemVOList);
 
-        CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\丁立德与李炳祥、李炳恕民间借贷纠纷二审民事裁定书.xml", "民事裁定书(二审驳回起诉用)"));
+        CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\丁立德与李炳祥、李炳恕民间借贷纠纷二审民事裁定书.xml", docType.getFileName()));
 
         model.addAttribute("docName", getFileNameWithoutSuffix(file));
         model.addAttribute("doc", doc);

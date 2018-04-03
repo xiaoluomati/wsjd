@@ -1,12 +1,8 @@
 package nju.software.factory;
 
-import nju.software.util.WordHelper;
 import nju.software.wsjx.business.WsAnalyse;
-import nju.software.wsjx.facade.impl.WsModelFacadeImpl;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.util.ListToString;
-
-import java.io.InputStream;
 
 /**
  * Created by away on 2018/3/28.
@@ -34,11 +30,11 @@ public class WsModelFactory {
         return wsModel;
     }
 
-    public static void setWsModel(WsModel wsModel){
+    public static void setWsModel(WsModel wsModel) {
         WsModelFactory.wsModel = wsModel;
     }
 
-    private static  WsModel  fillWsModelSegment(WsAnalyse wsAnalyse){
+    private static  WsModel  fillWsModelSegment(WsAnalyse wsAnalyse) {
         WsModel wsModel = new WsModel();
         wsModel.setWswsSegment(ListToString.List2String(wsAnalyse.getWs()));
         wsModel.setWssscyrSegment(wsAnalyse.getSscyr());

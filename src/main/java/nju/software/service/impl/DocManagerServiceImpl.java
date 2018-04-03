@@ -13,21 +13,26 @@ import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 import nju.software.wsjx.parse.ParseSegment;
+import org.jdom.JDOMException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by away on 2018/3/26.
  */
 @Service
 public class DocManagerServiceImpl implements DocManagerService {
+
+    private static final String XML_PATH = "xml";
 
     @Override
     @Transactional
@@ -119,6 +124,12 @@ public class DocManagerServiceImpl implements DocManagerService {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+
+        try {
+            wsModel.transformToXml(XML_PATH, filename);
+        } catch (IOException | JDOMException e) {
+            e.printStackTrace();
         }
 
         return null;

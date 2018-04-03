@@ -2224,7 +2224,7 @@ section p {
     background: none;
 }
 
-.file-footer-caption > .file-caption-info, .file-footer-caption > .file-size-info {
+.file-thumbnail-footer .file-footer-caption .file-caption-info, .file-thumbnail-footer .file-footer-caption > .file-size-info {
     height: auto;
 }
 
@@ -2242,12 +2242,15 @@ section p {
 
 .mistake-alert {
     /*margin: 0.2em 0 0.2em 0;*/
-    padding: 0.1em 0.3em 0.1em 0.3em;
+    padding: 10px;
 }
 
 .mistake-alert span {
-    color: #46a2eb;
-    font-weight: 600;
+    color: #111;
+    line-height: 1.5em;
+    font-size: 17px;
+    letter-spacing: -0.2px;
+    font-weight: 500;
 }
 
 .mistake button {
@@ -2262,4 +2265,37 @@ section p {
     color: #37a;
     font-weight: 600;
     font-size: 1.5em;
+}
+
+.mistake .alert-success {
+    background: #c4e3f3;
+}
+
+.mistake .alert-warning {
+    background: #f7ecb5;
+}
+
+.mistake .alert-danger {
+    background: #e3b7e8;
+}
+
+.mistake .alert-info {
+    background: #c4ed9d;
+}
+
+.file-preview-thumbnails .krajee-default .file-preview-frame .kv-file-content {
+    width: 213px;
+    height: auto;
+}
+
+.file-preview-thumbnails .krajee-default.file-preview-frame {
+    margin: 4px;
+}
+
+.file-preview, .file-zoom-dialog .modal-dialog {
+    position: static !important;
+}
+
+button i {
+    color: #000;
 }

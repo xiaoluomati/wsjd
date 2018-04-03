@@ -114,7 +114,8 @@
                 <!--<p th:text="${doc.getWsfl()}"></p>-->
               </section>
             </div>
-            <div class="3u">
+            <div class="1u"></div>
+            <div class="2u">
               <section class="right mistake">
                 <!-- 法条 -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#law">
@@ -131,12 +132,12 @@
                   <span class="badge" th:text="${error.getErrorTypeMap().get('要素缺失')}"></span>
                 </div>
 
-                <div class="alert alert-success mistake-alert" role="alert">
+                <div class="alert alert-danger mistake-alert" role="alert">
                   <span>要素错误</span>
                   <span class="badge" th:text="${error.getErrorTypeMap().get('要素错误')}"></span>
                 </div>
 
-                <div class="alert alert-danger mistake-alert" role="alert">
+                <div class="alert alert-info mistake-alert" role="alert">
                   <span>上下文不统一</span>
                   <span class="badge" th:text="${error.getErrorTypeMap().get('上下文不统一')}"></span>
                 </div>
