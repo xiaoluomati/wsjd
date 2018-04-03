@@ -3,6 +3,7 @@ package nju.software.service.impl;
 import nju.software.repository.TemplateRepository;
 import nju.software.service.ErrorCheckService;
 import nju.software.util.JsonParserUtil;
+import nju.software.util.Synonym;
 import nju.software.util.XmlParserUtil;
 import nju.software.vo.CheckInfoItemVO;
 import nju.software.vo.CheckInfoVO;
@@ -65,8 +66,8 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 //        checkInfoItemVOS.addAll(checkYS("诉讼当事人",dsrRequirements, dsr));
         System.out.println("dsrRequirementsArray = " + dsrRequirementsArray);
         for (String s : dsrList) {
-            System.out.println("s = " + s);
-            if (!dsrRequirements.contains(s)) {
+//            System.out.println("s = " + s);
+            if (!Synonym.isContains(dsrRequirements, s)) {
                 String errMsg = "诉讼参与人地位仅限于" + dsrRequirementsArray;
                 checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSCW, errMsg));
             }
@@ -144,7 +145,7 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
             if(s.contains("(")){
                 s = s.substring(0,s.indexOf("("));
             }
-            if(key.equals(requirement)){
+            if(Synonym.isEqual(key, requirement)){
                 return true;
             }
         }
