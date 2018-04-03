@@ -55,7 +55,7 @@
     <SSCYRQJ value="错误" nameCN="保险公司是否作为被告" />
   </SSCYRQJ>
   <SSJL value="本院在审理原告刘忠琴与被告贵州省泰格服饰有限公司追索劳动报酬纠纷一案中，原告以被告已经履行支付义务为由，于2016年12月6日向本院提出撤诉申请。" nameCN="诉讼记录">
-    <CS nameCN="撤诉">
+    <CS value="" nameCN="撤诉">
       <CSR value="*未写出" nameCN="撤诉人" />
       <RQ value="2016年12月6日" nameCN="日期" />
     </CS>

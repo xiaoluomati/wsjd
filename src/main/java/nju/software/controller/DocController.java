@@ -67,6 +67,8 @@ public class DocController {
         lawItemVOList = lawManagerService.getLaw(lawItemVOList);
 
         String name = file.getName();
+        System.out.println("docType = " + docType);
+        System.out.println("name = " + name);
         CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\"+ name.substring(0,name.indexOf("."))+".xml", docType.getFileName()));
 
         model.addAttribute("docName", getFileNameWithoutSuffix(file));

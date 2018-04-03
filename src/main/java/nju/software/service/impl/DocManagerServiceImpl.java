@@ -13,7 +13,6 @@ import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 import nju.software.wsjx.parse.ParseSegment;
-import org.jdom.JDOMException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
