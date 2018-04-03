@@ -49,7 +49,7 @@
     <SSCYRQJ value="错误" nameCN="保险公司是否作为被告" />
   </SSCYRQJ>
   <SSJL value="本院于2014年1月17日立案受理原告向素清与被告张志成民间借贷纠纷一案，依法由审判员孙久茂适用简易程序独任审理。原告向素清于2014年2月12日向本院申请撤回起诉。" nameCN="诉讼记录">
-    <CS nameCN="撤诉">
+    <CS value="" nameCN="撤诉">
       <CSR value="向素清" nameCN="撤诉人" />
       <RQ value="2014年2月12日" nameCN="日期" />
     </CS>

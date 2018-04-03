@@ -88,13 +88,13 @@ public class XmlParserUtil {
         List ssjl = root.getChild(name).getChildren();
         for (int i = 0; i < ssjl.size(); i++) {
             Element element = (Element)ssjl.get(i);
-            if(element.getAttribute("nameCN") != null && element.getAttribute("value")!=null)
-                map.put(element.getAttribute("nameCN").getValue(), element.getAttribute("value").getValue());
+            if(element.getAttribute("nameCN") != null )
+                map.put(element.getAttribute("nameCN").getValue(), element.getAttribute("value")!=null ? element.getAttribute("value").getValue():"");
             if(element.getChildren() != null && !element.getChildren().isEmpty()){
                 for (int j = 0; j < element.getChildren().size(); j++) {
                     Element e = (Element)element.getChildren().get(j);
-                    if(e.getAttribute("nameCN") != null && e.getAttribute("value")!=null)
-                        map.put(e.getAttribute("nameCN").getValue(), e.getAttribute("value").getValue());
+                    if(e.getAttribute("nameCN") != null )
+                        map.put(e.getAttribute("nameCN").getValue(), e.getAttribute("value")!=null ? e.getAttribute("value").getValue():"");
                 }
             }
         }

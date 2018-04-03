@@ -120,18 +120,12 @@ public class DocManagerServiceImpl implements DocManagerService {
                 ParseSegment parseCaseinfo = (ParseSegment) parseDocumentClass.newInstance();
                 parseCaseinfo.registerWsAnalyse(wsAnalyse);
                 WsModelFactory.setWsModel(parseCaseinfo.transformToWsModel());
+                WsModelFactory.getInstance(content, filename).transformToXml(XML_PATH, filename.substring(0,filename.indexOf(".")));
                 return baseClassifier.getType(wsModel);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
-        try {
-            wsModel.transformToXml(XML_PATH, filename);
-        } catch (IOException | JDOMException e) {
-            e.printStackTrace();
-        }
-
         return null;
     }
 }

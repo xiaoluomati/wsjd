@@ -66,7 +66,8 @@ public class DocController {
         // 包含了内容的 law
         lawItemVOList = lawManagerService.getLaw(lawItemVOList);
 
-        CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\丁立德与李炳祥、李炳恕民间借贷纠纷二审民事裁定书.xml", docType.getFileName()));
+        String name = file.getName();
+        CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\"+ name.substring(0,name.indexOf("."))+".xml", docType.getFileName()));
 
         model.addAttribute("docName", getFileNameWithoutSuffix(file));
         model.addAttribute("doc", doc);
