@@ -17,9 +17,9 @@ import nju.software.wsjx.util.FcUtil;
 public class MsesAjjbqkParseRule extends GeneralAjjbqkCommonRule implements AjjbqkParseRule{
 	public WsajjbqkModel jxWsajjbqkModel(WsAnalyse wsAnalyse,List<WssscyrModel> wssscyrModellist) {
 		List<String> ajjbqk = wsAnalyse.getAjjbqk();
-        for (String s : ajjbqk) {
-            System.out.println(s);
-        }
+//        for (String s : ajjbqk) {
+//            System.out.println(s);
+//        }
         //解析前身段落和本审段落
 		WsajjbqkModel wsajjbqkModel = new WsajjbqkModel();
 

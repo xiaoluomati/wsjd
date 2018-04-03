@@ -13,7 +13,6 @@ import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 import nju.software.wsjx.parse.ParseSegment;
-import org.jdom.JDOMException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -113,6 +112,7 @@ public class DocManagerServiceImpl implements DocManagerService {
         if(classifierName != null){
             String string = "nju.software.classify." + classifierName;
             try {
+                System.out.println(string);
                 Class<?> classifier = Class.forName(string);
                 BaseClassifier baseClassifier = (BaseClassifier) classifier.newInstance();
                 String parseRuleName = "nju.software.wsjx.parse."+baseClassifier.getParseRuleName();
