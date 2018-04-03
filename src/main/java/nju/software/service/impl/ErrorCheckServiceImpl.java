@@ -59,10 +59,18 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     private List<CheckInfoItemVO> checkSscyr(){
         List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
         final List<String> dsrRequirements = this.jsonParserUtil.getDsrRequirements();
+        String dsrRequirementsArray = Arrays.toString(dsrRequirements.toArray());
         //当事人诉讼地位比对
-        List<String> dsr = this.xmlParserUtil.getDsr();
-        checkInfoItemVOS.addAll(checkYS("诉讼当事人",dsrRequirements, dsr));
-
+        List<String> dsrList = this.xmlParserUtil.getDsr();
+//        checkInfoItemVOS.addAll(checkYS("诉讼当事人",dsrRequirements, dsr));
+        System.out.println("dsrRequirementsArray = " + dsrRequirementsArray);
+        for (String s : dsrList) {
+            System.out.println("s = " + s);
+            if (!dsrRequirements.contains(s)) {
+                String errMsg = "诉讼参与人地位仅限于" + dsrRequirementsArray;
+                checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSCW, errMsg));
+            }
+        }
         return checkInfoItemVOS;
     }
 
