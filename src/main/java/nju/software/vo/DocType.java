@@ -30,7 +30,17 @@ public enum DocType {
     ES_ZLSL("民事裁定书(二审指令审理用)"),
     ES_ZXCHSS("民事裁定书(二审准许撤回上诉用)"),
     ES_ZXHBZX("民事裁定书(二审准许或不准许撤回起诉用)"),
-    ES_WSESSLF("民事裁定书(未交二审案件受理费按撤回上诉处理用)")
+    ES_WSESSLF("民事裁定书(未交二审案件受理费按撤回上诉处理用)"),
+    GX_BFGXCDSS("民事裁定书(不服管辖裁定上诉案件用)"),
+    GX_GXQYY("民事裁定书(管辖权异议用)"),
+    GX_SJYJXJ("民事裁定书(上级法院移交下级法院审理用)"),
+    GX_SBQZDGX("民事裁定书(受移送人民法院报请指定管辖案件用)"),
+    GX_XSSSGXYY("民事裁定书(小额诉讼程序管辖权异议用)"),
+    GX_BQTJGX("民事裁定书(依报请提级管辖用)"),
+    GX_ZQTJGX("民事裁定书(依职权提级管辖用)"),
+    GX_ZQYSGX("民事裁定书(依职权移送管辖用)"),
+    GX_BQZDGX("民事裁定书(因管辖权争议报请指定管辖案件用)"),
+    GX_YGXQBQZD("民事裁定书(有管辖权人民法院报请指定管辖案件用)")
     ;
 
     String fileName;
@@ -43,28 +53,16 @@ public enum DocType {
         return fileName;
     }
 
-    public static List<String> getYS() {
+    public static List<String> getTypeList(String typeString) {
         List<String> ys = new ArrayList<>();
         DocType[] values = values();
         for (DocType value : values) {
             String str = value.name();
-            if (str.startsWith("YS")) {
+            if (str.startsWith(typeString)) {
                 ys.add(str);
             }
         }
         return ys;
-    }
-
-    public static List<String> getES() {
-        List<String> es = new ArrayList<>();
-        DocType[] values = values();
-        for (DocType value : values) {
-            String str = value.name();
-            if (str.startsWith("ES")) {
-                es.add(str);
-            }
-        }
-        return es;
     }
 
 

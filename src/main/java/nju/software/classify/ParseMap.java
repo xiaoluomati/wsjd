@@ -21,7 +21,7 @@ public class ParseMap {
         flHashMap = new HashMap<>();
         flHashMap.put("民初","YSClassifier");
         flHashMap.put("民终","ESClassifier");
-        flHashMap.put("民辖","");
+        flHashMap.put("民辖","GXClassifier");
     }
 
     private HashMap<String, String>  jxHashMap;

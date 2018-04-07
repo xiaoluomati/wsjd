@@ -24,7 +24,7 @@ public class YSClassifier extends BaseClassifier {
     public DocType getType(WsModel wsModel) {
         this.ssjl = wsModel.getWsssjlSegment();
         this.cpjg = wsModel.getWscpjgSegment();
-        List<String> ysList = DocType.getYS();
+        List<String> ysList = DocType.getTypeList(BaseClassifier.YS_PREFIX);
         Class<? extends YSClassifier> clz = getClass();
         for (String ys : ysList) {
             String methodName = getMethodName(ys);
@@ -141,10 +141,10 @@ public class YSClassifier extends BaseClassifier {
         return (isMatch(ssjl, CSSQ_1) || isMatch(ssjl, CSSQ_2)) && (isMatch(cpjg, ZZCS_1) || isMatch(cpjg, ZZCS_2));
     }
 
-    private String getMethodName(String YSName) {
-        int index = YSName.indexOf("_");
-        return "is" + YSName.substring(index+1);
-    }
+//    private String getMethodName(String YSName) {
+//        int index = YSName.indexOf("_");
+//        return "is" + YSName.substring(index+1);
+//    }
 
     private boolean isMatch(String content, String pattern) {
         Pattern compile = Pattern.compile(pattern);

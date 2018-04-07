@@ -18,7 +18,7 @@ public class ESClassifier extends BaseClassifier {
         this.ssjl = wsModel.getWsssjlSegment();
         this.cpjg = wsModel.getWscpjgSegment();
         this.cpgc = wsModel.getWscpfxgcSegment();
-        List<String> esList = DocType.getES();
+        List<String> esList = DocType.getTypeList(BaseClassifier.ES_PREFIX);
         Class<? extends ESClassifier> clz = getClass();
         return getType(esList, clz, this);
     }
@@ -28,25 +28,6 @@ public class ESClassifier extends BaseClassifier {
         return ParseMap.getInstance().getParseClassName("第二审程序");
     }
 
-
-    private DocType getType(List<String> list, Class c, Object o){
-        for (String es : list) {
-            String methodName = getMethodName(es);
-            try {
-                Method method = c.getDeclaredMethod(methodName);
-                Boolean isMatch = ((boolean) method.invoke(o));
-                if (isMatch) {
-                    DocType type = DocType.getType(es);
-                    if (type != null) {
-                        return type;
-                    }
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
 
     /**
      * 民事裁定书(不参加二审诉讼按撤回上诉处理用)
@@ -147,26 +128,6 @@ public class ESClassifier extends BaseClassifier {
         return matchCpjg(pattern2) && matchCpgc(pattern1);
     }
 
-    private String getMethodName(String ESName) {
-        int index = ESName.indexOf("_");
-        return "is" + ESName.substring(index+1);
-    }
 
-    private boolean match(String content, String pattern){
-        Pattern compile = Pattern.compile(pattern);
-        Matcher matcher = compile.matcher(content);
-        return matcher.find();
-    }
 
-    private boolean matchSsjl(String pattern) {
-        return match(ssjl, pattern);
     }
-
-    private boolean matchCpjg(String pattern){
-        return match(cpjg, pattern);
-    }
-
-    private boolean matchCpgc(String pattern){
-        return match(cpgc, pattern);
-    }
-}
