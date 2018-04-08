@@ -2299,3 +2299,11 @@ section p {
 button i {
     color: #000;
 }
+
+.doc-type {
+    color: #484848;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0 10px 0;
+    text-align: left;
+}

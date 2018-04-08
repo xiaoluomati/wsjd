@@ -72,6 +72,7 @@ public class DocController {
         CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\"+ name.substring(0,name.indexOf("."))+".xml", docType.getFileName()));
 
         model.addAttribute("docName", getFileNameWithoutSuffix(file));
+        model.addAttribute("docType", docType.getFileName());
         model.addAttribute("doc", doc);
         model.addAttribute("lawList", lawItemVOList);
         model.addAttribute("error", checkInfoVO);

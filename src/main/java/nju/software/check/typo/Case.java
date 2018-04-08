@@ -1,4 +1,4 @@
-package nju.software.check;
+package nju.software.check.typo;
 
 /**
  * Created by away on 2018/4/4.

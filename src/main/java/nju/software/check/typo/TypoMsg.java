@@ -1,4 +1,4 @@
-package nju.software.check;
+package nju.software.check.typo;
 
 import java.util.List;
 

@@ -189,6 +189,13 @@
             <version>4.5.5</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.languagetool/language-zh -->
+        <dependency>
+            <groupId>org.languagetool</groupId>
+            <artifactId>language-zh</artifactId>
+            <version>4.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

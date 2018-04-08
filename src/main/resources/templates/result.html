@@ -29,6 +29,8 @@
                 <!--// 文首段落-->
                 <!--/*@thymesVar id="docName" type="java.lang.String"*/-->
                 <h3 th:text="${docName}"></h3>
+                <!--/*@thymesVar id="docType" type="java.lang.String"*/-->
+                <!--<div class="doc-type" th:text="${docType}"></div>-->
                 <hr></hr>
                 <!--// 文首段落-->
                 <div class="sec">
@@ -38,6 +40,7 @@
                   <span class="badge" th:text="${error.getWS().size()}"></span>
                 </div>
                 <br></br>
+                <h3 th:text="${docType}"></h3>
                 <h3 th:text="${doc.getWswsModel().getWsmc()}"></h3>
                 <h3 th:text="${doc.getWswsModel().getAh()}"></h3>
                 <!--<h3 th:text="${doc.getWswsModel().get}"></h3>-->
@@ -301,6 +304,40 @@
         /*]]>*/
       }
     });
+
+    keywordHighlight('intro', '裁');
+    function keywordHighlight(idHtmlContent,keyword) {
+      /*<![CDATA[*/
+      var content= $("#"+idHtmlContent).html();//获取内容
+      if ($.trim(keyword)==""){
+        return;//关键字为空则返回
+      }
+      var htmlReg = new RegExp("\<.*?\>", "i");
+      var arrA = new Array();
+      //替换HTML标签
+      for (var i = 0; true; i++) {
+        var m = htmlReg.exec(content);
+        if (m) {
+          arrA[i] = m;
+        }else {
+          break;
+        }
+        content = content.replace(m, "{[(" + i + ")]}");
+      }
+      words = unescape(keyword.replace(/\+/g, ' ')).split(/\s+/);
+      //替换关键字
+      for (w = 0; w < words.length; w++) {
+        var r = new RegExp("(" + words[w].replace(/[(){}.+*?^$|\\
+]/g, "\\$&") + ")", "ig");
+        content = content.replace(r, "<b><span style='color:red;font-size:14px;'><u>"+words[w]+"</u></span></b>");//关键字样式
+      }
+      //恢复HTML标签
+      for (var i = 0; i < arrA.length; i++) {
+        content = content.replace("{[(" + i + ")]}", arrA[i]);
+      }
+      $("#"+idHtmlContent).html(content);
+      /*]]>*/
+    }
   });
 </script>
 </html>

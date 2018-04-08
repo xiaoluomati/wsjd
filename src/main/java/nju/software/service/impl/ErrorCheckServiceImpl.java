@@ -1,14 +1,12 @@
 package nju.software.service.impl;
 
+import nju.software.check.AHChecker;
 import nju.software.repository.TemplateRepository;
 import nju.software.service.ErrorCheckService;
 import nju.software.util.JsonParserUtil;
 import nju.software.util.Synonym;
 import nju.software.util.XmlParserUtil;
-import nju.software.vo.CheckInfoItemVO;
-import nju.software.vo.CheckInfoVO;
-import nju.software.vo.DocInfoVO;
-import nju.software.vo.ErrorType;
+import nju.software.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +24,9 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 
     @Autowired
     private TemplateRepository templateRepository;
+
+    @Autowired
+    private AHChecker ahChecker;
 
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
@@ -45,6 +46,11 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         return checkInfoVO;
     }
 
+    @Override
+    public List<TypoCheckVO> checkTypo(String content) {
+        return null;
+    }
+
 
     private List<CheckInfoItemVO> checkWs(){
         List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
@@ -52,8 +58,12 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         String ah = this.xmlParserUtil.getAh();
         if(ah == null){
             checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "缺少案号"));
+        } else {
+            CheckInfoItemVO check = ahChecker.check(ah);
+            if (check != null) {
+                checkInfoItemVOS.add(check);
+            }
         }
-        //Todo 案号处理比对
         return checkInfoItemVOS;
     }
 

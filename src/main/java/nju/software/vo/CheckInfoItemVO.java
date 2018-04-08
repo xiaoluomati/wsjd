@@ -8,9 +8,17 @@ public class CheckInfoItemVO {
     private ErrorType errorType;
     private String error;
     private String errorTypeName;
+    private String tip;
 
     public CheckInfoItemVO(ErrorType errorType, String error) {
         this.error = error;
+        this.tip = "";
+        setErrorType(errorType);
+    }
+
+    public CheckInfoItemVO(ErrorType errorType, String error, String tip) {
+        this.error = error;
+        this.tip = tip;
         setErrorType(errorType);
     }
 
@@ -35,11 +43,21 @@ public class CheckInfoItemVO {
         return errorTypeName;
     }
 
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
+
     @Override
     public String toString() {
         return "CheckInfoItemVO{" +
                 "errorType=" + errorType +
                 ", error='" + error + '\'' +
+                ", errorTypeName='" + errorTypeName + '\'' +
+                ", tip='" + tip + '\'' +
                 '}';
     }
 }
