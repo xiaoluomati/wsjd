@@ -1,7 +1,13 @@
 package nju.software.factory;
 
+import nju.software.classify.BaseClassifier;
+import nju.software.classify.ParseMap;
+import nju.software.vo.DocType;
+import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
+import nju.software.wsjx.parse.ParseSegment;
 import nju.software.wsjx.util.ListToString;
 
 /**
@@ -12,6 +18,9 @@ public class WsModelFactory {
 
     private static volatile String name;
     private static volatile WsModel wsModel;
+    private static final String CLASSIFY_PREFIX = "nju.software.classify.";
+    private static final String PARSE_PREFIX = "nju.software.wsjx.parse.";
+    private static final String XML_PATH = "xml";
     private WsModelFactory() {}
 
     public static WsModel getInstance(String content, String filename) {
@@ -19,10 +28,7 @@ public class WsModelFactory {
         if (!filename.equals(name) || wsModel == null) {
             synchronized (WsModel.class) {
                 if (!filename.equals(name) || wsModel == null) {
-//                    WsModelFacadeImpl wsModelFacadeImpl = new WsModelFacadeImpl();
-//                    wsModel = wsModelFacadeImpl.jxDocument(is, filename);
-                    WsAnalyse wsAnalyse = new WsAnalyse(filename, content);
-                    wsModel = fillWsModelSegment(wsAnalyse);
+                    wsModel = jxWs(content,filename);
                     name = filename;
                 }
             }
@@ -30,12 +36,42 @@ public class WsModelFactory {
         return wsModel;
     }
 
-    public static void setWsModel(WsModel wsModel) {
-        WsModelFactory.wsModel = wsModel;
+    private static WsModel jxWs(String content,String filename){
+        PreWsAnalyse preWsAnalyse=new PreWsAnalyse(filename,  content);
+        WswsModel wswsModel=preWsAnalyse.handleWsws();
+        WsAnalyse wsAnalyse = new WsAnalyse(filename, content);
+        final String ah = wswsModel.getAh();
+        String classifierName = null;
+        for (String s : ParseMap.classifierNameKeys()) {
+            if(ah.contains(s)){
+                classifierName = ParseMap.getInstance().getClassifierName(s);
+            }
+        }
+        if(classifierName != null){
+            String string = CLASSIFY_PREFIX + classifierName;
+            try {
+                System.out.println(string);
+                Class<?> classifier = Class.forName(string);
+                BaseClassifier baseClassifier = (BaseClassifier) classifier.newInstance();
+
+                String parseRuleName = PARSE_PREFIX+baseClassifier.getParseRuleName();
+                Class<?> parseDocumentClass = Class.forName(parseRuleName);
+                ParseSegment parseCaseinfo = (ParseSegment) parseDocumentClass.newInstance();
+                parseCaseinfo.registerWsAnalyse(wsAnalyse);
+                wsModel = parseCaseinfo.transformToWsModel();
+                fillWsModelSegment(wsModel, wsAnalyse);
+                wsModel.setDocType(baseClassifier.getType(wsModel));
+                wsModel.transformToXml(XML_PATH,filename.substring(0, filename.indexOf(".")));
+                return wsModel;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
-    private static  WsModel  fillWsModelSegment(WsAnalyse wsAnalyse) {
-        WsModel wsModel = new WsModel();
+
+    private static  WsModel  fillWsModelSegment(WsModel wsModel,WsAnalyse wsAnalyse) {
         wsModel.setWswsSegment(ListToString.List2String(wsAnalyse.getWs()));
         wsModel.setWssscyrSegment(wsAnalyse.getSscyr());
         wsModel.setWsssjlSegment(wsAnalyse.getSsjl());

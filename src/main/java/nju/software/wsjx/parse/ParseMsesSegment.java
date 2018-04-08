@@ -37,9 +37,6 @@ public class ParseMsesSegment extends ParseSegment implements ParseflexibleSegme
 		WswwModel wswwModel = jxWswwModel(wsAnalyse.getWw());				
 		WsModel wsModel = new WsModel(wswsModel, wssscyrModels, wsajjbqkModel, wsssjlModel, wscpfxgcModel, wscpjgModel, wswwModel);		
 		
-		//Ìî³äwsModelµÄ¸÷¸öString¶ÎÂä
-		fillWsModelSegment(wsModel, wsAnalyse);
-		
 		return wsModel;
 	}
 

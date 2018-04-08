@@ -31,8 +31,6 @@ import java.util.Map;
 @Service
 public class DocManagerServiceImpl implements DocManagerService {
 
-    private static final String XML_PATH = "xml";
-
     @Override
     @Transactional
     public WsModel getContent(File file) {
@@ -96,36 +94,7 @@ public class DocManagerServiceImpl implements DocManagerService {
         String content = WordHelper.read(is);
         String filename = file.getName();
         WsModel wsModel = WsModelFactory.getInstance(content, filename);
-//        System.out.println(wsModel.getWswsModel().getAh());
-        //预处理文书
-        PreWsAnalyse preWsAnalyse=new PreWsAnalyse(filename,  content);
-        //获取文书的解析类型
-        WswsModel wswsModel=preWsAnalyse.handleWsws();
-        WsAnalyse wsAnalyse = new WsAnalyse(filename, content);
-        final String ah = wswsModel.getAh();
-        String classifierName = null;
-        for (String s : ParseMap.classifierNameKeys()) {
-            if(ah.contains(s)){
-                classifierName = ParseMap.getInstance().getClassifierName(s);
-            }
-        }
-        if(classifierName != null){
-            String string = "nju.software.classify." + classifierName;
-            try {
-                System.out.println(string);
-                Class<?> classifier = Class.forName(string);
-                BaseClassifier baseClassifier = (BaseClassifier) classifier.newInstance();
-                String parseRuleName = "nju.software.wsjx.parse."+baseClassifier.getParseRuleName();
-                Class<?> parseDocumentClass = Class.forName(parseRuleName);
-                ParseSegment parseCaseinfo = (ParseSegment) parseDocumentClass.newInstance();
-                parseCaseinfo.registerWsAnalyse(wsAnalyse);
-                WsModelFactory.setWsModel(parseCaseinfo.transformToWsModel());
-                WsModelFactory.getInstance(content, filename).transformToXml(XML_PATH, filename.substring(0,filename.indexOf(".")));
-                return baseClassifier.getType(wsModel);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
+
+        return wsModel.getDocType();
     }
 }

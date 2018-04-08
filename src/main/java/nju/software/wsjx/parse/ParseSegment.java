@@ -59,20 +59,20 @@ public abstract class ParseSegment implements ParseFixedSegment{
 		wwParseRule = new GeneralWwParseRule();
 		return wwParseRule.jxWswwModel(wswwModel);
 	}
-	/**
-	 * Ìî³ä¶ÎÂä
-	 * @param wsModel
-	 * @param wsAnalyse
-	 */
-	public void fillWsModelSegment(WsModel wsModel,WsAnalyse wsAnalyse){
-		wsModel.setWswsSegment(ListToString.List2String(wsAnalyse.getWs()));
-		wsModel.setWssscyrSegment(wsAnalyse.getSscyr());
-		wsModel.setWsssjlSegment(wsAnalyse.getSsjl());
-		wsModel.setWsajjbqSegment(ListToString.List2String(wsAnalyse.getAjjbqk()));
-		wsModel.setWscpfxgcSegment(ListToString.List2String(wsAnalyse.getCpfxgc()));
-		wsModel.setWscpjgSegment(ListToString.List2String(wsAnalyse.getCpjg()));
-		wsModel.setWswwSegment(ListToString.List2String(wsAnalyse.getWw()));
-		wsModel.setWsqw(wsAnalyse.getWsnr());
-		wsModel.setWsfl(ListToString.List2String(wsAnalyse.getFl()));
-	}
+//	/**
+//	 * Ìî³ä¶ÎÂä
+//	 * @param wsModel
+//	 * @param wsAnalyse
+//	 */
+//	public void fillWsModelSegment(WsModel wsModel,WsAnalyse wsAnalyse){
+//		wsModel.setWswsSegment(ListToString.List2String(wsAnalyse.getWs()));
+//		wsModel.setWssscyrSegment(wsAnalyse.getSscyr());
+//		wsModel.setWsssjlSegment(wsAnalyse.getSsjl());
+//		wsModel.setWsajjbqSegment(ListToString.List2String(wsAnalyse.getAjjbqk()));
+//		wsModel.setWscpfxgcSegment(ListToString.List2String(wsAnalyse.getCpfxgc()));
+//		wsModel.setWscpjgSegment(ListToString.List2String(wsAnalyse.getCpjg()));
+//		wsModel.setWswwSegment(ListToString.List2String(wsAnalyse.getWw()));
+//		wsModel.setWsqw(wsAnalyse.getWsnr());
+//		wsModel.setWsfl(ListToString.List2String(wsAnalyse.getFl()));
+//	}
 }

@@ -3,6 +3,7 @@ package nju.software.wsjx.model.wsSegmentationModel;
 import java.io.IOException;
 import java.util.List;
 
+import nju.software.vo.DocType;
 import org.jdom.JDOMException;
 
 import nju.software.wsjx.util.XmlUtil;
@@ -14,7 +15,17 @@ import nju.software.wsjx.util.XmlUtil;
  *
  */
 public class WsModel {
-	
+
+	private DocType docType;
+
+	public DocType getDocType() {
+		return docType;
+	}
+
+	public void setDocType(DocType docType) {
+		this.docType = docType;
+	}
+
 	private WswsModel wswsModel;//文书文首model
 	
 	private List<WssscyrModel> wssscyrModels;//文书诉讼参与人models
