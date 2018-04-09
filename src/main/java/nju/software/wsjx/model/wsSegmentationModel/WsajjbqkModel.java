@@ -21,6 +21,16 @@ public class WsajjbqkModel {
 	private String qsdsryjd;//前审第三人意见段 无
 	private List<String> qszjd;//前审证据段 行政二审
 	private List<String> qssld;//前审审理段 民事二审 行政二审
+	private String qscmd;//前审查明段 民事二审
+
+	public String getQscmd() {
+		return qscmd;
+	}
+
+	public void setQscmd(String qscmd) {
+		this.qscmd = qscmd;
+	}
+
 	private String qsfsscd;//前审反诉诉称段 民事二审 行政二审
 	private String qspjd;//前审判决段 民事二审 行政二审
 	private String bsdl;//本审段落 民事二审 行政二审

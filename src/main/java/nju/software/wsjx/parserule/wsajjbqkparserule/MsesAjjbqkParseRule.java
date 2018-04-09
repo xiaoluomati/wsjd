@@ -357,6 +357,8 @@ public class MsesAjjbqkParseRule extends GeneralAjjbqkCommonRule implements Ajjb
 				
 			}
 		}
+		EsAjjbqkParseRule esAjjbqkParseRule = new EsAjjbqkParseRule();
+		esAjjbqkParseRule.jxWsajjbqkModel(wsAnalyse, wssscyrModellist);
 		return wsajjbqkModel;
 	}
 
