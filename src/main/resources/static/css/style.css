@@ -2202,6 +2202,8 @@ div .badge {
 
 section p {
     color: #333333;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .modal-body h3 {
@@ -2306,4 +2308,11 @@ button i {
     font-weight: 400;
     margin: 10px 0 10px 0;
     text-align: left;
+}
+
+.text-highlight {
+    background: #c4ed9d;
+    color: #333333;
+    font-size: 17px;
+    font-weight: 500;
 }

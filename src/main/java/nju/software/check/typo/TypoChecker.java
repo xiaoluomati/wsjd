@@ -1,80 +1,90 @@
 package nju.software.check.typo;
 
-import nju.software.vo.TypoCheckVO;
+import nju.software.vo.SectionTypoCheckVO;
 import org.languagetool.JLanguageTool;
 import org.languagetool.language.Chinese;
+import org.languagetool.rules.Rule;
 import org.languagetool.rules.RuleMatch;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by away on 2018/4/4.
  */
+@Component
 public class TypoChecker {
 
+    private JLanguageTool langTool;
 
-    public List<String> check(String content) {
-        JLanguageTool langTool = new JLanguageTool(new Chinese());
-        String text = "";
+    private String[] invalidRule = {"wb2", "wa5", "SHI_ADHECTIVE_ERROR", "wb4", "wa3"};
 
+    public TypoChecker() {
+        langTool = new JLanguageTool(new Chinese());
+    }
+
+    public List<SectionTypoCheckVO> check(String text) {
+
+        List<SectionTypoCheckVO> sectionTypoCheckVOList = new ArrayList<>();
         List<RuleMatch> matches;
         try {
             matches = langTool.check(text);
             for (RuleMatch match : matches) {
-                TypoCheckVO typoCheckVO = new TypoCheckVO();
+                Rule rule = match.getRule();
+                if (!isValidRule(rule)) continue;
+
+                SectionTypoCheckVO sectionTypoCheckVO = new SectionTypoCheckVO();
                 int start = match.getFromPos();
                 int end = match.getToPos();
                 String sentence = match.getSentence().getAnnotations();
-                typoCheckVO.setStart(start);
-                typoCheckVO.setEnd(end);
-                typoCheckVO.setSentence(sentence);
+                String word = text.substring(start, end);
+                String message = getMessage(match.getMessage());
+
+                System.out.println("message = " + message);
+                System.out.println("id = " + rule.getId());
+                sectionTypoCheckVO.setStart(start);
+                sectionTypoCheckVO.setEnd(end);
+                sectionTypoCheckVO.setSentence(sentence);
+                sectionTypoCheckVO.setWord(word);
+                sectionTypoCheckVO.setRuleId(rule.getId());
+                sectionTypoCheckVO.setMessage(message);
+                sectionTypoCheckVOList.add(sectionTypoCheckVO);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return sectionTypoCheckVOList;
+    }
+
+    private String getMessage(String message) {
+        message = message.replace("<suggestion>", " ");
+        message = message.replace("</suggestion>", " ");
+        return message;
+    }
+
+    private boolean isValidRule(Rule rule) {
+        String id = rule.getId();
+        for (String s : invalidRule) {
+            if (s.equals(id)) {
+                return false;
+            }
+        }
+        return true;
     }
     public static void main(String[] args) throws IOException {
         JLanguageTool langTool = new JLanguageTool(new Chinese());
 // comment in to use statistical ngram data:
 //langTool.activateLanguageModelRules(new File("/data/google-ngram-data"));
-        String text = "说起错别字，通常想到的可能是“干静（干净）”、“烟洒（烟酒）”、“穿带（穿戴）”、“竟赛（竞赛）”、“既使（即使）”、“园满（圆满）”、“分亨（分享）”、“防碍（妨碍）”、“出奇不意（出其不意）”之类。谁要是写了这样的错别字，在学校里会被老师纠正，在公众场合会被人笑话，自己也会觉得不好意思。可是，另有一类错别字，学校不考，老师不管，出现在大街上人们视而不见，自己写错被别人指出时也往往无动于衷。这一类错字还真不少，你不用找它，它会来找你的。\n" +
-                "\n" +
-                "信手拈来的真实例子\n" +
-                "（以下在需要说明之处，蓝字为繁体，红字为错别字）\n" +
-                "\n" +
-                "坐在一家中华老字号里吃 X X（该店特色食品），抬头看见墙上的牌匾，红底金字制作精良，用流畅的行书繁体字写着：“X X，古人雲，天下通食也……”，竟然不知道繁体中的“雲”字是指天上的云彩，而表示说的意思则要用“云”，这家中华老字号真可谓不知所云哪。\n" +
-                "\n" +
-                "走在大街上路过一家中药店，门面装潢得古色古香，雕梁画栋，华佗和孙思邈浮雕像下的生平是用简体书写，而横匾与楹联却是繁体，上联是：“華佗故裏承同仁遵古訓”。故里是故乡的意思，在繁体中不能用里外的“裏”，应当写做“故里”才是。这样浅显的古文用字尚且弄不清楚，怕是难以读懂古代医书，那又怎样去“遵古訓”呢？\n" +
-                "\n" +
-                "女儿去一个滨海城市参加夏令营，带回来一本该市观光手册，装帧精美，繁体印刷。拿起来随意浏览，每翻几页就令人叹一口气，不是赞叹风景的优美，而是惊讶书里的错别字之多。比如“旅游”、“制造”、“建筑”，这些在简体中正确的写法，在繁体文章中却是错误（应为“旅遊”、“製造”、“建築”）。真不知港台游客是否能读得下去？\n" +
-                "\n" +
-                "乘双层公交车出游，一幢高楼顶上的巨幅招牌跳入眼帘，想躲都躲不开。那是三个正楷大字，第一个字的繁简体写法相同，不去说它；第二个字的繁简体写法不同，这里用的是繁体；第三个字的繁简体写法也不同，这里写的却是简体。这样一幅招牌，既不合简体的规矩，也不合繁体的规矩，然而它巍然屹立在那里，俨然有着合法的身份。\n" +
-                "\n" +
-                "有人可能会说，这些字固然写得不对，你却也不必大惊小怪，这些不完美也无伤大雅嘛。我也曾是这么想的，直到我有了下面这一回遭遇。\n" +
-                "\n" +
-                "是可忍，孰不可忍\n" +
-                "住处附近有个客流量很大的去处，各色人等人来人往，像机场一般热闹。营业大厅宽敞气派，装修华丽，墙上有巨幅壁画。其中一幅描绘了二十多位中国历史名人，为了帮助观众识别，上面刻有画中人名单。第一次细看此画时我想，祖国历史上最有名的二三十人，他们的名字我自然都该认得出，尽管那名单是用繁体写成。可当我的目光扫过名单时，头上不由得冒汗了：有个名字闻所未闻！愣了好一会儿，我才省悟过来这个“嶽飛”指的是谁，──那位家喻戶曉的民族英雄，名字居然被错写成这副模样！还有一个“範仲淹”也写得不对。于是我找到那地方的在线留言簿，发去一条短信：“贵处壁画中‘嶽飛’和‘範仲淹’这两个人名有误，影响不好，望予更正。”\n" +
-                "\n" +
-                "我满以为，看到我的提醒之后，他们会对自己的疏忽表示歉意并设法改正的。但我完全错了，他们回复说：“感谢您的关注。本中心大厅壁画上岳飞和范仲淹的姓氏使用的是繁体字。”我哭笑不得，只好又写了一封回复向他们讲解，在繁体中姓岳的岳字不能写作“山嶽”的“嶽”，姓范的范字也不能写做“範圍”的“範”，此二人名的正确繁体写法是“岳飛”和“范仲淹”。这次可就石沉大海、再无回音了，几年时间过去，壁画上那张名单依然如故。我的一位外国朋友，他学过中文且繁简皆通，也看到了这幅壁画，他对我说，“岳飞还在监狱里呢？！”（“嶽”的山字头下面是个繁体的狱字。）我哑口无言，欲哭无泪：这恐怕是创了历史记录，九百年来大概没有人敢把岳飞的姓氏写错成这个样子，而且还拒不更正！以前在学“数典忘祖”这个成语时总觉得那情景难以想象，而眼前竟是这样一个活生生的实例。在大雅之堂上数典忘祖，这种耻辱我看有甚于割地求和！\n" +
-                "\n" +
-                "反复思索这件事，渐渐地我觉出，比写错几个字更可怕的是那种对待繁体字的态度。本来，学简体字长大的一代，写错一些繁体字在所难免，但是当别人指出可能有错时，却不肯花一点时间去弄弄清楚是否如此，而是简单地宣布那是繁体字就万事大吉、再也不闻不问了。那态度就好像繁体字是拉丁文，自己完全没有能力辨别；又好像繁体字不是自己祖先的文字，写对写错与自己毫不相干。这样一种冷漠，让我感到阵阵心寒。\n" +
-                "\n" +
-                "不过，我撞上的，恐怕还只是冰山的一角。\n" +
-                "\n" +
-                "为什么这类错别字越来越多\n" +
-                "在简体字推行初期，六十年代、七十年代、甚至八十年代，这样的问题还很少见，而如今这一类错别字却像雨后野草，满目皆是，而且愈演愈烈。为什么呢？对比今昔可以看到，最近二十来年，我们身边的文字使用环境已经发生了重大的变化：\n" +
-                "\n" +
-                "其一，使用繁体字的需求不断增长。\n" +
-                "\n" +
-                "过去，繁体字主要用于古籍整理和海外交往。如今，更多的产品销往海外，更多的游客来华访问，哪个商家不想打开海外市场？即使只面向国内，随着对传统文化兴趣的增长，人们越来越多地用繁体字书写店名和广告、印制简介和名片、……，以求得古色古香、底蕴深厚的印象。互联网的普及，大大增加了人们接触繁体字的机会，而繁体字的一些独特优点（比如在平面设计中更为美观）日益为在简体字中长大的一代所认识，使得不少年轻人对繁体字跃跃欲试。繁体字已不再是“港台专用文字”，而是全中国日常文字环境中活生生的一部分，想想看，哪一天你没有遇见一些繁体字呢？可是与此同时，会正确使用繁体字的人却在减少。过去，在需要用繁体字的场合，还有自幼使用繁体字的一代人把关，如今他们大多已经不在了。比他们年轻些的、在繁简过渡时期学会阅读的一代，至少知道岳飞的名字用繁体来写该是什么样子，可他们也正在老去。正在逐渐成为当今社会中坚的年青一代，是在完全的简体字环境(以及不大正确的繁体字环境)中长大的，就整体来说，他们对繁体字是生疏的，似懂非懂。\n" +
-                "\n" +
-                "其二，信息科技的发展使汉字已不必手写。\n" +
-                "\n" +
-                "过去的文稿需要手写，而能手写繁体字的人通常都有着相当的阅读和书写繁体字的经验，不会分不清繁体中的“裏”和“里”、“雲”和“云”。如今，不必知道笔画详情也可以打出汉字来，甚至完全不识繁体字的人，也可以先用简体字打出一篇文章，再点击一下就将全文翻成繁体。信息科技所带来的方便，大大降低了用繁体字写作的门槛，使不少人误以为使用电脑就可以轻易而准确地将简体字转换为繁体字。于是，没有学习过繁体中文基本常识的人们越来越多地依赖信息技术来读写繁体字。这就使得今日繁体文章的作者之中有相当多的人，没有能力辨认自己文章中违反繁体字常识的初级错误。\n" +
-                "\n" +
-                "然而，需要指出的是，需求的增长和技术的进步未必就一定会使繁体错别字大量增加；造成目前问题的根本原因，还是人们心中的一些观念不符合当前的现实。本文的下半部分将分析探讨造成问题现状的两种主要错误观念，有兴趣的读者且听下回分解。";
+        String text = "原审法院经审理查明：2013年7月8日，李炳祥、李炳恕与李炳太共同出具借据两份，分别向丁立德借款120000元、180000元，双方口头约定月利率2%。2014年8月19日之前的利息已经付清。丁立德索款未果，曾于2014年9月24日以李炳太、李炳祥、李炳恕为被告诉至原审法院，要求归还借款及利息。因李炳太涉嫌非法吸收公众存款犯罪，原审法院于2014年12月2日作出（2014）沭开民初字第02091－2号民事裁定书，驳回丁立德的起诉，并将案件移送沭阳县公安局审查处理。后沭阳县公安局以李炳太涉嫌非法吸收公众存款犯罪立案。现丁立德以李炳祥、李炳恕为被告诉至原审法院，要求支持其上述诉请。\n" +
+                "诉讼过程中，丁立德自愿变更诉讼请求为请求判决李炳祥、李炳恕归还丁立德借款本金300000元，本案诉讼费由李炳祥、李炳恕承担，对借款利息表示另案主张权利。\n" +
+                "原审法院认为：2015年9月1日起施行的《最高人民法院关于审理民间借贷案件适用法律若干问题的规定》第十三条第一款规定：借款人或出借人的借贷行为涉嫌犯罪，或者已经生效的判决认定构成犯罪，当事人提起民事诉讼的，民间借贷合同并不当然无效。人民法院应当根据合同法第五十二条、本规定第十四条之规定，认定民间借贷合同的效力。李炳太涉嫌非法吸收公众存款罪，涉嫌犯罪的当事人单个借款行为不构成犯罪，只有达到一定量后才发生质变，构成犯罪，即犯罪行为与合同行为不重合。李炳太、李炳祥、李炳恕共同向丁立德借款时，各方意思表示真实，丁立德与李炳祥、李炳恕、李炳太之间的借贷关系不违反法律、行政法规的效力性强制性规定，未损害国家、集体、公共利益或者第三人利益，也没有“以合法形式掩盖非法目的”，应认定合法有效。原审法院受理、审理可以“刑民并行”。李炳祥、李炳恕为共同借款人，依法应当承担共同还款责任。李炳祥、李炳恕辩解其为见证人，未提供证据予以证明其主张。故丁立德要求李炳祥、李炳恕归还借款本金的诉讼请求，有事实和法律依据，原审法院予以支持。丁立德在本案中撤回对支付借款利息的诉讼请求，表示另案主张权利，系对其民事权利的处分，符合法律规定，原审法院予以准许。李炳祥、李炳恕的辩解无事实和法律依据，原审法院不予支持。依照《中华人民共和国合同法》第二百零六条、《最高人民法院关于审理民间借贷案件适用法律若干问题的规定》第十三条第一款、《中华人民共和国民事诉讼法》第一百四十二条之规定，判决：李炳祥、李炳恕应于判决发生法律效力之日起十日内向丁立德支付借款本金300000元。\n" +
+                "原审判决宣判后，李炳祥、李炳恕不服，向本院提起上诉，请求二审法院依法改判驳回丁立德原审诉讼请求。其上诉的主要理由为：1、原审法院认定李炳祥、李炳恕与李炳太、周敏为共同借款人是错误的。事实上，李炳祥、李炳恕是作为涉案借款的介绍人、证明人在借据上签字的，实际借款人是李炳太。在（2014）沭开民初字第2092号案件庭审笔录中，周敏承认是其与丈夫李炳太借的钱，李炳祥、李炳恕只是介绍人、证明人。另外，从借条签名上也可判断出李炳祥、李炳恕不是借款人，因二人的签名并非签在借款人处，而是签在借款日期的后面，符合介绍人、证明人签字的一般习惯。2、本案适用法律错误。即使李炳祥、李炳恕是共同借款人，本案也应当驳回起诉。本案真正的借款人李炳太已因涉嫌非法吸收公众存款罪被公安机关立案侦查，依据《最高人民法院、最高人民检察院、公安部关于办理非法集资刑事案件适用法律若干问题的意见》第七条及《最高人民法院关于审理民间借贷案件适用法律若干问题的规定》第五条之规定，本案应当驳回起诉。\n" +
+                "被上诉人丁立德答辩称，原审判决认定事实清楚，适用法律正确，应判决驳回上诉，维持原判。具体理由如下：1、李炳祥、李炳恕在欠条上签名没有特别注明其他身份，签名的人均应当认定为借款人。因为借款人为多人，书写位置必然不会一致，但不影响作为借款人的认定。2、本案的民事部分事实清晰，并不会因为刑事案件的侦查导致案情无法认定，并不是必须依据刑事案件的结论才能下判决。3、李炳祥、李炳恕本身并不在刑事案件侦查范围，丁立德在一审起诉前也向沭阳县公安局报案，要求将李炳祥、李炳恕列为犯罪嫌疑人进行侦查，公安机关明确予以拒绝。所以本案双方当事人之间的借贷关系明确，可以进行判决。\n" +
+                "本案二审的争议焦点为：1、李炳祥、李炳恕是否是涉案借款的共同借款人；2、本案是否为应当驳回起诉的案件。\n" +
+                "本院认为，关于第一争议焦点，虽然李炳祥、李炳恕在借条“借款人”处签字，但因李炳太涉嫌非法吸收公众存款罪被立案侦查，故本案的实际借款人是否包含李炳祥、李炳恕仍需经过刑事判决后方可认定。\n" +
+                "关于第二争议焦点，《最高人民法院关于审理民间借贷案件适用法律若干问题的规定》第五条之规定，人民法院立案后，发现民间借贷行为本身涉嫌非法集资犯罪的，应当裁定驳回起诉，并将涉嫌非法集资犯罪的线索、材料移送公安机关或者检查机关。因李炳太涉嫌非法吸收公众存款罪已被立案侦查，本案借款行为本身即涉嫌非法吸收公众存款罪，应裁定驳回起诉，原审法院应将本案移送公安机关处理。如果公安机关立案侦查后撤销案件、或者检察机关作出不起诉决定、或者人民法院生效判决认定不构成非法集资犯罪的，丁立德可以就同一事实理由再次向人民法院提起诉讼。";
 
         List<RuleMatch> matches = langTool.check(text);
         for (RuleMatch match : matches) {
@@ -84,7 +94,7 @@ public class TypoChecker {
             System.out.println("text:" + text.substring(match.getFromPos(), match.getToPos()));
             System.out.println("rule " + match.getRule().getCategory());
             System.out.println("rule id " + match.getRule().getId());
-            System.out.println("sentence " + match.getSentence().getAnnotations());
+//            System.out.println("sentence " + match.getSentence().getAnnotations());
             System.out.println("sentence " + match.getSentence().getText());
             System.out.println("short" + match.getShortMessage());
             System.out.println("Suggested correction(s): " +

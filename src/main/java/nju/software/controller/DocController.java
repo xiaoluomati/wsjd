@@ -4,10 +4,7 @@ import nju.software.service.DocManagerService;
 import nju.software.service.ErrorCheckService;
 import nju.software.service.LawManagerService;
 import nju.software.util.MultipartFileUtil;
-import nju.software.vo.CheckInfoVO;
-import nju.software.vo.DocInfoVO;
-import nju.software.vo.DocType;
-import nju.software.vo.LawItemVO;
+import nju.software.vo.*;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by away on 2018/3/26.
@@ -71,11 +69,17 @@ public class DocController {
         System.out.println("name = " + name);
         CheckInfoVO checkInfoVO = errorCheckService.checkError(new DocInfoVO("xml\\"+ name.substring(0,name.indexOf("."))+".xml", docType.getFileName()));
 
+        // Æ´Ð´¼ì²é
+        Map<String, List<SectionTypoCheckVO>> typoMap = errorCheckService.checkTypo(doc);
+
+
         model.addAttribute("docName", getFileNameWithoutSuffix(file));
         model.addAttribute("docType", docType.getFileName());
         model.addAttribute("doc", doc);
         model.addAttribute("lawList", lawItemVOList);
         model.addAttribute("error", checkInfoVO);
+        model.addAttribute("typoMap", typoMap);
+        model.addAttribute("typoNum", getTypoNum(typoMap));
         return "result";
     }
 
@@ -84,6 +88,14 @@ public class DocController {
         String name = file.getName();
         int index = name.indexOf(".");
         return name.substring(0, index);
+    }
+
+    private int getTypoNum(Map<String, List<SectionTypoCheckVO>> typoMap) {
+        int count = 0;
+        for (List<SectionTypoCheckVO> sectionTypoCheckVOS : typoMap.values()) {
+            count += sectionTypoCheckVOS.size();
+        }
+        return count;
     }
 
     @Autowired

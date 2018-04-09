@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 public class REUtil {
 
 
-    public static final String SINGLE_CHINESE = "[\\u0391-\\uFFE5]{1}";
-    public static final String CHINESE = "[\\u0391-\\uFFE5]+";
+    public static final String SINGLE_CHINESE = "[\\u4E00-\\u9FA5]{1}";
+    public static final String CHINESE = "[\\u4E00-\\u9FA5]+";
 
-    public static boolean match(String content, String pattern){
+    public static  boolean match(String content, String pattern){
         Pattern compile = Pattern.compile(pattern);
         Matcher matcher = compile.matcher(content);
         return matcher.find();

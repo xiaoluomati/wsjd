@@ -3,15 +3,16 @@ package nju.software.vo;
 /**
  * Created by away on 2018/4/8.
  */
-public class TypoCheckVO {
+public class SectionTypoCheckVO {
 
     private int start;
     private int end;
     private String word;
     private String sentence;
     private String ruleId;
+    private String message;
 
-    public TypoCheckVO() {
+    public SectionTypoCheckVO() {
     }
 
     public int getStart() {
@@ -52,5 +53,13 @@ public class TypoCheckVO {
 
     public void setRuleId(String ruleId) {
         this.ruleId = ruleId;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

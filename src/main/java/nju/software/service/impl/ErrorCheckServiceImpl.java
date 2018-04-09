@@ -1,12 +1,14 @@
 package nju.software.service.impl;
 
 import nju.software.check.AHChecker;
+import nju.software.check.typo.TypoChecker;
 import nju.software.repository.TemplateRepository;
 import nju.software.service.ErrorCheckService;
 import nju.software.util.JsonParserUtil;
 import nju.software.util.Synonym;
 import nju.software.util.XmlParserUtil;
 import nju.software.vo.*;
+import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,9 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     @Autowired
     private AHChecker ahChecker;
 
+    @Autowired
+    private TypoChecker typoChecker;
+
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
         CheckInfoVO checkInfoVO = new CheckInfoVO();
@@ -47,8 +52,28 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     }
 
     @Override
-    public List<TypoCheckVO> checkTypo(String content) {
-        return null;
+    public Map<String, List<SectionTypoCheckVO>> checkTypo(WsModel wsModel) {
+        Map<String, List<SectionTypoCheckVO>> typoMap = new HashMap<>();
+
+        String wsssjlSegment = wsModel.getWsssjlSegment();
+        typoMap.put("ssjl", typoChecker.check(wsssjlSegment));
+
+        String wsajjbqSegment = wsModel.getWsajjbqSegment();
+        typoMap.put("ajjbqk", typoChecker.check(wsajjbqSegment));
+
+        String wscpfxgcSegment = wsModel.getWscpfxgcSegment();
+        typoMap.put("cpfxgc", typoChecker.check(wscpfxgcSegment));
+
+        String wscpjgSegment = wsModel.getWscpjgSegment();
+//        SectionTypoCheckVO sectionTypoCheckVO = new SectionTypoCheckVO();
+//        sectionTypoCheckVO.setStart(3);
+//        sectionTypoCheckVO.setEnd(9);
+//        sectionTypoCheckVO.setWord("test");
+        List<SectionTypoCheckVO> check = typoChecker.check(wscpjgSegment);
+//        check.add(sectionTypoCheckVO);
+        typoMap.put("cpjg", check);
+
+        return typoMap;
     }
 
 

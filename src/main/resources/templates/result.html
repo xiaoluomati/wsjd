@@ -35,7 +35,7 @@
                 <!--// 文首段落-->
                 <div class="sec">
                   <span class="sec-title">文首</span>
-                  <button id="ws" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="ws" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getWS().size()}"></span>
                 </div>
@@ -49,7 +49,7 @@
                 <hr></hr>
                 <div class="sec">
                   <span class="sec-title">诉讼参与人</span>
-                  <button id="sscyr" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="sscyr" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getSSCYR().size()}"></span>
                 </div>
@@ -61,56 +61,56 @@
                 <hr></hr>
                 <div class="sec">
                   <span class="sec-title">诉讼记录</span>
-                  <button id="ssjl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="ssjl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getSSJL().size()}"></span>
                 </div>
-                <p th:text="${doc.getWsssjlSegment()}"></p>
+                <p id="ssjlp" th:text="${doc.getWsssjlSegment()}"></p>
 
                 <!--// 案件基本情况段落-->
                 <hr></hr>
                 <div class="sec">
                   <span class="sec-title">案件基本情况</span>
-                  <button id="ajjbqk" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="ajjbqk" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getAJJBQK().size()}"></span>
                 </div>
-                <p th:text="${doc.getWsajjbqSegment()}"></p>
+                <p id="ajjbqkp" th:text="${doc.getWsajjbqSegment()}"></p>
 
                 <!--// 裁判分析过程段落-->
                 <div class="sec">
                   <span class="sec-title">裁判分析过程</span>
-                  <button id="cpfxgc" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="cpfxgc" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getCPFXGC().size()}"></span>
                 </div>
-                <p th:text="${doc.getWscpfxgcSegment()}"></p>
+                <p id="cpfxgcp" th:text="${doc.getWscpfxgcSegment()}"></p>
 
                 <!--// 裁判结果段落-->
                 <hr></hr>
                 <div class="sec">
                   <span class="sec-title">裁判结果</span>
-                  <button id="cpjg" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="cpjg" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getCPJG().size()}"></span>
                 </div>
-                <p th:text="${doc.getWscpjgSegment()}"></p>
+                <p id="cpjgp" th:text="${doc.getWscpjgSegment()}"></p>
 
                 <!--// 文尾段落-->
                 <hr></hr>
                 <div class="sec">
                   <span class="sec-title">文尾</span>
-                  <button id="ww" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>
+                  <button id="ww" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getWW().size()}"></span>
                 </div>
-                <p th:text="${doc.getWswwSegment()}"></p>
+                <p id="wwp" th:text="${doc.getWswwSegment()}"></p>
 
                 <!--&lt;!&ndash;// 附录&ndash;&gt;-->
                 <!--<hr></hr>-->
                 <!--<div class="sec">-->
                   <!--<span class="sec-title">附录</span>-->
-                  <!--<button id="fl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误数</button>-->
+                  <!--<button id="fl" class="btn btn-xs btn-danger" data-toggle="popover" data-trigger="focus">错误详情</button>-->
                   <!--&lt;!&ndash;/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/&ndash;&gt;-->
                   <!--<span class="badge" th:text="${error.getFL().size()}"></span>-->
                 <!--</div>-->
@@ -144,6 +144,11 @@
                   <span>上下文不统一</span>
                   <span class="badge" th:text="${error.getErrorTypeMap().get('上下文不统一')}"></span>
                 </div>
+
+                <div class="alert alert-success mistake-alert" role="alert">
+                  <span>拼写错误</span>
+                  <span class="badge" th:text="${typoNum}"></span>
+                </div>
               </section>
             </div>
           </div>
@@ -175,6 +180,7 @@
     </div>
   </div>
 </body>
+<script type="text/javascript" th:src="@{/js/highlightRegex.js}"></script>
 <script th:inline="javascript">
   $(function () {
     function getTable(errors) {
@@ -185,6 +191,7 @@
           '<tr> ' +
           '<th>错误内容</th> ' +
           '<th>错误类型</th> ' +
+          '<th>提示</th> ' +
           '</tr> ' +
           '</thead> ' +
           '<tbody> ';
@@ -192,6 +199,7 @@
         str += '<tr> ' +
             '<td>' + errors[i].error + '</td> ' +
             '<td>' + errors[i].errorTypeName + '</td> ' +
+            '<td>' + errors[i].tip + '</td> ' +
             '</tr> ';
       }
       str += '</tbody> ' +
@@ -305,39 +313,45 @@
       }
     });
 
-    keywordHighlight('intro', '裁');
-    function keywordHighlight(idHtmlContent,keyword) {
-      /*<![CDATA[*/
-      var content= $("#"+idHtmlContent).html();//获取内容
-      if ($.trim(keyword)==""){
-        return;//关键字为空则返回
+//    $("p").highlightRegex( /(裁定)/, {
+//      attrs: {'class': 'text-highlight'}
+//    });
+    /*<![CDATA[*/
+    function highlight(sectionName, section) {
+//      console.log(section);
+//      console.log(sectionName);
+        for (var i = section.length-1; i >= 0; i--) {
+          var error = section[i];
+//          console.log(sectionName);
+          $("p").highlightRange('#' + sectionName + 'p', error['start'], error['end'], i);
       }
-      var htmlReg = new RegExp("\<.*?\>", "i");
-      var arrA = new Array();
-      //替换HTML标签
-      for (var i = 0; true; i++) {
-        var m = htmlReg.exec(content);
-        if (m) {
-          arrA[i] = m;
-        }else {
-          break;
-        }
-        content = content.replace(m, "{[(" + i + ")]}");
-      }
-      words = unescape(keyword.replace(/\+/g, ' ')).split(/\s+/);
-      //替换关键字
-      for (w = 0; w < words.length; w++) {
-        var r = new RegExp("(" + words[w].replace(/[(){}.+*?^$|\\
-]/g, "\\$&") + ")", "ig");
-        content = content.replace(r, "<b><span style='color:red;font-size:14px;'><u>"+words[w]+"</u></span></b>");//关键字样式
-      }
-      //恢复HTML标签
-      for (var i = 0; i < arrA.length; i++) {
-        content = content.replace("{[(" + i + ")]}", arrA[i]);
-      }
-      $("#"+idHtmlContent).html(content);
-      /*]]>*/
     }
+
+    var typoMap = [[${typoMap}]];
+    var sections = ['ssjl', 'ajjbqk', 'cpfxgc', 'cpjg'];
+    for (var i = 0; i < sections.length; i++) {
+      var sectionName = sections[i];
+      highlight(sectionName, typoMap[sectionName]);
+    }
+
+    $(".text-highlight").popover({
+      html: true,      //实现对html可写
+      title: '拼写错误',
+      content: function() {
+        var idx = $($(this)[0]).attr('index');
+        var parent = $(this).parent()[0];
+        var errorId = $(parent).attr('id');
+        errorId = errorId.substring(0, errorId.length-1);
+        var section = typoMap[errorId][idx];
+//        console.log(section[idx]);
+        return section['message'];
+      }
+    })
+
+
+    /*]]>*/
+
   });
+
 </script>
 </html>
