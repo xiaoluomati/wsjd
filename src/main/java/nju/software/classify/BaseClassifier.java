@@ -26,7 +26,7 @@ public abstract class BaseClassifier {
 
     protected String cpgc;
 
-    final String CHINESE = "[\\u0391-\\uFFE5]+";
+    static final String CHINESE = "[\\u4e00-\\u9fa5]+";
 
     public abstract DocType getType(WsModel wsModel);
 
