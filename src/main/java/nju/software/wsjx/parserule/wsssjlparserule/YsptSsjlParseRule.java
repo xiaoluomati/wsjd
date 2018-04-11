@@ -23,6 +23,9 @@ public class YsptSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
         for (String s : contentArray) {
             if (s.contains("原告") && s.contains("被告") && s.contains("一案")){
                 int index = s.indexOf("与");
+                if (index == -1) {
+                    index = s.indexOf("诉");
+                }
                 wsssjlModel.setYg(s.substring(s.indexOf("原告") + 2, index));
                 wsssjlModel.setBg(s.substring(s.indexOf("被告") + 2, s.indexOf(ay)));
                 break;

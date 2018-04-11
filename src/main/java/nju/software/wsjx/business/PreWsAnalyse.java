@@ -1,15 +1,13 @@
 package nju.software.wsjx.business;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import nju.software.wsjx.exception.ParseException;
 import nju.software.wsjx.model.Enum.HeadEnum;
 import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.parserule.wswsparserule.GeneralWsParseRule;
 import nju.software.wsjx.parserule.wswsparserule.WsParseRule;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -65,6 +63,7 @@ public class PreWsAnalyse {
 			wsnr = wsnr.replaceAll(" ", "");
 			String[] qfsj = wsnr.split("\n");
 
+//			System.out.println("qfsj = " + Arrays.toString(qfsj));
 			wsnrList = new ArrayList<String>();
 			int wsEnd = -1;
 			for (int i = 0; i < qfsj.length; i++) {

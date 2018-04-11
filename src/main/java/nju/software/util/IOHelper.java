@@ -9,13 +9,31 @@ import java.util.List;
  */
 public class IOHelper {
 
-    public static List<String> read(String fileName) {
+    // 有预处理
+    public static List<String> read(String path) {
         List<String> content = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(
-                new InputStreamReader(new FileInputStream(fileName), "utf-8"))) {
+                new InputStreamReader(new FileInputStream(path), "utf-8"))) {
             String s;
             while ((s = bufferedReader.readLine()) != null) {
-                s = preProcess(s);
+                s = StringUtil.trim(s);
+                if (s.length() != 0) {
+                    content.add(s);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+
+    // 无预处理
+    public static List<String> readRaw(String path) {
+        List<String> content = new ArrayList<>();
+        try(BufferedReader bufferedReader = new BufferedReader(
+                new InputStreamReader(new FileInputStream(path), "utf-8"))) {
+            String s;
+            while ((s = bufferedReader.readLine()) != null) {
                 if (s.length() != 0) {
                     content.add(s);
                 }
@@ -33,16 +51,5 @@ public class IOHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    // 去除半角全角制表符等各类空格
-    private static String preProcess(String content) {
-        content = content.replace((char) 65279, ' ');
-        content = content.replace((char) 12288, ' ');
-        content = content.replace((char) 32, ' ');
-        content = content.replace(" ", "");
-        content = content.replaceAll("\\u00A0","");
-        content = content.replace("\t", "");
-        return content;
     }
 }

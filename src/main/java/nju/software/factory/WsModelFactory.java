@@ -2,13 +2,15 @@ package nju.software.factory;
 
 import nju.software.classify.BaseClassifier;
 import nju.software.classify.ParseMap;
-import nju.software.vo.DocType;
 import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
 import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.parse.ParseSegment;
 import nju.software.wsjx.util.ListToString;
+
+import java.util.List;
 
 /**
  * Created by away on 2018/3/28.
@@ -32,6 +34,19 @@ public class WsModelFactory {
                     name = filename;
                 }
             }
+        }
+        return wsModel;
+    }
+
+    // wsModel 生成后拿取
+    public static WsModel getInstance() {
+        List<WssscyrModel> wssscyrModels = wsModel.getWssscyrModels();
+        for (WssscyrModel wssscyrModel : wssscyrModels) {
+            System.out.println("----------------------");
+            System.out.println("wssscyrModel.getSscyr() = " + wssscyrModel.getSscyr());
+            System.out.println("wssscyrModel.getXb() = " + wssscyrModel.getXb());
+            System.out.println("wssscyrModel.getDsrdz() = " + wssscyrModel.getDsrdz());
+            System.out.println("----------------------");
         }
         return wsModel;
     }
@@ -71,7 +86,7 @@ public class WsModelFactory {
     }
 
 
-    private static  WsModel  fillWsModelSegment(WsModel wsModel,WsAnalyse wsAnalyse) {
+    private static  void  fillWsModelSegment(WsModel wsModel,WsAnalyse wsAnalyse) {
         wsModel.setWswsSegment(ListToString.List2String(wsAnalyse.getWs()));
         wsModel.setWssscyrSegment(wsAnalyse.getSscyr());
         wsModel.setWsssjlSegment(wsAnalyse.getSsjl());
@@ -81,6 +96,5 @@ public class WsModelFactory {
         wsModel.setWswwSegment(ListToString.List2String(wsAnalyse.getWw()));
         wsModel.setWsqw(wsAnalyse.getWsnr());
         wsModel.setWsfl(ListToString.List2String(wsAnalyse.getFl()));
-        return wsModel;
     }
 }

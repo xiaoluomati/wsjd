@@ -1,5 +1,6 @@
 package nju.software.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,18 +8,27 @@ import java.util.List;
  */
 public class Synonym {
 
-    // TODO 同义词
-    private static String[] sscyr = {"诉讼费承担记录", "诉讼费承担"};
-    private static String[] ssr = {"上诉人(原审诉讼地位)", "上诉人", "上诉人(原审原告)", "上诉人(原审被告)"};
-    private static String[] bssr = {"被上诉人(原审诉讼地位)", "被上诉人", "被上诉人(原审原告)", "被上诉人(原审被告)"};
+    private static final String PATH = "src\\main\\resources\\synonym.txt";
+
+    private static final String SPLIT = ", ";
+
+    private static List<String[]> synonymList;
+
+    static {
+        synonymList = new ArrayList<>();
+        List<String> read = IOHelper.readRaw(PATH);
+        for (String s : read) {
+            String[] split = s.split(SPLIT);
+//            System.out.println("split = " + Arrays.toString(split));
+            synonymList.add(split);
+        }
+    }
 
     public static boolean isEqual(String a, String b) {
-        if (same(sscyr, a, b)) {
-            return true;
-        } else if (same(ssr, a, b)) {
-            return true;
-        } else if (same(bssr, a, b)) {
-            return true;
+        for (String[] strings : synonymList) {
+            if (same(strings, a, b)) {
+                return true;
+            }
         }
         return a.equals(b);
     }
@@ -44,4 +54,8 @@ public class Synonym {
         }
         return true;
     }
+
+//    public static void main(String[] args) {
+//        Synonym.isEqual("a", "b");
+//    }
 }

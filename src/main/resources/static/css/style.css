@@ -1264,7 +1264,7 @@ section#tables  p {
   background-color: #ffffff;
 }
 .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-  padding: 15px!important;
+  padding: 10px!important;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   font-size: 0.9em;
@@ -2179,12 +2179,13 @@ div .badge {
 }
 
 .sec .popover {
+    color: #3c3c3c;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1060;
     display: none;
-    max-width: 500px;
+    max-width: 1300px;
     padding: 1px;
     font-size: 14px;
     font-weight: 500;
@@ -2315,4 +2316,8 @@ button i {
     color: #333333;
     font-size: 17px;
     font-weight: 500;
+}
+
+.table-error {
+    width: 800px;
 }

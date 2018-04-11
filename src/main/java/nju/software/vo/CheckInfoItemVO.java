@@ -9,17 +9,27 @@ public class CheckInfoItemVO {
     private String error;
     private String errorTypeName;
     private String tip;
+    private ErrorLevelEnum errorLevel;
 
     public CheckInfoItemVO(ErrorType errorType, String error) {
         this.error = error;
         this.tip = "";
         setErrorType(errorType);
+        errorLevel = ErrorLevelEnum.LV_2;
     }
 
     public CheckInfoItemVO(ErrorType errorType, String error, String tip) {
         this.error = error;
         this.tip = tip;
         setErrorType(errorType);
+        errorLevel = ErrorLevelEnum.LV_2;
+    }
+
+    public CheckInfoItemVO(ErrorType errorType, String error, String tip, ErrorLevelEnum errorLevel) {
+        this.error = error;
+        this.tip = tip;
+        setErrorType(errorType);
+        this.errorLevel = errorLevel;
     }
 
     public ErrorType getErrorType() {
@@ -51,6 +61,14 @@ public class CheckInfoItemVO {
         this.tip = tip;
     }
 
+    public ErrorLevelEnum getErrorLevel() {
+        return errorLevel;
+    }
+
+    public void setErrorLevel(ErrorLevelEnum errorLevel) {
+        this.errorLevel = errorLevel;
+    }
+
     @Override
     public String toString() {
         return "CheckInfoItemVO{" +
@@ -58,6 +76,7 @@ public class CheckInfoItemVO {
                 ", error='" + error + '\'' +
                 ", errorTypeName='" + errorTypeName + '\'' +
                 ", tip='" + tip + '\'' +
+                ", errorLevel=" + errorLevel +
                 '}';
     }
 }

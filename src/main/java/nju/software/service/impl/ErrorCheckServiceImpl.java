@@ -1,7 +1,9 @@
 package nju.software.service.impl;
 
 import nju.software.check.AHChecker;
+import nju.software.check.SSCYRChecker;
 import nju.software.check.typo.TypoChecker;
+import nju.software.factory.WsModelFactory;
 import nju.software.repository.TemplateRepository;
 import nju.software.service.ErrorCheckService;
 import nju.software.util.JsonParserUtil;
@@ -9,6 +11,7 @@ import nju.software.util.Synonym;
 import nju.software.util.XmlParserUtil;
 import nju.software.vo.*;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,8 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 
     private XmlParserUtil xmlParserUtil;
 
+    private WsModel wsModel;
+
     @Autowired
     private TemplateRepository templateRepository;
 
@@ -33,9 +38,13 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     @Autowired
     private TypoChecker typoChecker;
 
+    @Autowired
+    private SSCYRChecker sscyrChecker;
+
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
         CheckInfoVO checkInfoVO = new CheckInfoVO();
+        wsModel = WsModelFactory.getInstance();
         jsonParserUtil = new JsonParserUtil(templateRepository.getJson(docInfoVO.getJsonName()));
 //        jsonParserUtil = new JsonParserUtil(docInfoVO.getJsonName());
 
@@ -93,21 +102,10 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     }
 
     private List<CheckInfoItemVO> checkSscyr(){
-        List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
-        final List<String> dsrRequirements = this.jsonParserUtil.getDsrRequirements();
-        String dsrRequirementsArray = Arrays.toString(dsrRequirements.toArray());
-        //当事人诉讼地位比对
-        List<String> dsrList = this.xmlParserUtil.getDsr();
-//        checkInfoItemVOS.addAll(checkYS("诉讼当事人",dsrRequirements, dsr));
-        System.out.println("dsrRequirementsArray = " + dsrRequirementsArray);
-        for (String s : dsrList) {
-            System.out.println("s = " + s);
-            if (!Synonym.isContains(dsrRequirements, s)) {
-                String errMsg = "诉讼参与人地位仅限于" + dsrRequirementsArray;
-                checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSCW, errMsg));
-            }
-        }
-        return checkInfoItemVOS;
+        List<WssscyrModel> wssscyrModels = wsModel.getWssscyrModels();
+        List<CheckInfoItemVO> check = sscyrChecker.check(jsonParserUtil, wssscyrModels);
+
+        return check;
     }
 
     private List<CheckInfoItemVO> checkSSJL(){
