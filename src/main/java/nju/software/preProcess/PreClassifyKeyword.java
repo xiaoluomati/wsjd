@@ -89,7 +89,7 @@ public class PreClassifyKeyword {
 //                }
 //
 //
-//                TemplatePrePro templatePrePro = new TemplatePrePro(list);
+//                KeywordsPrePro templatePrePro = new KeywordsPrePro(list);
 //                keywordsMaker.addData(classname, templatePrePro.getWordNums());
 //            }
 //        }

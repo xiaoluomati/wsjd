@@ -119,12 +119,13 @@ public class PreClassifyLaws {
             stringBuilder.append(s);
             stringBuilder.append("\n");
             List<TemplateLawVO> templateLawVOS = uniqueLaws.get(s);
+            int count = 0;
             for (TemplateLawVO templateLawVO : templateLawVOS) {
-//                stringBuilder.append(templateLawVO.getName());
-                stringBuilder.append(" 独有:");
-                stringBuilder.append(templateLawVO.getItems().size());
-                stringBuilder.append("条\n");
+                count+=templateLawVO.getItems().size();
             }
+            stringBuilder.append(" 独有:");
+            stringBuilder.append(count);
+            stringBuilder.append("条\n");
         }
 
         for (String s : map.keySet()) {
@@ -133,7 +134,6 @@ public class PreClassifyLaws {
             List<TemplateLawVO> templateLawVOS = map.get(s);
             int count = 0;
             for (TemplateLawVO templateLawVO : templateLawVOS) {
-//                stringBuilder.append(templateLawVO.getName());
                 count += templateLawVO.getItems().size();
             }
             stringBuilder.append(" 总计:");
@@ -142,7 +142,6 @@ public class PreClassifyLaws {
             if(uniqueLawsDetail.containsKey(s)){
                 templateLawVOS = uniqueLawsDetail.get(s);
                 for (TemplateLawVO templateLawVO : templateLawVOS) {
-//                    stringBuilder.append(templateLawVO.getName());
                     stringBuilder.append(" 独有:");
                     stringBuilder.append(templateLawVO.getItems().size());
                     stringBuilder.append("条\n");

@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * Created by zhuding on 2018/4/10.
  */
-public class TemplatePrePro {
+public class KeywordsPrePro {
 
     private static final String STOPWORDDIC = "src/main/resources/stopword.txt";
 
@@ -26,7 +26,7 @@ public class TemplatePrePro {
 
     private static List<String> stopwordList = IOHelper.read(STOPWORDDIC);
 
-    public TemplatePrePro(List<String> contents) {
+    public KeywordsPrePro(List<String> contents) {
         init(contents);
     }
 
@@ -98,7 +98,7 @@ public class TemplatePrePro {
 //        List<String> strings = new ArrayList<>();
 //        strings.add("原告×××与被告×××……(写明案由)一案，本院于××××年××月××日立案后，依法进行审理。\n");
 //        strings.add("×××向本院提出诉讼请求：1.……；2.……(明确原告的诉讼请求)。事实和理由：……(概述原告主张的事实和理由)。");
-//        TemplatePrePro templatePrePro = new TemplatePrePro(strings);
+//        KeywordsPrePro templatePrePro = new KeywordsPrePro(strings);
 //        HashMap<String, Integer> wordNums = templatePrePro.getWordNums();
 //        for (String s : wordNums.keySet()) {
 //            System.out.println(s + ":" +wordNums.get(s));
