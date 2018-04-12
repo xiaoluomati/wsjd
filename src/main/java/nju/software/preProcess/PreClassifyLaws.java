@@ -48,11 +48,12 @@ public class PreClassifyLaws {
                 uniqueLaws.put(classname, TemplateLawVO.mergeList(templateLawVOS));
             }
         }
-        produceUniqueLaws(uniqueLaws,uniqueLaws);
-        produceUniqueLaws(map, uniqueLawsDetail);
+        uniqueLaws = produceUniqueLaws(uniqueLaws);
+        uniqueLawsDetail = produceUniqueLaws(map);
     }
 
-    private static void produceUniqueLaws(HashMap<String, List<TemplateLawVO>> map, HashMap<String, List<TemplateLawVO>> target){
+    private static HashMap<String, List<TemplateLawVO>> produceUniqueLaws(HashMap<String, List<TemplateLawVO>> map){
+        HashMap<String, List<TemplateLawVO>> target = new HashMap<>();
         for (String s : map.keySet()) {
             List<TemplateLawVO> templateLawVOS = map.get(s);
             List<TemplateLawVO> unique = new ArrayList<>();
@@ -70,6 +71,7 @@ public class PreClassifyLaws {
             if(unique.size() != 0)
                 target.put(s, unique);
         }
+        return target;
     }
 
     private static boolean isCommonLaw(HashMap<String, List<TemplateLawVO>> map, String classname, String lawname, String item){
