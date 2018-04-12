@@ -45,6 +45,7 @@ public class PreClassifyAH {
                 }
                 uniqueAH.put(classname, ahs);
             }
+            System.out.println(uniqueAH);
         }
         produceUniqueAH();
         produceUniqueAHD();
@@ -76,6 +77,7 @@ public class PreClassifyAH {
     }
 
     private static void produceUniqueAH(){
+        HashMap<String, List<String>> temp = new HashMap<>();
         for (String s : uniqueAH.keySet()) {
             List<String> strings = uniqueAH.get(s);
             List<String> uniquewords = new ArrayList<>();
@@ -86,17 +88,18 @@ public class PreClassifyAH {
                         uniquewords.add(matcher.group());
                 }
             }
-            uniqueAH.put(s, uniquewords);
+            temp.put(s, uniquewords);
         }
+        uniqueAH = temp;
     }
 
     private static boolean isCommonAHD(HashMap<String, String> map, String value){
         int count = 0;
         for (String s : map.keySet()) {
-            if(map.get(s).equals(value) || value.equals("(¡Á¡Á¡Á¡Á)¡­¡­ºÅ") || value.equals("(¡Á¡Á¡Á¡Á)¡­¡­Ãñ¡Á¡­¡­ºÅ")){
+            if(map.get(s).equals(value) ){
                 count++;
             }
-            if(count > 1){
+            if(count > 1|| value.equals("(¡Á¡Á¡Á¡Á)¡­¡­ºÅ") || value.equals("(¡Á¡Á¡Á¡Á)¡­¡­Ãñ¡Á¡­¡­ºÅ")){
                 return true;
             }
         }
@@ -105,10 +108,10 @@ public class PreClassifyAH {
     private static boolean isCommonAH(HashMap<String, List<String>> map, String value){
         int count = 0;
         for (String s : map.keySet()) {
-            if(map.get(s).contains(value)|| value.equals("(¡Á¡Á¡Á¡Á)¡­¡­ºÅ") || value.equals("(¡Á¡Á¡Á¡Á)¡­¡­Ãñ¡Á¡­¡­ºÅ")){
+            if(map.get(s).contains(value)){
                 count++;
             }
-            if(count > 1){
+            if(count > 1|| value.equals("(¡Á¡Á¡Á¡Á)¡­¡­ºÅ") || value.equals("(¡Á¡Á¡Á¡Á)¡­¡­Ãñ¡Á¡­¡­ºÅ")){
                 return true;
             }
         }
