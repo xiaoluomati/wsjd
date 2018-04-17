@@ -46,7 +46,7 @@ public class PreClassifyAH {
                 }
                 uniqueAH.put(classname, ahs);
             }
-            System.out.println(uniqueAH);
+//            System.out.println(uniqueAH);
         }
         produceUniqueAH();
         produceUniqueAHD();

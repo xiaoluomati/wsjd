@@ -41,6 +41,7 @@ public enum DocType {
     GX_ZQYSGX("民事裁定书(依职权移送管辖用)"),
     GX_BQZDGX("民事裁定书(因管辖权争议报请指定管辖案件用)"),
     GX_YGXQBQZD("民事裁定书(有管辖权人民法院报请指定管辖案件用)")
+
     ;
 
     String fileName;

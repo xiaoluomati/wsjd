@@ -65,6 +65,7 @@ public class WsModelFactory {
 //        }
         WsPrePro wsPrePro = new WsPrePro(content, filename);
         String className = wsPrePro.getPossibleType();
+        System.out.println("className = " + className);
 //        if(!className.equals(ParseMap.NOT_DETERMINED)){
         String string = CLASSIFY_PREFIX + ParseMap.getInstance().getClassifyName(className);
         try {

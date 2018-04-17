@@ -24,6 +24,8 @@ public abstract class BaseClassifier {
 
     public static final String GX_PREFIX = "GX";
 
+    public static final String SSCJR_PREFIX = "SSCJR";
+
     protected String ssjl;
 
     protected String cpjg;

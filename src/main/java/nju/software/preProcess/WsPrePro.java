@@ -54,10 +54,12 @@ public class WsPrePro {
         }
         String classnameByLaws = getClassnameByLaws();
         if(!classnameByLaws.equals(ParseMap.NOT_DETERMINED)){
+            System.out.println("classnameByLaws = " + classnameByLaws);
             return classnameByLaws;
         }
         String classnameByKeyword = getClassnameByKeyword();
         if(!classnameByKeyword.equals(ParseMap.NOT_DETERMINED)){
+            System.out.println("classnameByKeyword = " + classnameByKeyword);
             return classnameByKeyword;
         }
         return ParseMap.DEFAULT_PARSECLASS;
