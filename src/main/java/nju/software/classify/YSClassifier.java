@@ -22,7 +22,7 @@ public class YSClassifier extends BaseClassifier {
 
     @Override
     public DocType getType(WsModel wsModel, String ah) {
-        return getType(YS_PREFIX, ah, wsModel);
+        return getType(DocType.YS_PREFIX, ah, wsModel);
 //        this.ssjl = wsModel.getWsssjlSegment();
 //        this.cpjg = wsModel.getWscpjgSegment();
 //        List<String> ysList = DocType.getTypeList(BaseClassifier.YS_PREFIX);

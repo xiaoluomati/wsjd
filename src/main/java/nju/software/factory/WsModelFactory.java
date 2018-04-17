@@ -79,6 +79,7 @@ public class WsModelFactory {
             parseCaseinfo.registerWsAnalyse(wsPrePro.getWsAnalyse());
             wsModel = parseCaseinfo.transformToWsModel();
             fillWsModelSegment(wsModel, wsPrePro.getWsAnalyse());
+            wsModel.setWsType(className);
             wsModel.setPreWscpfxgcFtModels(wsPrePro.getWsFtParse().getFtModelList());
             wsModel.setDocType(baseClassifier.getType(wsModel, wsPrePro.getAH()));
             wsModel.transformToXml(XML_PATH,filename.substring(0, filename.indexOf(".")));

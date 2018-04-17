@@ -17,6 +17,17 @@ import nju.software.wsjx.util.XmlUtil;
  */
 public class WsModel {
 
+	//¥Û¿‡√˚≥∆
+	private String wsType;
+
+	public String getWsType() {
+		return wsType;
+	}
+
+	public void setWsType(String wsType) {
+		this.wsType = wsType;
+	}
+
 	private List<WscpfxgcFtModel> PreWscpfxgcFtModels;
 
 	public List<WscpfxgcFtModel> getPreWscpfxgcFtModels() {

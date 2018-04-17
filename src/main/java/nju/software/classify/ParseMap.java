@@ -16,22 +16,12 @@ public class ParseMap {
     }
 
     private void init() {
-        jxHashMap = new HashMap<>();
-        jxHashMap.put("管辖","ParseMsgxSegment");
-        jxHashMap.put("第一审普通程序", "ParseYsptSegment");
-        jxHashMap.put("诉讼参加人","ParseSscjrSegment");
-        jxHashMap.put("第二审程序","ParseMsesSegment");
-        jxHashMap.put("证据","ParseZjSegment");
-        flHashMap = new HashMap<>();
-        flHashMap.put("民初","YSClassifier");
-        flHashMap.put("民终","ESClassifier");
-        flHashMap.put("民辖","GXClassifier");
         map = new HashMap<>();
         map.put("管辖",new String[]{"ParseMsgxSegment", "GXClassifier"});
         map.put("第一审普通程序", new String[]{"ParseYsptSegment","YSClassifier"});
         map.put("第二审程序", new String[]{"ParseMsesSegment", "ESClassifier"});
-        map.put("诉讼参加人", new String[]{"ParseSscjrSegment",""});
-        map.put("证据", new String[]{"ParseZjSegment",""});
+        map.put("诉讼参加人", new String[]{"ParseSscjrSegment","SSCJRClassifier"});
+        map.put("证据", new String[]{"ParseZjSegment","ZJClassifier"});
         map.put("保全和先予执行", new String[]{"",""});
         map.put("公益诉讼", new String[]{"",""});
         map.put("公示催告程序", new String[]{"",""});
@@ -43,10 +33,6 @@ public class ParseMap {
         map.put("诉讼费用", new String[]{"",""});
     }
 
-    private HashMap<String, String>  jxHashMap;
-
-    private HashMap<String, String> flHashMap;
-
     private HashMap<String, String[]> map;
 
     private static ParseMap parseMap = new ParseMap();
@@ -54,18 +40,6 @@ public class ParseMap {
     public static ParseMap getInstance(){
         return parseMap;
     }
-
-    public String getParseClassName(String name){
-        return jxHashMap.get(name);
-    }
-
-    public String getClassifierName(String name) {return flHashMap.get(name);}
-
-    public static Iterable<String> parseClassNameKeys(){
-        return parseMap.jxHashMap.keySet();
-    }
-
-    public static Iterable<String> classifierNameKeys(){return parseMap.flHashMap.keySet();}
 
     public static Iterable<String> classnameKeys(){return parseMap.map.keySet();}
 

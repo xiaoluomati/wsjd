@@ -18,14 +18,6 @@ import java.util.regex.Pattern;
  */
 public abstract class BaseClassifier {
 
-    public static final String YS_PREFIX = "YS";
-
-    public static final String ES_PREFIX = "ES";
-
-    public static final String GX_PREFIX = "GX";
-
-    public static final String SSCJR_PREFIX = "SSCJR";
-
     protected String ssjl;
 
     protected String cpjg;

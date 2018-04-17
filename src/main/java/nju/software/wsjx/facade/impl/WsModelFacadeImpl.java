@@ -42,7 +42,7 @@ public class WsModelFacadeImpl implements WsModelFacade{
 //			String parseName=wswsModel.getParseName();
 			ParseMap parseMap = ParseMap.getInstance();
 //			String parseName = parseMap.get("第一审普通程序");
-			String parseName = parseMap.getParseClassName("管辖");
+			String parseName = parseMap.getParseName("管辖");
 //			ParseEnum parseEnum=ParseEnum.getParseEnumByParse(parseName);
 //			if(parseEnum==null)
 //				throw new ParseException("未定义解析该类文档");

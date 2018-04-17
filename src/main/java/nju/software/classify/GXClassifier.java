@@ -17,7 +17,7 @@ public class GXClassifier extends BaseClassifier {
 
     @Override
     public DocType getType(WsModel wsModel, String ah) {
-        return getType(GX_PREFIX, ah, wsModel);
+        return getType(DocType.GX_PREFIX, ah, wsModel);
     }
 
     /**

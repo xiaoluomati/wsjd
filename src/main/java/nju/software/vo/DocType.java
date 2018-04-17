@@ -40,9 +40,40 @@ public enum DocType {
     GX_ZQTJGX("民事裁定书(依职权提级管辖用)"),
     GX_ZQYSGX("民事裁定书(依职权移送管辖用)"),
     GX_BQZDGX("民事裁定书(因管辖权争议报请指定管辖案件用)"),
-    GX_YGXQBQZD("民事裁定书(有管辖权人民法院报请指定管辖案件用)")
-
+    GX_YGXQBQZD("民事裁定书(有管辖权人民法院报请指定管辖案件用)"),
+    SSCJR_BGDSRY("民事裁定书(变更当事人用)"),
+    SSCJR_WCJDJ("民事裁定书(未参加登记的权利人适用生效判决或裁定用)"),
+    ZJ_ZCQZJBQ("民事裁定书(仲裁前证据保全用)"),
+    ZJ_SQSZ("民事裁定书(申请书证提出命令用)"),
+    ZJ_SQFHJDF("民事裁定书(申请返还鉴定费用用)"),
+    ZJ_JCZJBQ("民事裁定书(解除证据保全用)"),
+    ZJ_SQZJBQ("民事裁定书(诉前证据保全用)"),
+    ZJ_SSZJBQ("民事裁定书(诉讼证据保全用)"),
+    BQ_ZCZCCBQ("民事裁定书(仲裁中财产保全用)"),
+    BQ_YZQSSBQ("民事裁定书(依职权诉讼保全用)"),
+    BQ_CDFY("民事裁定书(保全或者先予执行裁定复议用)"),
+    BQ_XYZX("民事裁定书(先予执行用)"),
+    BQ_BGBQ("民事裁定书(变更保全用)"),
+    BQ_ZXQBQ("民事裁定书(执行前保全用)"),
+    BQ_JCBQ("民事裁定书(解除保全用)"),
+    BQ_SQXWBQ("民事裁定书(诉前行为保全用)"),
+    BQ_SQCCBQ("民事裁定书(诉前财产保全用)"),
+    BQ_SSXWBQ("民事裁定书(诉讼行为保全用)"),
+    BQ_SSCCBQ("民事裁定书(诉讼财产保全用)"),
+    BQ_BHSQ("民事裁定书(驳回保全或者先予执行申请用)")
     ;
+
+    public static final String YS_PREFIX = "YS";
+
+    public static final String ES_PREFIX = "ES";
+
+    public static final String GX_PREFIX = "GX";
+
+    public static final String SSCJR_PREFIX = "SSCJR";
+
+    public static final String ZJ_PREFIX = "ZJ";
+
+    public static final String BQ_PREFIX = "BQ";
 
     String fileName;
 
@@ -65,7 +96,6 @@ public enum DocType {
         }
         return ys;
     }
-
 
     public static DocType getType(String name) {
         for (DocType docType : values()) {

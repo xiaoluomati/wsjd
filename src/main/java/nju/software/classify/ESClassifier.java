@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class ESClassifier extends BaseClassifier {
     @Override
     public DocType getType(WsModel wsModel,String ah) {
-        return getType(ES_PREFIX, ah, wsModel);
+        return getType(DocType.ES_PREFIX, ah, wsModel);
     }
 
     /**
