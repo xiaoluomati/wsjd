@@ -95,6 +95,9 @@ public class SSCYRChecker {
             tip = "当事人是法人的，写明名称和住所，并另起一行写明法定代表人的姓名和职务";
             checkAddress(wssscyrModel.getDsrdz(), missPartList);
             checkFDDBR(wssscyrModel.getFddbr(), missPartList);
+        } else if (isFDDBR(wssscyrModel)) {
+            tip = "当事人是法人的，写明名称和住所，并另起一行写明法定代表人的姓名和职务";
+            checkZW(wssscyrModel.getDsrzw(), missPartList);
         }
 
         if (missPartList.isEmpty()) {
@@ -134,6 +137,10 @@ public class SSCYRChecker {
         isMissPart(fddbr, "法定代表人", missPartList);
     }
 
+    private void checkZW(String zw, List<String> missPartList) {
+        isMissPart(zw, "法定代表人职务", missPartList);
+    }
+
     private boolean isMissPart(String part, String partName,  List<String> missPartList) {
         if (null == part || StringUtil.trim(part).equals("")) {
             missPartList.add(partName);
@@ -154,5 +161,11 @@ public class SSCYRChecker {
         String dsrlb = wssscyrModel.getDsrlb();
         String dsrlx = wssscyrModel.getDsrlx();
         return (null != dsrlb) && (null != dsrlx) && (dsrlx.equals("法人"));
+    }
+
+    // 是否是法定代表人
+    private boolean isFDDBR(WssscyrModel wssscyrModel) {
+        String sssf = wssscyrModel.getSssf();
+        return (null != sssf) && (sssf.equals("法定代表人"));
     }
 }

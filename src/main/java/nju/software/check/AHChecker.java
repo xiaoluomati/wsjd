@@ -2,6 +2,7 @@ package nju.software.check;
 
 import nju.software.util.REUtil;
 import nju.software.vo.CheckInfoItemVO;
+import nju.software.vo.ErrorLevelEnum;
 import nju.software.vo.ErrorType;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ public class AHChecker {
         boolean match = REUtil.match(ah, AH_PATTERN_NEW);
         if (!match) {
             return new CheckInfoItemVO(
-                    ErrorType.YSCW, "案号结构错误", "案号格式应为: " + AH_FORMAT);
+                    ErrorType.YSCW, "案号结构错误", "案号格式应为: " + AH_FORMAT, ErrorLevelEnum.LV_3);
         } else {
             return null;
         }

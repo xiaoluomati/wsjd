@@ -28,9 +28,11 @@
                 <!--/*@thymesVar id="doc" type="nju.software.wsjx.model.wsSegmentationModel.WsModel"*/-->
                 <!--// 文首段落-->
                 <!--/*@thymesVar id="docName" type="java.lang.String"*/-->
-                <h3 th:text="${docName}"></h3>
-                <!--/*@thymesVar id="docType" type="java.lang.String"*/-->
                 <!--<div class="doc-type" th:text="${docType}"></div>-->
+                <h3 th:text="${docName}"></h3>
+                <h4 th:text="${docType}"></h4>
+                <!--/*@thymesVar id="docType" type="java.lang.String"*/-->
+
                 <hr></hr>
                 <!--// 文首段落-->
                 <div class="sec">
@@ -40,7 +42,6 @@
                   <span class="badge" th:text="${error.getWS().size()}"></span>
                 </div>
                 <br></br>
-                <h3 th:text="${docType}"></h3>
                 <h3 th:text="${doc.getWswsModel().getWsmc()}"></h3>
                 <h3 th:text="${doc.getWswsModel().getAh()}"></h3>
                 <!--<h3 th:text="${doc.getWswsModel().get}"></h3>-->
@@ -125,29 +126,74 @@
                   法律依据
                 </button>
                 <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
-                <div class="alert alert-success mistake-alert" role="alert">
-                  <span>结构缺失</span>
-                  <span class="badge" th:text="${error.getErrorTypeMap().get('结构缺失')}"></span>
-                </div>
 
-                <div class="alert alert-warning mistake-alert" role="alert">
-                  <span>要素缺失</span>
-                  <span class="badge" th:text="${error.getErrorTypeMap().get('要素缺失')}"></span>
-                </div>
+                <div class="panel-group" id="accordion" role="tablist"
+                     aria-multiselectable="true">
 
-                <div class="alert alert-danger mistake-alert" role="alert">
-                  <span>要素错误</span>
-                  <span class="badge" th:text="${error.getErrorTypeMap().get('要素错误')}"></span>
-                </div>
+                  <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#num-by-type" aria-expanded="true" aria-controls="num-by-type">
+                          错误类型 </a>
+                      </h4>
+                    </div>
+                    <div class="collapse panel-collapse tabpanel" id="num-by-type">
+                      <div class="panel-body">
+                        <div class="alert alert-success mistake-alert" role="alert">
+                          <span>结构缺失</span>
+                          <span class="badge" th:text="${error.getErrorTypeMap().get('结构缺失')}"></span>
+                        </div>
 
-                <div class="alert alert-info mistake-alert" role="alert">
-                  <span>上下文不统一</span>
-                  <span class="badge" th:text="${error.getErrorTypeMap().get('上下文不统一')}"></span>
-                </div>
+                        <div class="alert alert-warning mistake-alert" role="alert">
+                          <span>要素缺失</span>
+                          <span class="badge" th:text="${error.getErrorTypeMap().get('要素缺失')}"></span>
+                        </div>
 
-                <div class="alert alert-success mistake-alert" role="alert">
-                  <span>拼写错误</span>
-                  <span class="badge" th:text="${typoNum}"></span>
+                        <div class="alert alert-danger mistake-alert" role="alert">
+                          <span>要素错误</span>
+                          <span class="badge" th:text="${error.getErrorTypeMap().get('要素错误')}"></span>
+                        </div>
+
+                        <div class="alert alert-info mistake-alert" role="alert">
+                          <span>前后矛盾</span>
+                          <span class="badge" th:text="${error.getErrorTypeMap().get('上下文不统一')}"></span>
+                        </div>
+
+                        <div class="alert alert-success mistake-alert" role="alert">
+                          <span>拼写错误</span>
+                          <span class="badge" th:text="${typoNum}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel panel-warning">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#num-by-level" aria-expanded="true" aria-controls="num-by-level">错误等级 </a>
+                      </h4>
+                    </div>
+                    <div class="collapse panel-collapse tabpanel" id="num-by-level">
+                      <div class="panel-body">
+                        <div class="alert alert-success mistake-alert" role="alert">
+                        <span>轻微</span>
+                        <span class="badge" th:text="${error.getErrorNumByLevel().get(1) + typoNum}"></span>
+                      </div>
+
+                        <div class="alert alert-warning mistake-alert" role="alert">
+                          <span>一般</span>
+                          <span class="badge" th:text="${error.getErrorNumByLevel().get(2)}"></span>
+                        </div>
+
+                        <div class="alert alert-danger mistake-alert" role="alert">
+                          <span>严重</span>
+                          <span class="badge" th:text="${error.getErrorNumByLevel().get(3)}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>
@@ -189,9 +235,9 @@
           '<table class="table table-striped"> ' +
           '<thead> ' +
           '<tr> ' +
-          '<th>错误内容</th> ' +
-          '<th>错误类型</th> ' +
-          '<th>详细</th> ' +
+          '<th style="width: 20%;">错误内容</th> ' +
+          '<th style="width: 10%;">错误类型</th> ' +
+          '<th style="width: 70%;">详细</th> ' +
           '</tr> ' +
           '</thead> ' +
           '<tbody> ';
@@ -350,7 +396,6 @@
 
 
     /*]]>*/
-
   });
 
 </script>

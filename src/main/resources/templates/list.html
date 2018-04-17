@@ -32,7 +32,7 @@
                 <li th:each="doc : ${docList}">
                   <div class="row">
                     <div class="10u">
-                      <p class="title-link" th:text="${doc.getOriginalFilename().substring(0, doc.getOriginalFilename().indexOf('.'))}"></p>
+                      <p class="title-link" th:text="${doc.getOriginalFilename().substring(doc.getOriginalFilename().lastIndexOf('/') + 1, doc.getOriginalFilename().indexOf('.'))}"></p>
                     </div>
                     <div class="2u">
                       <form th:action="@{/result}"  th:method="post">

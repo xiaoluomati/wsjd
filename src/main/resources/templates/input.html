@@ -34,7 +34,7 @@
                 <h2>文书导入</h2>
               </header>
               <form th:action="@{/submitdoc}" enctype="multipart/form-data" th:method="post">
-                <input type="file" name="file" style="display:inline;" multiple="multiple"/>
+                <input type="file" name="file" style="display:inline;" multiple="multiple" webkitdirectory="webkitdirectory"/>
                 <div class="register-but">
                   <input type="submit" value="提交" />
                   <div class="clearfix"></div>
@@ -54,6 +54,7 @@
 <script>
   $(document).on('ready', function() {
     $("input:file").fileinput({
+      browseLabel: '选择',
       language: 'zh',
       allowedFileExtensions : [ 'doc','docx' ],
       showUpload: false, //是否显示上传按钮

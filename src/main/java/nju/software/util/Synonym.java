@@ -1,6 +1,7 @@
 package nju.software.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -33,9 +34,10 @@ public class Synonym {
         return a.equals(b);
     }
 
-    public static boolean isContains(List<String> list, String str) {
+    public static boolean isContains(Collection<String> list, String str) {
         for (String s : list) {
             if (isEqual(str, s)) {
+//                System.out.println("equal: " + str + " " + s);
                 return true;
             }
         }
@@ -43,16 +45,22 @@ public class Synonym {
     }
 
     private static boolean same(String[] list, String a, String b) {
+//        System.out.println("list " + Arrays.toString(list) + " " + a + " " + b);
+//        System.out.println(contains(list, a));
+//        System.out.println(contains(list, b));
         return contains(list, a) && contains(list, b);
     }
 
     private static boolean contains(String[] list, String str) {
         for (String s : list) {
-            if (s.contains(str)) {
+//            System.out.print(s + " ");
+//            System.out.print(str + " ");
+//            System.out.println(s.equals(str));
+            if (s.equals(str)) {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
 //    public static void main(String[] args) {

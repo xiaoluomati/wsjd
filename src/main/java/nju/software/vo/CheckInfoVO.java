@@ -10,6 +10,7 @@ import java.util.Map;
 public class CheckInfoVO {
 
     private Map<String, Integer> errorTypeMap;
+    private Map<Integer, Integer> errorNumByLevel;
 
     private List<CheckInfoItemVO> WS;
     private List<CheckInfoItemVO> SSCYR;
@@ -26,7 +27,12 @@ public class CheckInfoVO {
         this.errorTypeMap.put(ErrorType.SSWBTY.getName(), 0);
         this.errorTypeMap.put(ErrorType.YSCW.getName(), 0);
         this.errorTypeMap.put(ErrorType.YSQS.getName(), 0);
-    }
+
+        this.errorNumByLevel = new HashMap<>();
+        errorNumByLevel.put(1, 0);
+        errorNumByLevel.put(2, 0);
+        errorNumByLevel.put(3, 0);
+}
 
     public Map<String, Integer> getErrorTypeMap() {
         return errorTypeMap;
@@ -36,6 +42,9 @@ public class CheckInfoVO {
         for (CheckInfoItemVO checkInfoItemVO : checkInfoItemVOS) {
             String errorTypeName = checkInfoItemVO.getErrorTypeName();
             errorTypeMap.put(errorTypeName, 1 + errorTypeMap.get(errorTypeName));
+
+            int num = checkInfoItemVO.getErrorLevel().getNum();
+            errorNumByLevel.put(num, 1 + errorNumByLevel.get(num));
         }
     }
 
@@ -109,6 +118,10 @@ public class CheckInfoVO {
     public void setFL(List<CheckInfoItemVO> FL) {
         this.FL = FL;
         this.addToMap(getFL());
+    }
+
+    public Map<Integer, Integer> getErrorNumByLevel() {
+        return errorNumByLevel;
     }
 
     @Override

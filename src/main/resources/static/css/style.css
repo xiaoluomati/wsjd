@@ -2125,7 +2125,7 @@ div section p {
     /*!*max-width: 1000px;*!*/
 /*}*/
 
-div section h3 {
+div section h3, div section h4{
     text-align: left;
     margin-bottom: 10px;
 }
@@ -2189,7 +2189,7 @@ div .badge {
     padding: 1px;
     font-size: 14px;
     font-weight: 500;
-    line-height: 1.42857143;
+    line-height: 1.75 !important;
     text-align: left;
     white-space: normal;
     background-color: #fff;
@@ -2320,4 +2320,12 @@ button i {
 
 .table-error {
     width: 800px;
+}
+
+.panel-title a {
+    text-decoration: none !important;
+}
+
+.panel-group {
+    width: 230px;
 }

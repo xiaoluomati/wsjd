@@ -1,18 +1,12 @@
 package nju.software.service.impl;
 
-import nju.software.classify.BaseClassifier;
-import nju.software.classify.ParseMap;
 import nju.software.factory.WsModelFactory;
 import nju.software.service.DocManagerService;
 import nju.software.util.WordHelper;
 import nju.software.vo.DocType;
 import nju.software.vo.LawItemVO;
-import nju.software.wsjx.business.PreWsAnalyse;
-import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
-import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
-import nju.software.wsjx.parse.ParseSegment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

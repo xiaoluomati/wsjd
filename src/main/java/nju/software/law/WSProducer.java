@@ -1,6 +1,5 @@
 package nju.software.law;
 
-import nju.software.factory.WsModelFactory;
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -45,8 +44,11 @@ public class WSProducer {
 //            String title = qw.getChild("subtitle").getAttribute("value").getValue();
 //            System.out.println("title = " + title);
 //            System.out.println("content = " + content);
-            System.out.println("name" + file.getName());
-            WsModelFactory.getInstance(content, title+".txt");
+//            System.out.println("name" + file.getName());
+            if (title.equals("¶¡³¬Óëºú½õ°¾¡¢ÀîÞ±Ãñ¼ä½è´û¾À·×Ò»°¸")) {
+                System.out.println(qw.getAttribute("value").getValue());
+            }
+//            WsModelFactory.getInstance(content, title+".txt");
         }
 
 

@@ -1,7 +1,9 @@
 package nju.software.service.impl;
 
 import nju.software.check.AHChecker;
+import nju.software.check.PJJGChecker;
 import nju.software.check.SSCYRChecker;
+import nju.software.check.SSJLChecker;
 import nju.software.check.typo.TypoChecker;
 import nju.software.factory.WsModelFactory;
 import nju.software.repository.TemplateRepository;
@@ -40,6 +42,12 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 
     @Autowired
     private SSCYRChecker sscyrChecker;
+
+    @Autowired
+    private SSJLChecker ssjlChecker;
+
+    @Autowired
+    private PJJGChecker pjjgChecker;
 
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
@@ -109,12 +117,8 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     }
 
     private List<CheckInfoItemVO> checkSSJL(){
-        List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
-        final List<String> ssjlRequirements = this.jsonParserUtil.getSsjlRequirements();
-        Map<String, String> ssjl = this.xmlParserUtil.getSsjl();
-        checkInfoItemVOS.addAll(checkYS("诉讼记录", ssjlRequirements, ssjl.keySet()));
-        //Todo 内容校对
-        return checkInfoItemVOS;
+        List<CheckInfoItemVO> check = ssjlChecker.check(jsonParserUtil, xmlParserUtil, wsModel.getWssscyrModels(), wsModel.getWsssjlModel());
+        return check;
     }
 
     private List<CheckInfoItemVO> checkAjjbqk(){
@@ -141,12 +145,8 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     }
 
     private List<CheckInfoItemVO> checkCpjg(){
-        List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
-        final List<String> pjjgRequirements = this.jsonParserUtil.getPjjgRequirements();
-        final Map<String, String> pjjg = this.xmlParserUtil.getPjjg();
-        checkInfoItemVOS.addAll(checkYS("判决结果", pjjgRequirements, pjjg.keySet()));
-        //Todo 内容校对
-        return checkInfoItemVOS;
+        List<CheckInfoItemVO> check = pjjgChecker.check(jsonParserUtil, xmlParserUtil);
+        return check;
     }
 
 

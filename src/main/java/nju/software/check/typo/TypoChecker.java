@@ -20,6 +20,7 @@ public class TypoChecker {
     private JLanguageTool langTool;
 
     private String[] invalidRule = {"wb2", "wa5", "SHI_ADHECTIVE_ERROR", "wb4", "wa3"};
+//    private String[] invalidRule = {};
 
     public TypoChecker() {
         langTool = new JLanguageTool(new Chinese());
@@ -33,6 +34,7 @@ public class TypoChecker {
             matches = langTool.check(text);
             for (RuleMatch match : matches) {
                 Rule rule = match.getRule();
+                System.out.println(match.getMessage());
                 if (!isValidRule(rule)) continue;
 
                 SectionTypoCheckVO sectionTypoCheckVO = new SectionTypoCheckVO();
