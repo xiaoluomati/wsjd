@@ -32,4 +32,12 @@ public class WscpfxgcFtModel {
 	public void setSfcxf(String sfcxf) {
 		this.sfcxf = sfcxf;
 	}
+
+	@Override
+	public String toString() {
+		return "WscpfxgcFtModel{" +
+				"flftmc='" + flftmc + '\'' +
+				", ftMap=" + ftMap +
+				'}';
+	}
 }

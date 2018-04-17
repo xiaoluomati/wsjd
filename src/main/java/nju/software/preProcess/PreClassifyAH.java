@@ -1,5 +1,6 @@
 package nju.software.preProcess;
 
+import nju.software.classify.ParseMap;
 import nju.software.util.IOHelper;
 
 import java.io.File;
@@ -51,18 +52,29 @@ public class PreClassifyAH {
         produceUniqueAHD();
     }
 
-    public static String getUniqueAH(String templatename){
+    public static String getUniqueAHD(String templatename){
         if(uniqueAHDetail.containsKey(templatename)){
             return uniqueAHDetail.get(templatename);
         }
         return null;
     }
 
-    public static List<String> getUniqueAHD(String classname){
+    public static List<String> getUniqueAH(String classname){
         if(uniqueAH.containsKey(classname)){
             return uniqueAH.get(classname);
         }
         return new ArrayList<>();
+    }
+
+    public static String getPossibleClass(String ah){
+        for (String s : uniqueAH.keySet()) {
+            for (String s1 : uniqueAH.get(s)) {
+                if(ah.contains(s1)){
+                    return s;
+                }
+            }
+        }
+        return ParseMap.NOT_DETERMINED;
     }
 
     private static void produceUniqueAHD(){

@@ -1,5 +1,6 @@
 package nju.software.preProcess;
 
+import nju.software.classify.ParseMap;
 import nju.software.util.IOHelper;
 import nju.software.wsjx.util.ListToString;
 
@@ -27,7 +28,7 @@ public class PreClassifyKeyword {
     }
 
     public static String getPossibleType(String content){
-        String result = "不能确定";
+        String result = ParseMap.NOT_DETERMINED;
         double maxRate = 0;
         for (String s : map.keySet()) {
             String[] strings = map.get(s);

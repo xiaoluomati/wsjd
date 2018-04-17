@@ -1,8 +1,10 @@
 package nju.software.preProcess;
 
+import nju.software.classify.ParseMap;
 import nju.software.util.IOHelper;
 import nju.software.vo.DocType;
 import nju.software.vo.TemplateLawVO;
+import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -95,6 +97,35 @@ public class PreClassifyLaws {
         return new ArrayList<>();
     }
 
+    public static String getPossibleType(List<WscpfxgcFtModel> wscpfxgcFtModelList){
+        for (String s : uniqueLaws.keySet()) {
+            List<TemplateLawVO> templateLawVOS = uniqueLaws.get(s);
+            for (WscpfxgcFtModel wscpfxgcFtModel : wscpfxgcFtModelList) {
+                if(matchLaws(templateLawVOS, wscpfxgcFtModel)){
+                    return s;
+                }
+            }
+        }
+        return ParseMap.NOT_DETERMINED;
+    }
+
+    public static boolean matchLaws(List<TemplateLawVO> templateLawVOS,WscpfxgcFtModel wscpfxgcFtModel){
+        for (TemplateLawVO templateLawVO : templateLawVOS) {
+            String name = templateLawVO.getName();
+            name = name.substring(1, name.length() - 1);
+            if(wscpfxgcFtModel.getFlftmc().equals(name)){
+                HashMap<String, String> ftMap = wscpfxgcFtModel.getFtMap();
+                for (String key : ftMap.keySet()) {
+                    String s = key + "条" + (ftMap.get(key).equals("没有款目") ? "":ftMap.get(key) );
+                    return templateLawVO.containsItem(s);
+                }
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
+
     public static List<TemplateLawVO> getTemplateLaws(String name){
         if(map.containsKey(name)){
             return map.get(name);
@@ -115,42 +146,42 @@ public class PreClassifyLaws {
         System.out.println(uniqueLaws.keySet().size());
         System.out.println(uniqueLawsDetail);
         System.out.println(uniqueLawsDetail.size());
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (String s : uniqueLaws.keySet()) {
-            stringBuilder.append(s);
-            stringBuilder.append("\n");
-            List<TemplateLawVO> templateLawVOS = uniqueLaws.get(s);
-            int count = 0;
-            for (TemplateLawVO templateLawVO : templateLawVOS) {
-                count+=templateLawVO.getItems().size();
-            }
-            stringBuilder.append(" 独有:");
-            stringBuilder.append(count);
-            stringBuilder.append("条\n");
-        }
-
-        for (String s : map.keySet()) {
-            stringBuilder.append(s);
-            stringBuilder.append("\n");
-            List<TemplateLawVO> templateLawVOS = map.get(s);
-            int count = 0;
-            for (TemplateLawVO templateLawVO : templateLawVOS) {
-                count += templateLawVO.getItems().size();
-            }
-            stringBuilder.append(" 总计:");
-            stringBuilder.append(count);
-            stringBuilder.append("条\n");
-            if(uniqueLawsDetail.containsKey(s)){
-                templateLawVOS = uniqueLawsDetail.get(s);
-                for (TemplateLawVO templateLawVO : templateLawVOS) {
-                    stringBuilder.append(" 独有:");
-                    stringBuilder.append(templateLawVO.getItems().size());
-                    stringBuilder.append("条\n");
-                }
-            }
-        }
-        IOHelper.write("src/main/resources/templatelaws.txt",stringBuilder.toString());
+//        StringBuilder stringBuilder = new StringBuilder();
+//
+//        for (String s : uniqueLaws.keySet()) {
+//            stringBuilder.append(s);
+//            stringBuilder.append("\n");
+//            List<TemplateLawVO> templateLawVOS = uniqueLaws.get(s);
+//            int count = 0;
+//            for (TemplateLawVO templateLawVO : templateLawVOS) {
+//                count+=templateLawVO.getItems().size();
+//            }
+//            stringBuilder.append(" 独有:");
+//            stringBuilder.append(count);
+//            stringBuilder.append("条\n");
+//        }
+//
+//        for (String s : map.keySet()) {
+//            stringBuilder.append(s);
+//            stringBuilder.append("\n");
+//            List<TemplateLawVO> templateLawVOS = map.get(s);
+//            int count = 0;
+//            for (TemplateLawVO templateLawVO : templateLawVOS) {
+//                count += templateLawVO.getItems().size();
+//            }
+//            stringBuilder.append(" 总计:");
+//            stringBuilder.append(count);
+//            stringBuilder.append("条\n");
+//            if(uniqueLawsDetail.containsKey(s)){
+//                templateLawVOS = uniqueLawsDetail.get(s);
+//                for (TemplateLawVO templateLawVO : templateLawVOS) {
+//                    stringBuilder.append(" 独有:");
+//                    stringBuilder.append(templateLawVO.getItems().size());
+//                    stringBuilder.append("条\n");
+//                }
+//            }
+//        }
+//        IOHelper.write("src/main/resources/templatelaws.txt",stringBuilder.toString());
     }
 
     public static List<TemplateLawVO> getLawList(List<String> content){

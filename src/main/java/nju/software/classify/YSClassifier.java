@@ -21,34 +21,29 @@ import java.util.regex.Pattern;
 public class YSClassifier extends BaseClassifier {
 
     @Override
-    public DocType getType(WsModel wsModel) {
-        this.ssjl = wsModel.getWsssjlSegment();
-        this.cpjg = wsModel.getWscpjgSegment();
-        List<String> ysList = DocType.getTypeList(BaseClassifier.YS_PREFIX);
-        Class<? extends YSClassifier> clz = getClass();
-        for (String ys : ysList) {
-            String methodName = getMethodName(ys);
-            try {
-                Method method = clz.getDeclaredMethod(methodName);
-                Boolean isMatch = ((boolean) method.invoke(this));
-                if (isMatch) {
-                    DocType type = DocType.getType(ys);
-                    if (type != null) {
-                        return type;
-                    }
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
+    public DocType getType(WsModel wsModel, String ah) {
+        return getType(YS_PREFIX, ah, wsModel);
+//        this.ssjl = wsModel.getWsssjlSegment();
+//        this.cpjg = wsModel.getWscpjgSegment();
+//        List<String> ysList = DocType.getTypeList(BaseClassifier.YS_PREFIX);
+//        Class<? extends YSClassifier> clz = getClass();
+//        for (String ys : ysList) {
+//            String methodName = getMethodName(ys);
+//            try {
+//                Method method = clz.getDeclaredMethod(methodName);
+//                Boolean isMatch = ((boolean) method.invoke(this));
+//                if (isMatch) {
+//                    DocType type = DocType.getType(ys);
+//                    if (type != null) {
+//                        return type;
+//                    }
+//                }
+//            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return null;
     }
-
-    @Override
-    public String getParseRuleName() {
-        return ParseMap.getInstance().getParseClassName("第一审普通程序");
-    }
-
 
     // 民事裁定书(驳回追加共同诉讼当事人申请用)
     protected boolean isBHZJ() {
@@ -152,20 +147,20 @@ public class YSClassifier extends BaseClassifier {
         return matcher.find();
     }
 
-    public static void main(String[] args) throws IOException {
-        File file = new File("file");
-        File[] files = file.listFiles();
-        BaseClassifier classifier = new YSClassifier();
-
-        for(File f:files) {
-            String name = f.getAbsolutePath();
-            byte[] wsnr = FileUtil.getContent(name);
-            InputStream is = new ByteArrayInputStream(wsnr);
-            WsModelFacadeImpl wsModelFacadeImpl = new WsModelFacadeImpl();
-            WsModel wsModel = wsModelFacadeImpl.jxDocument(is, name);
-
-            System.out.println(name);
-            System.out.println(classifier.getType(wsModel).getFileName());
-        }
-    }
+//    public static void main(String[] args) throws IOException {
+//        File file = new File("file");
+//        File[] files = file.listFiles();
+//        BaseClassifier classifier = new YSClassifier();
+//
+//        for(File f:files) {
+//            String name = f.getAbsolutePath();
+//            byte[] wsnr = FileUtil.getContent(name);
+//            InputStream is = new ByteArrayInputStream(wsnr);
+//            WsModelFacadeImpl wsModelFacadeImpl = new WsModelFacadeImpl();
+//            WsModel wsModel = wsModelFacadeImpl.jxDocument(is, name);
+//
+//            System.out.println(name);
+//            System.out.println(classifier.getType(wsModel).getFileName());
+//        }
+//    }
 }

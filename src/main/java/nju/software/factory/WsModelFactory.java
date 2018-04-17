@@ -2,6 +2,7 @@ package nju.software.factory;
 
 import nju.software.classify.BaseClassifier;
 import nju.software.classify.ParseMap;
+import nju.software.preProcess.WsPrePro;
 import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
@@ -52,36 +53,39 @@ public class WsModelFactory {
     }
 
     private static WsModel jxWs(String content,String filename){
-        PreWsAnalyse preWsAnalyse=new PreWsAnalyse(filename,  content);
-        WswsModel wswsModel=preWsAnalyse.handleWsws();
-        WsAnalyse wsAnalyse = new WsAnalyse(filename, content);
-        final String ah = wswsModel.getAh();
-        String classifierName = null;
-        for (String s : ParseMap.classifierNameKeys()) {
-            if(ah.contains(s)){
-                classifierName = ParseMap.getInstance().getClassifierName(s);
-            }
-        }
-        if(classifierName != null){
-            String string = CLASSIFY_PREFIX + classifierName;
-            try {
-                System.out.println(string);
-                Class<?> classifier = Class.forName(string);
-                BaseClassifier baseClassifier = (BaseClassifier) classifier.newInstance();
+//        PreWsAnalyse preWsAnalyse=new PreWsAnalyse(filename,  content);
+//        WswsModel wswsModel=preWsAnalyse.handleWsws();
+//        WsAnalyse wsAnalyse = new WsAnalyse(filename, content);
+//        final String ah = wswsModel.getAh();
+//        String classifierName = null;
+//        for (String s : ParseMap.classifierNameKeys()) {
+//            if(ah.contains(s)){
+//                classifierName = ParseMap.getInstance().getClassifierName(s);
+//            }
+//        }
+        WsPrePro wsPrePro = new WsPrePro(content, filename);
+        String className = wsPrePro.getPossibleType();
+//        if(!className.equals(ParseMap.NOT_DETERMINED)){
+        String string = CLASSIFY_PREFIX + ParseMap.getInstance().getClassifyName(className);
+        try {
+            System.out.println(string);
+            Class<?> classifier = Class.forName(string);
+            BaseClassifier baseClassifier = (BaseClassifier) classifier.newInstance();
 
-                String parseRuleName = PARSE_PREFIX+baseClassifier.getParseRuleName();
-                Class<?> parseDocumentClass = Class.forName(parseRuleName);
-                ParseSegment parseCaseinfo = (ParseSegment) parseDocumentClass.newInstance();
-                parseCaseinfo.registerWsAnalyse(wsAnalyse);
-                wsModel = parseCaseinfo.transformToWsModel();
-                fillWsModelSegment(wsModel, wsAnalyse);
-                wsModel.setDocType(baseClassifier.getType(wsModel));
-                wsModel.transformToXml(XML_PATH,filename.substring(0, filename.indexOf(".")));
-                return wsModel;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            String parseRuleName = PARSE_PREFIX+ParseMap.getInstance().getParseName(className);
+            Class<?> parseDocumentClass = Class.forName(parseRuleName);
+            ParseSegment parseCaseinfo = (ParseSegment) parseDocumentClass.newInstance();
+            parseCaseinfo.registerWsAnalyse(wsPrePro.getWsAnalyse());
+            wsModel = parseCaseinfo.transformToWsModel();
+            fillWsModelSegment(wsModel, wsPrePro.getWsAnalyse());
+            wsModel.setPreWscpfxgcFtModels(wsPrePro.getWsFtParse().getFtModelList());
+            wsModel.setDocType(baseClassifier.getType(wsModel, wsPrePro.getAH()));
+            wsModel.transformToXml(XML_PATH,filename.substring(0, filename.indexOf(".")));
+            return wsModel;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+//        }
         return null;
     }
 

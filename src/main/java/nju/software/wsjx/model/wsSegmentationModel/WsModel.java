@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import nju.software.vo.DocType;
+import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 import org.jdom.JDOMException;
 
 import nju.software.wsjx.util.XmlUtil;
@@ -15,6 +16,16 @@ import nju.software.wsjx.util.XmlUtil;
  *
  */
 public class WsModel {
+
+	private List<WscpfxgcFtModel> PreWscpfxgcFtModels;
+
+	public List<WscpfxgcFtModel> getPreWscpfxgcFtModels() {
+		return PreWscpfxgcFtModels;
+	}
+
+	public void setPreWscpfxgcFtModels(List<WscpfxgcFtModel> preWscpfxgcFtModels) {
+		PreWscpfxgcFtModels = preWscpfxgcFtModels;
+	}
 
 	private DocType docType;
 

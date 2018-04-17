@@ -14,20 +14,9 @@ import java.util.regex.Pattern;
  */
 public class ESClassifier extends BaseClassifier {
     @Override
-    public DocType getType(WsModel wsModel) {
-        this.ssjl = wsModel.getWsssjlSegment();
-        this.cpjg = wsModel.getWscpjgSegment();
-        this.cpgc = wsModel.getWscpfxgcSegment();
-        List<String> esList = DocType.getTypeList(BaseClassifier.ES_PREFIX);
-        Class<? extends ESClassifier> clz = getClass();
-        return getType(esList, clz, this);
+    public DocType getType(WsModel wsModel,String ah) {
+        return getType(ES_PREFIX, ah, wsModel);
     }
-
-    @Override
-    public String getParseRuleName() {
-        return ParseMap.getInstance().getParseClassName("第二审程序");
-    }
-
 
     /**
      * 民事裁定书(不参加二审诉讼按撤回上诉处理用)

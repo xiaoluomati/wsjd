@@ -1,7 +1,12 @@
+
 package nju.software.classify;
 
+import nju.software.preProcess.PreClassifyAH;
+import nju.software.preProcess.PreClassifyLaws;
 import nju.software.vo.DocType;
+import nju.software.vo.TemplateLawVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 
 import java.util.List;
 
@@ -11,18 +16,8 @@ import java.util.List;
 public class GXClassifier extends BaseClassifier {
 
     @Override
-    public DocType getType(WsModel wsModel) {
-        this.ssjl = wsModel.getWsssjlSegment();
-        this.cpjg = wsModel.getWscpjgSegment();
-        this.cpgc = wsModel.getWscpfxgcSegment();
-        List<String> esList = DocType.getTypeList(BaseClassifier.GX_PREFIX);
-        Class<? extends GXClassifier> clz = getClass();
-        return getType(esList, clz, this);
-    }
-
-    @Override
-    public String getParseRuleName() {
-        return ParseMap.getInstance().getParseClassName("管辖");
+    public DocType getType(WsModel wsModel, String ah) {
+        return getType(GX_PREFIX, ah, wsModel);
     }
 
     /**
@@ -65,7 +60,7 @@ public class GXClassifier extends BaseClassifier {
     protected boolean isSBQZDGX(){
         String pattern1 = "报请"+CHINESE+"指定管辖";
         String pattern2 = "由"+CHINESE+"审理";
-        return matchSsjl(pattern1) && matchCpjg(pattern2);
+        return matchSsjl(pattern1) && matchCpjg(pattern2) && ssjl.indexOf("一案") == ssjl.lastIndexOf("一案");
     }
 
     /**
@@ -112,7 +107,7 @@ public class GXClassifier extends BaseClassifier {
     protected boolean isBQZDGX(){
         String pattern1 = "管辖权"+CHINESE+"争议";
         String pattern2 = "指定管辖";
-        return matchSsjl(pattern1) && matchSsjl(pattern2) && cpjg.contains("移送");
+        return matchSsjl(pattern1) && matchSsjl(pattern2) && cpjg.contains("移送") &&  ssjl.indexOf("一案") != ssjl.lastIndexOf("一案");
     }
 
 //

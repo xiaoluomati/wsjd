@@ -1,7 +1,11 @@
 package nju.software.classify;
 
+import nju.software.preProcess.PreClassifyAH;
+import nju.software.preProcess.PreClassifyLaws;
 import nju.software.vo.DocType;
+import nju.software.vo.TemplateLawVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.relateModel.WscpfxgcFtModel;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,21 +32,53 @@ public abstract class BaseClassifier {
 
     static final String CHINESE = "[\\u4e00-\\u9fa5]+";
 
-    public abstract DocType getType(WsModel wsModel);
+    public abstract DocType getType(WsModel wsModel,String ah);
 
-    public abstract String getParseRuleName();
-
-    protected String getMethodName(String ESName) {
-        int index = ESName.indexOf("_");
-        return "is" + ESName.substring(index+1);
+    private DocType getPossibleDoctypeByAH(List<String> nameList, String ah){
+        for (String s : nameList) {
+            String uniqueAHD = PreClassifyAH.getUniqueAHD(s);
+            if(uniqueAHD != null && !uniqueAHD.equals("") && ah.contains(uniqueAHD)){
+                return DocType.getType(s);
+            }
+        }
+        return null;
     }
 
-    protected DocType getType(List<String> list, Class c, Object o){
+    private DocType getPossibleDoctypeByLaws(List<String> nameList,List<WscpfxgcFtModel> preWscpfxgcFtModels){
+        for (String s : nameList) {
+            List<TemplateLawVO> uniqueLawsDetail = PreClassifyLaws.getUniqueLawsDetail(s);
+            for (WscpfxgcFtModel preWscpfxgcFtModel : preWscpfxgcFtModels) {
+                if(PreClassifyLaws.matchLaws(uniqueLawsDetail, preWscpfxgcFtModel)){
+                    return DocType.getType(s);
+                }
+            }
+        }
+        return null;
+    }
+
+    protected String getMethodName(String name) {
+        int index = name.indexOf("_");
+        return "is" + name.substring(index+1);
+    }
+
+    protected DocType getType(String prefix, String ah, WsModel wsModel){
+        List<String> list = DocType.getTypeList(prefix);
+        DocType possibleDoctypeByAH = getPossibleDoctypeByAH(list, ah);
+        if(possibleDoctypeByAH != null){
+            return possibleDoctypeByAH;
+        }
+        DocType possibleDoctypeByLaws = getPossibleDoctypeByLaws(list, wsModel.getPreWscpfxgcFtModels());
+        if(possibleDoctypeByLaws != null){
+            return possibleDoctypeByLaws;
+        }
+        this.ssjl = wsModel.getWsssjlSegment();
+        this.cpjg = wsModel.getWscpjgSegment();
+        this.cpgc = wsModel.getWscpfxgcSegment();
         for (String es : list) {
             String methodName = getMethodName(es);
             try {
-                Method method = c.getDeclaredMethod(methodName);
-                Boolean isMatch = ((boolean) method.invoke(o));
+                Method method = getClass().getDeclaredMethod(methodName);
+                Boolean isMatch = ((boolean) method.invoke(this));
                 if (isMatch) {
                     DocType type = DocType.getType(es);
                     if (type != null) {
