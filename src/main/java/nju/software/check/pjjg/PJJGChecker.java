@@ -1,4 +1,4 @@
-package nju.software.check;
+package nju.software.check.pjjg;
 
 import nju.software.util.JsonParserUtil;
 import nju.software.util.Synonym;
@@ -6,7 +6,6 @@ import nju.software.util.XmlParserUtil;
 import nju.software.vo.CheckInfoItemVO;
 import nju.software.vo.ErrorLevelEnum;
 import nju.software.vo.ErrorType;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,10 +15,17 @@ import java.util.Map;
 /**
  * Created by away on 2018/4/12.
  */
-@Component
 public class PJJGChecker {
 
-    public List<CheckInfoItemVO> check(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil) {
+    private JsonParserUtil jsonParserUtil;
+    private XmlParserUtil xmlParserUtil;
+
+    public PJJGChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil) {
+        this.jsonParserUtil = jsonParserUtil;
+        this.xmlParserUtil = xmlParserUtil;
+    }
+
+    public List<CheckInfoItemVO> check() {
         List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
         List<String> pjjgRequirements = jsonParserUtil.getPjjgRequirements();
         String tip = "判决结果应当包括: " + Arrays.toString(pjjgRequirements.toArray());

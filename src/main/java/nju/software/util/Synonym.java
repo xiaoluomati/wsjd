@@ -25,6 +25,7 @@ public class Synonym {
         }
     }
 
+    // 两个字符串是否为同义词
     public static boolean isEqual(String a, String b) {
         for (String[] strings : synonymList) {
             if (same(strings, a, b)) {
@@ -34,6 +35,7 @@ public class Synonym {
         return a.equals(b);
     }
 
+    // 数组中是否有该字符串或其同义词
     public static boolean isContains(Collection<String> list, String str) {
         for (String s : list) {
             if (isEqual(str, s)) {
@@ -44,6 +46,8 @@ public class Synonym {
         return false;
     }
 
+
+    // 两个字符串是否在同一个数组中
     private static boolean same(String[] list, String a, String b) {
 //        System.out.println("list " + Arrays.toString(list) + " " + a + " " + b);
 //        System.out.println(contains(list, a));
@@ -51,6 +55,7 @@ public class Synonym {
         return contains(list, a) && contains(list, b);
     }
 
+    // 数组中是否有这个字符串, 这里指初始字符串, 同义词算不相等的两个字符串
     private static boolean contains(String[] list, String str) {
         for (String s : list) {
 //            System.out.print(s + " ");

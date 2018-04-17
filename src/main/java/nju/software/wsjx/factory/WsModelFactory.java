@@ -1,9 +1,6 @@
 package nju.software.wsjx.factory;
 
 import nju.software.wsjx.business.WsAnalyse;
-import nju.software.wsjx.exception.ParseException;
-import nju.software.wsjx.model.Enum.ParseEnum;
-import nju.software.wsjx.model.caseinfo.BaseCaseInfo;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.parse.ParseSegment;
 

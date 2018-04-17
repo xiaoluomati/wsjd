@@ -1,10 +1,8 @@
 package nju.software.service.impl;
 
-import nju.software.check.AHChecker;
-import nju.software.check.PJJGChecker;
-import nju.software.check.SSCYRChecker;
-import nju.software.check.SSJLChecker;
+import nju.software.check.facade.GeneralChecker;
 import nju.software.check.typo.TypoChecker;
+import nju.software.factory.CheckerFactory;
 import nju.software.factory.WsModelFactory;
 import nju.software.repository.TemplateRepository;
 import nju.software.service.ErrorCheckService;
@@ -35,19 +33,9 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     private TemplateRepository templateRepository;
 
     @Autowired
-    private AHChecker ahChecker;
-
-    @Autowired
     private TypoChecker typoChecker;
 
-    @Autowired
-    private SSCYRChecker sscyrChecker;
-
-    @Autowired
-    private SSJLChecker ssjlChecker;
-
-    @Autowired
-    private PJJGChecker pjjgChecker;
+    private GeneralChecker generalChecker;
 
     @Override
     public CheckInfoVO checkError(DocInfoVO docInfoVO) {
@@ -55,8 +43,10 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         wsModel = WsModelFactory.getInstance();
         jsonParserUtil = new JsonParserUtil(templateRepository.getJson(docInfoVO.getJsonName()));
 //        jsonParserUtil = new JsonParserUtil(docInfoVO.getJsonName());
-
         xmlParserUtil = new XmlParserUtil(docInfoVO.getXmlFileName());
+
+        generalChecker = CheckerFactory.getInstance(jsonParserUtil, xmlParserUtil, wsModel);
+
         checkInfoVO.setWS(this.checkWs());
         checkInfoVO.setSSCYR(this.checkSscyr());
         checkInfoVO.setSSJL(this.checkSSJL());
@@ -101,7 +91,7 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         if(ah == null){
             checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "»±…Ÿ∞∏∫≈"));
         } else {
-            CheckInfoItemVO check = ahChecker.check(ah);
+            CheckInfoItemVO check = generalChecker.checkAh(ah);
             if (check != null) {
                 checkInfoItemVOS.add(check);
             }
@@ -111,13 +101,13 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 
     private List<CheckInfoItemVO> checkSscyr(){
         List<WssscyrModel> wssscyrModels = wsModel.getWssscyrModels();
-        List<CheckInfoItemVO> check = sscyrChecker.check(jsonParserUtil, wssscyrModels);
+        List<CheckInfoItemVO> check = generalChecker.checkSscyr();
 
         return check;
     }
 
     private List<CheckInfoItemVO> checkSSJL(){
-        List<CheckInfoItemVO> check = ssjlChecker.check(jsonParserUtil, xmlParserUtil, wsModel.getWssscyrModels(), wsModel.getWsssjlModel());
+        List<CheckInfoItemVO> check = generalChecker.checkSsjl();
         return check;
     }
 
@@ -145,7 +135,7 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     }
 
     private List<CheckInfoItemVO> checkCpjg(){
-        List<CheckInfoItemVO> check = pjjgChecker.check(jsonParserUtil, xmlParserUtil);
+        List<CheckInfoItemVO> check = generalChecker.checkPjjg();
         return check;
     }
 

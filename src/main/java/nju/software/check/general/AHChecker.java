@@ -1,10 +1,9 @@
-package nju.software.check;
+package nju.software.check.general;
 
 import nju.software.util.REUtil;
 import nju.software.vo.CheckInfoItemVO;
 import nju.software.vo.ErrorLevelEnum;
 import nju.software.vo.ErrorType;
-import org.springframework.stereotype.Component;
 
 import static nju.software.util.REUtil.CHINESE;
 import static nju.software.util.REUtil.SINGLE_CHINESE;
@@ -13,7 +12,6 @@ import static nju.software.util.REUtil.SINGLE_CHINESE;
  * 检查案号
  * Created by away on 2018/4/7.
  */
-@Component
 public class AHChecker {
 
     private static final String AH_FORMAT = "“（”+ 收案年度 +“）”+ 法院代字 + 类型代字 + 案件编号 + “号”。";

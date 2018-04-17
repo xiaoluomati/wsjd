@@ -1,4 +1,4 @@
-package nju.software.check;
+package nju.software.check.general;
 
 import nju.software.util.JsonParserUtil;
 import nju.software.util.StringUtil;
@@ -7,7 +7,6 @@ import nju.software.vo.CheckInfoItemVO;
 import nju.software.vo.ErrorLevelEnum;
 import nju.software.vo.ErrorType;
 import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,12 +15,15 @@ import java.util.List;
 /**
  * Created by away on 2018/4/11.
  */
-@Component
 public class SSCYRChecker {
 
     private JsonParserUtil jsonParserUtil;
 
-    public List<CheckInfoItemVO> check(JsonParserUtil jsonParserUtil, List<WssscyrModel> sscyrList) {
+    public SSCYRChecker(JsonParserUtil jsonParserUtil) {
+        this.jsonParserUtil = jsonParserUtil;
+    }
+
+    public List<CheckInfoItemVO> check(List<WssscyrModel> sscyrList) {
         this.jsonParserUtil = jsonParserUtil;
 
         List<CheckInfoItemVO> SSCYRErrorList = new ArrayList<>();
