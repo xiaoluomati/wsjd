@@ -123,6 +123,7 @@ public class YSClassifier extends BaseClassifier {
         return isMatch(ssjl, TCFS) && isMatch(cpjg, ZXCHFS);
     }
 
+
     // 民事裁定书(准许撤诉用)
     protected boolean isZZCS() {
         String CSSQ_1 = CHINESE + "撤诉申请";

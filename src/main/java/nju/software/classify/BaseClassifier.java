@@ -51,7 +51,7 @@ public abstract class BaseClassifier {
     }
 
     protected String getMethodName(String name) {
-        int index = name.indexOf("_");
+        int index = name.lastIndexOf("_");
         return "is" + name.substring(index+1);
     }
 
