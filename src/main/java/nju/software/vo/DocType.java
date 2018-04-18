@@ -60,7 +60,18 @@ public enum DocType {
     BQ_SQCCBQ("民事裁定书(诉前财产保全用)"),
     BQ_SSXWBQ("民事裁定书(诉讼行为保全用)"),
     BQ_SSCCBQ("民事裁定书(诉讼财产保全用)"),
-    BQ_BHSQ("民事裁定书(驳回保全或者先予执行申请用)")
+    BQ_BHSQ("民事裁定书(驳回保全或者先予执行申请用)"),
+//    GY_QFXFZQY("民事判决书(侵害消费者权益公益诉讼用)"),
+//    GY_HJWR("民事判决书(环境污染或者生态破坏公益诉讼用"),
+    GY_BZXCH("民事裁定书(公益诉讼不准许撤回起诉用)"),
+    GY_LXTQBYSL("民事裁定书(对同一侵权行为另行提起公益诉讼不予受理用)"),
+    GY_HJWRZXCH("民事裁定书(环境污染或者生态破坏公益诉讼准许撤回起诉用)"),
+//    DSR_DSRCXZS("民事判决书(第三人撤销之诉用)"),
+    DSR_ZZZSCX("民事裁定书(中止再审程序用)"),
+    DSR_BYSL("民事裁定书(对第三人撤销之诉不予受理用)"),
+    DSR_BRZSCX("民事裁定书(第三人撤销之诉并入再审程序用)"),
+    SSFY_WBJACH("民事裁定书(未补交案件受理费按撤回起诉处理用)"),
+    SSFY_WYJACH("民事裁定书(未预交案件受理费按撤回起诉处理用)")
     ;
 
     public static final String YS_PREFIX = "YS";
@@ -74,6 +85,12 @@ public enum DocType {
     public static final String ZJ_PREFIX = "ZJ";
 
     public static final String BQ_PREFIX = "BQ";
+
+    public static final String GY_PREFIX = "GY";
+
+    public static final String DSR_PREFIX = "DSR";
+
+    public static final String SSFY_PREFIX = "SSFY";
 
     String fileName;
 
