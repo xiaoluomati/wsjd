@@ -6,9 +6,9 @@ package nju.software.wsjd.model.ysptWsModel.ssjl;
  */
 public class SsrqydsrModel {
 
-    private String sf;//
+    private String sf;// 身份 (起诉人)
 
-    private String name;//
+    private String name;// (起诉人姓名)
 
     private String date;//
 

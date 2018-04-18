@@ -16,4 +16,6 @@ public interface ErrorCheckService {
     CheckInfoVO checkError(DocInfoVO docInfoVO);
 
     Map<String, List<SectionTypoCheckVO>> checkTypo(WsModel wsModel);
+
+    String[] getAjjbqkPart();
 }

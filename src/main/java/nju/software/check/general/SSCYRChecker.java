@@ -24,7 +24,6 @@ public class SSCYRChecker {
     }
 
     public List<CheckInfoItemVO> check(List<WssscyrModel> sscyrList) {
-        this.jsonParserUtil = jsonParserUtil;
 
         List<CheckInfoItemVO> SSCYRErrorList = new ArrayList<>();
         // 检查每个诉讼参与人信息是否完整

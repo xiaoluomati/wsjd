@@ -18,7 +18,7 @@ public class ParseMap {
     private void init() {
         map = new HashMap<>();
         map.put("管辖",new String[]{"ParseMsgxSegment", "GXClassifier", "GXChecker"});
-        map.put("第一审普通程序", new String[]{"ParseYsptSegment","YSClassifier", ""});
+        map.put("第一审普通程序", new String[]{"ParseYsptSegment","YSClassifier", "YSChecker"});
         map.put("第二审程序", new String[]{"ParseMsesSegment", "ESClassifier", ""});
         map.put("诉讼参加人", new String[]{"ParseSscjrSegment","SSCJRClassifier", ""});
         map.put("证据", new String[]{"ParseZjSegment","ZJClassifier", ""});

@@ -1,8 +1,58 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
   <!--/*@thymesVar id="doc" type="nju.software.wsjx.model.wsSegmentationModel.WsModel"*/-->
-  <div th:fragment="gx">
-    <p id="cpfxgcp" th:text="${doc.getWscpfxgcSegment()}"></p>
+  <div th:fragment="管辖">
+    <div>
+      <div th:if="${doc.getWsajjbqkModel().getYgscd()}">
+        <div class="sub-title">原告诉称段</div>
+        <p id="gx_ygscdp" th:text="${doc.getWsajjbqkModel().getYgscd()}"></p>
+      </div>
+      <div th:if="${doc.getWsajjbqkModel().getBgbcd()}">
+        <div class="sub-title">被告辩称段</div>
+        <p id="gx_bgbcdp" th:text="${doc.getWsajjbqkModel().getBgbcd()}"></p>
+      </div>
+      <div th:if="${doc.getWsajjbqkModel().getYsfylyd()}">
+        <div class="sub-title">移送法院理由段</div>
+        <p id="gx_ysfylydp" th:text="${doc.getWsajjbqkModel().getYsfylyd()}"></p>
+      </div>
+      <div th:if="${doc.getWsajjbqkModel().getBqfylyd()}">
+        <div class="sub-title"> 报请法院理由段</div>
+        <p id="gx_bqfylydp" th:text="${doc.getWsajjbqkModel().getBqfylyd()}"></p>
+      </div>
+    </div>
+
+  </div>
+  <div th:fragment="第一审普通程序">
+    <div>
+      <div th:if="${doc.getWsajjbqkModel().getYgscd()}">
+        <div class="sub-title">原告诉称段</div>
+        <p id="ys_ygscdp" th:text="${doc.getWsajjbqkModel().getYgscd()}"></p>
+      </div>
+      <div th:if="${doc.getWsajjbqkModel().getFsscd()}">
+        <div class="sub-title">反诉诉称段</div>
+        <p id="ys_fsscdp" th:text="${doc.getWsajjbqkModel().getFsscd()}"></p>
+      </div>
+      <div th:if="${doc.getWsajjbqkModel().getBgbcd()}">
+        <div class="sub-title">被告辩称段</div>
+        <p id="ys_bgbcdp" th:text="${doc.getWsajjbqkModel().getBgbcd()}"></p>
+      </div>
+      <div th:if="${doc.getWsajjbqkModel().getFsbcd()}">
+        <div class="sub-title">反诉辩称段</div>
+        <p id="ys_fsbcdp" th:text="${doc.getWsajjbqkModel().getFsbcd()}"></p>
+      </div>
+      <!--/*@thymesVar id="zjd" type="java.lang.String"*/-->
+      <div th:if="${zjd}">
+        <div class="sub-title">证据段</div>
+        <p id="ys_zjdp" th:text="${zjd}"></p>
+      </div>
+      <!--/*@thymesVar id="cmssd" type="java.lang.String"*/-->
+      <div th:if="${cmssd}">
+        <div class="sub-title">查明事实段</div>
+        <p id="ys_cmssdp" th:text="${cmssd}"></p>
+      </div>
+
+    </div>
+
   </div>
 </body>
 </html>

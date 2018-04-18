@@ -41,10 +41,17 @@ public class MultipartFileUtil {
         if (!file.exists()) {
             return;
         }
-        for (File file1 : file.listFiles()) {
-            if (file1.exists()) {
-                file1.delete();
+        if (file.isDirectory()) {
+            try {
+                FileUtils.deleteDirectory(file);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+//        for (File file1 : file.listFiles()) {
+//            if (file1.exists()) {
+//                file1.delete();
+//            }
+//        }
     }
 }

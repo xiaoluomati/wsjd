@@ -23,22 +23,25 @@ import java.util.Map;
 
 public abstract class SSJLChecker {
 
-    private WsModel wsModel;
+    protected WsModel wsModel;
     protected List<CheckInfoItemVO> checkInfoItemVOS;
-    private JsonParserUtil jsonParserUtil;
-    private XmlParserUtil xmlParserUtil;
+    protected JsonParserUtil jsonParserUtil;
+    protected XmlParserUtil xmlParserUtil;
+    protected WsssjlModel wsssjlModel;
 
     public SSJLChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
         this.jsonParserUtil = jsonParserUtil;
         this.xmlParserUtil = xmlParserUtil;
         this.wsModel = wsModel;
         this.checkInfoItemVOS = new ArrayList<>();
+        this.wsssjlModel = wsModel.getWsssjlModel();
     }
 
+
+    // 检查是否缺少某一部分
     protected void baseCheck() {
-
+        this.checkInfoItemVOS = new ArrayList<>();
         List<String> ssjlRequirements = jsonParserUtil.getSsjlRequirements();
-
         String tip = "诉讼记录应当包括: " + Arrays.toString(ssjlRequirements.toArray());
         System.out.println("ssjlRequirements = " + Arrays.toString(ssjlRequirements.toArray()));
         Map<String, String> ssjl = xmlParserUtil.getSsjl();
@@ -54,6 +57,8 @@ public abstract class SSJLChecker {
         checkName("被告", "getBg");
     }
 
+
+    // 检查诉讼记录中的原告(被告, 上诉人等)的名称是否错误
     protected void checkName(String name, String methodName) {
         List<String> ssjlRequirements = jsonParserUtil.getSsjlRequirements();
         WsssjlModel wsssjlModel = wsModel.getWsssjlModel();

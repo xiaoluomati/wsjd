@@ -27,14 +27,17 @@ public class TypoChecker {
     }
 
     public List<SectionTypoCheckVO> check(String text) {
-
+        if (text == null) {
+            return new ArrayList<>();
+        }
+//        System.out.println("text = " + text);
         List<SectionTypoCheckVO> sectionTypoCheckVOList = new ArrayList<>();
         List<RuleMatch> matches;
         try {
             matches = langTool.check(text);
             for (RuleMatch match : matches) {
                 Rule rule = match.getRule();
-                System.out.println(match.getMessage());
+//                System.out.println(match.getMessage());
                 if (!isValidRule(rule)) continue;
 
                 SectionTypoCheckVO sectionTypoCheckVO = new SectionTypoCheckVO();
@@ -44,8 +47,8 @@ public class TypoChecker {
                 String word = text.substring(start, end);
                 String message = getMessage(match.getMessage());
 
-                System.out.println("message = " + message);
-                System.out.println("id = " + rule.getId());
+//                System.out.println("message = " + message);
+//                System.out.println("id = " + rule.getId());
                 sectionTypoCheckVO.setStart(start);
                 sectionTypoCheckVO.setEnd(end);
                 sectionTypoCheckVO.setSentence(sentence);

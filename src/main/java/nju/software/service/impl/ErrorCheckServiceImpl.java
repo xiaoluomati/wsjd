@@ -11,7 +11,6 @@ import nju.software.util.Synonym;
 import nju.software.util.XmlParserUtil;
 import nju.software.vo.*;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
-import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +45,7 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         xmlParserUtil = new XmlParserUtil(docInfoVO.getXmlFileName());
 
         generalChecker = CheckerFactory.getInstance(jsonParserUtil, xmlParserUtil, wsModel);
-
+        
         checkInfoVO.setWS(this.checkWs());
         checkInfoVO.setSSCYR(this.checkSscyr());
         checkInfoVO.setSSJL(this.checkSSJL());
@@ -65,8 +64,7 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         String wsssjlSegment = wsModel.getWsssjlSegment();
         typoMap.put("ssjl", typoChecker.check(wsssjlSegment));
 
-        String wsajjbqSegment = wsModel.getWsajjbqSegment();
-        typoMap.put("ajjbqk", typoChecker.check(wsajjbqSegment));
+        generalChecker.checkAjjbqkTypo(typoMap, typoChecker);
 
         String wscpfxgcSegment = wsModel.getWscpfxgcSegment();
         typoMap.put("cpfxgc", typoChecker.check(wscpfxgcSegment));
@@ -81,6 +79,11 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         typoMap.put("cpjg", check);
 
         return typoMap;
+    }
+
+    @Override
+    public String[] getAjjbqkPart() {
+        return generalChecker.getAjjbqkPart();
     }
 
 
@@ -100,7 +103,6 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
     }
 
     private List<CheckInfoItemVO> checkSscyr(){
-        List<WssscyrModel> wssscyrModels = wsModel.getWssscyrModels();
         List<CheckInfoItemVO> check = generalChecker.checkSscyr();
 
         return check;

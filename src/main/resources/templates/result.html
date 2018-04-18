@@ -76,7 +76,7 @@
                   <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
                   <span class="badge" th:text="${error.getAJJBQK().size()}"></span>
                 </div>
-                <p id="ajjbqkp" th:text="${doc.getWsajjbqSegment()}"></p>
+                <div th:replace="ajjbqkfragment :: ${doc.getWsType()}"></div>
 
                 <!--// 裁判分析过程段落-->
                 <div class="sec">
@@ -235,9 +235,9 @@
           '<table class="table table-striped"> ' +
           '<thead> ' +
           '<tr> ' +
-          '<th style="width: 20%;">错误内容</th> ' +
+          '<th style="width: 25%;">错误内容</th> ' +
           '<th style="width: 10%;">错误类型</th> ' +
-          '<th style="width: 70%;">详细</th> ' +
+          '<th style="width: 65%;">详细</th> ' +
           '</tr> ' +
           '</thead> ' +
           '<tbody> ';
@@ -359,9 +359,7 @@
       }
     });
 
-//    $("p").highlightRegex( /(裁定)/, {
-//      attrs: {'class': 'text-highlight'}
-//    });
+
     /*<![CDATA[*/
     function highlight(sectionName, section) {
 //      console.log(section);
@@ -374,7 +372,10 @@
     }
 
     var typoMap = [[${typoMap}]];
-    var sections = ['ssjl', 'ajjbqk', 'cpfxgc', 'cpjg'];
+    var sections = ['ssjl', 'cpfxgc', 'cpjg'];
+    sections = sections.concat([[${ajjbqkPart}]]);
+    console.log(typoMap);
+    console.log(sections);
     for (var i = 0; i < sections.length; i++) {
       var sectionName = sections[i];
       highlight(sectionName, typoMap[sectionName]);

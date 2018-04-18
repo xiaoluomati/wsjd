@@ -2329,3 +2329,16 @@ button i {
 .panel-group {
     width: 230px;
 }
+
+.sub-title {
+    color: #d9534f !important;
+    font-size: 0.95em;
+    margin: 0.5em 0 0.5em 0;
+    transition: 0.5s all;
+    font-weight: 600;
+    text-align: left;
+}
+
+#ssjlp, #ajjbqkp p, #cpfxgcp {
+    text-indent: 2em;
+}

@@ -80,6 +80,9 @@ public class DocController {
         model.addAttribute("error", checkInfoVO);
         model.addAttribute("typoMap", typoMap);
         model.addAttribute("typoNum", getTypoNum(typoMap));
+        model.addAttribute("ajjbqkPart", errorCheckService.getAjjbqkPart());
+        model.addAttribute("cmssd", getCmssd(doc));
+        model.addAttribute("zjd", getZjd(doc));
         return "result";
     }
 
@@ -96,6 +99,30 @@ public class DocController {
             count += sectionTypoCheckVOS.size();
         }
         return count;
+    }
+
+    private String getCmssd(WsModel wsModel) {
+        List<String> cmssd = wsModel.getWsajjbqkModel().getCmssd();
+        StringBuilder cmss = new StringBuilder();
+        if (cmssd != null && !cmssd.isEmpty()) {
+            for (String s : cmssd) {
+                cmss.append(s);
+            }
+            return cmss.toString();
+        }
+        return null;
+    }
+
+    private String getZjd(WsModel wsModel) {
+        StringBuilder zj = new StringBuilder();
+        List<String> zjd = wsModel.getWsajjbqkModel().getZjd();
+        if (zjd  != null && !zjd.isEmpty()) {
+            for (String s : zjd) {
+                zj.append(s);
+            }
+            return zj.toString();
+        }
+        return null;
     }
 
     @Autowired

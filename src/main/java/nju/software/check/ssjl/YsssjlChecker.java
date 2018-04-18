@@ -15,9 +15,9 @@ import java.util.List;
  * Created by away on 2018/4/18.
  */
 
-public class YscdssjlChecker extends SSJLChecker {
+public class YsssjlChecker extends SSJLChecker {
 
-    public YscdssjlChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
+    public YsssjlChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
         super(jsonParserUtil, xmlParserUtil, wsModel);
     }
 

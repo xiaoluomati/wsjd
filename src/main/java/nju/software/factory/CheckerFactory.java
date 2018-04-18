@@ -20,16 +20,19 @@ public class CheckerFactory {
 
     private static GeneralChecker generalChecker;
 
+    private static WsModel oldModel;
+
     public static GeneralChecker getInstance(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
-        if (generalChecker == null) {
+        if (generalChecker == null || !wsModel.equals(oldModel)) {
             synchronized (GeneralChecker.class) {
-                if (generalChecker == null) {
+                if (generalChecker == null || !wsModel.equals(oldModel)) {
                     String checkerName = ParseMap.getInstance().getCheckerName(wsModel.getWsType());
                     try {
                         Class<?> checkerClass = Class.forName(PACKAGE_PATH + checkerName);
                         Constructor<?> checkerConstructor = checkerClass.getDeclaredConstructor(JsonParserUtil.class, XmlParserUtil.class, WsModel.class);
                         checkerConstructor.setAccessible(true);
                         generalChecker = (GeneralChecker)checkerConstructor.newInstance(jsonParserUtil, xmlParserUtil, wsModel);
+                        oldModel = wsModel;
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
                         e.printStackTrace();
                     }

@@ -4,12 +4,15 @@ import nju.software.check.general.AHChecker;
 import nju.software.check.general.SSCYRChecker;
 import nju.software.check.pjjg.PJJGChecker;
 import nju.software.check.ssjl.SSJLChecker;
+import nju.software.check.typo.TypoChecker;
 import nju.software.util.JsonParserUtil;
 import nju.software.util.XmlParserUtil;
 import nju.software.vo.CheckInfoItemVO;
+import nju.software.vo.SectionTypoCheckVO;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by away on 2018/4/18.
@@ -47,4 +50,8 @@ public abstract class GeneralChecker {
     public List<CheckInfoItemVO> checkPjjg() {
         return pjjgChecker.check();
     }
+
+    public abstract void checkAjjbqkTypo(Map<String, List<SectionTypoCheckVO>> map, TypoChecker typoChecker);
+
+    public abstract String[] getAjjbqkPart();
 }

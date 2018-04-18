@@ -1,5 +1,6 @@
 package nju.software.law;
 
+import nju.software.factory.WsModelFactory;
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -14,7 +15,7 @@ import java.io.IOException;
  */
 public class WSProducer {
 
-    private static final String PATH = "D:\\wx\\msys";
+    private static final String PATH = "D:\\wx\\msys_a";
 //    private static final String PATH = "D:\\wx\\test";
 
     public static void main(String[] args) throws JDOMException, IOException {
@@ -44,11 +45,11 @@ public class WSProducer {
 //            String title = qw.getChild("subtitle").getAttribute("value").getValue();
 //            System.out.println("title = " + title);
 //            System.out.println("content = " + content);
-//            System.out.println("name" + file.getName());
-            if (title.equals("¶¡³¬Óëºú½õ°¾¡¢ÀîÞ±Ãñ¼ä½è´û¾À·×Ò»°¸")) {
-                System.out.println(qw.getAttribute("value").getValue());
-            }
-//            WsModelFactory.getInstance(content, title+".txt");
+            System.out.println("name" + file.getName());
+//            if (title.equals("¶¡³¬Óëºú½õ°¾¡¢ÀîÞ±Ãñ¼ä½è´û¾À·×Ò»°¸")) {
+//                System.out.println(qw.getAttribute("value").getValue());
+//            }
+            WsModelFactory.getInstance(content, title+".txt");
         }
 
 
