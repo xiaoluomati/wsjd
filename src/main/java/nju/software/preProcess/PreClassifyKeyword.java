@@ -38,8 +38,8 @@ public class PreClassifyKeyword {
                     count++;
                 }
             }
-            if(count / strings.length > maxRate){
-                maxRate = count / strings.length;
+            if(count / Math.max(strings.length, 7) > maxRate){
+                maxRate = count / Math.max(strings.length, 7);
                 result = s;
             }
         }

@@ -71,7 +71,9 @@ public enum DocType {
     DSR_BYSL("民事裁定书(对第三人撤销之诉不予受理用)"),
     DSR_BRZSCX("民事裁定书(第三人撤销之诉并入再审程序用)"),
     SSFY_WBJACH("民事裁定书(未补交案件受理费按撤回起诉处理用)"),
-    SSFY_WYJACH("民事裁定书(未预交案件受理费按撤回起诉处理用)")
+    SSFY_WYJACH("民事裁定书(未预交案件受理费按撤回起诉处理用)"),
+    ZY_AWRZY("民事判决书(案外人执行异议之诉用)"),
+    ZY_SQZXRZY("民事判决书(申请执行人执行异议之诉用)")
     ;
 
     public static final String YS_PREFIX = "YS";
@@ -91,6 +93,8 @@ public enum DocType {
     public static final String DSR_PREFIX = "DSR";
 
     public static final String SSFY_PREFIX = "SSFY";
+
+    public static final String ZY_PREFIX = "ZY";
 
     String fileName;
 

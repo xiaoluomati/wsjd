@@ -11,10 +11,9 @@ import java.util.List;
 /**
  * Created by zhuding on 2018/3/31.
  */
-public class EsAjjbqkParseRule extends GeneralAjjbqkCommonRule implements AjjbqkParseRule {
+public class NewAjjbqkParseRule {
 
-    @Override
-    public WsajjbqkModel jxWsajjbqkModel(WsAnalyse wsAnalyse, List<WssscyrModel> wssscyrModellist) throws ParseException {
+    public WsajjbqkModel jxWsajjbqkModel(WsAnalyse wsAnalyse, List<WssscyrModel> wssscyrModellist, WsajjbqkModel wsajjbqkModel)  {
         List<String> ajjbqk = wsAnalyse.getAjjbqk();
         List<String> tempAjjbqk = new ArrayList<>();
         for (String s : ajjbqk) {
@@ -24,8 +23,6 @@ public class EsAjjbqkParseRule extends GeneralAjjbqkCommonRule implements Ajjbqk
             }
             tempAjjbqk.add(s);
         }
-
-        WsajjbqkModel wsajjbqkModel = new WsajjbqkModel();
 
         if(ajjbqk.size()==0){
             return wsajjbqkModel;

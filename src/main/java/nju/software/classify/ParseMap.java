@@ -25,8 +25,7 @@ public class ParseMap {
         map.put("保全和先予执行", new String[]{"","BQClassifier", ""});
         map.put("公益诉讼", new String[]{"","GYClassifier", ""});
         map.put("公示催告程序", new String[]{"","", ""});
-        map.put("执行异议之诉", new String[]{"","", ""});
-        map.put("督促程序", new String[]{"","", ""});
+        map.put("执行异议之诉", new String[]{"","ZYClassifier", ""});
         map.put("第三人撤销之诉", new String[]{"","DSRClassifier", ""});
         map.put("简易程序", new String[]{"ParseYsptSegment","YSClassifier", ""});
         map.put("简易程序中的小额诉讼", new String[]{"ParseYsptSegment","YSClassifier",""});

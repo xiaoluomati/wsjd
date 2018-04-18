@@ -8,31 +8,6 @@ import nju.software.wsjx.model.wsSegmentationModel.WsModel;
  */
 public class SSFYClassifier extends BaseClassifier{
 
-//    public static void main(String[] args) {
-//        File file = new File("template/诉讼费用");
-//        File[] files = file.listFiles();
-//
-//        for(File f:files){
-//            System.out.println("SSFY_(\"" + f.getName().substring(0,f.getName().indexOf("."))+"\")");
-//        }
-//    }
-
-//    public static void main(String[] args) {
-//        String[] strings = ("SSFY_WBJACH(\"民事裁定书(未补交案件受理费按撤回起诉处理用)\"),\n" +
-//                "    SSFY_WYJACH(\"民事裁定书(未预交案件受理费按撤回起诉处理用)\")").split(",");
-//        for (String s : strings) {
-//            String s1 = s.substring(s.indexOf("_")+1, s.indexOf("("));
-//            String s2 = s.substring(s.indexOf("\"")+1, s.lastIndexOf("\""));
-//            System.out.println("    /**\n" +
-//                    "     * "+ s2 +"\n" +
-//                    "     * @return\n" +
-//                    "     */\n" +
-//                    "    private boolean is"+s1+"(){\n" +
-//                    "\n" +
-//                    "    }");
-//        }
-//    }
-
     @Override
     public DocType getType(WsModel wsModel, String ah) {
         return getType(DocType.SSFY_PREFIX, ah, wsModel);
