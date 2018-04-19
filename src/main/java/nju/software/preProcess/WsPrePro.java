@@ -5,8 +5,6 @@ import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 
-import java.io.File;
-
 /**
  * Created by zhuding on 2018/4/10.
  */
@@ -57,11 +55,11 @@ public class WsPrePro {
             System.out.println("classnameByLaws = " + classnameByLaws);
             return classnameByLaws;
         }
-        String classnameByKeyword = getClassnameByKeyword();
-        if(!classnameByKeyword.equals(ParseMap.NOT_DETERMINED)){
-            System.out.println("classnameByKeyword = " + classnameByKeyword);
-            return classnameByKeyword;
-        }
+//        String classnameByKeyword = getClassnameByKeyword();
+//        if(!classnameByKeyword.equals(ParseMap.NOT_DETERMINED)){
+//            System.out.println("classnameByKeyword = " + classnameByKeyword);
+//            return classnameByKeyword;
+//        }
         return ParseMap.DEFAULT_PARSECLASS;
     }
 

@@ -156,7 +156,7 @@ public class YsssjlChecker extends SSJLChecker {
         String tip = "格式应该为:  ××××年××月××日，×××经传票传唤，无正当理由拒不到庭/未经法庭许可中途退庭。";
         if (Synonym.isContains(jsonParserUtil.getSsjlRequirements(), "拒绝出庭")) {
             String name = wsssjlModel.getJjct().getName();
-            String date = wsssjlModel.getCs().getDate();
+            String date = wsssjlModel.getJjct().getDate();
             String wrongPart = "";
             if (name == null && date == null) {
                 wrongPart = "";

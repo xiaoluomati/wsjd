@@ -72,6 +72,7 @@ public abstract class BaseClassifier {
             String methodName = getMethodName(es);
             try {
                 Method method = getClass().getDeclaredMethod(methodName);
+                method.setAccessible(true);
                 Boolean isMatch = ((boolean) method.invoke(this));
                 if (isMatch) {
                     DocType type = DocType.getType(es);
