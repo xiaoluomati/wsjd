@@ -74,7 +74,7 @@ public abstract class SSJLChecker {
                         String checkName = (String) method.invoke(wsssjlModel);
 //                        System.out.println("checkName: " + checkName);
                         if (!trueName.equals(checkName)) {
-                            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSCW, name + "名称错误", "名称应为: " + trueName, ErrorLevelEnum.LV_2));
+                            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.SSWBTY, name + "名称错误", "名称应为: " + trueName, ErrorLevelEnum.LV_2));
                         }
                     } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();

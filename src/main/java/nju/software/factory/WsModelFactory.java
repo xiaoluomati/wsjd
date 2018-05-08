@@ -3,11 +3,9 @@ package nju.software.factory;
 import nju.software.classify.BaseClassifier;
 import nju.software.classify.ParseMap;
 import nju.software.preProcess.WsPrePro;
-import nju.software.wsjx.business.PreWsAnalyse;
 import nju.software.wsjx.business.WsAnalyse;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 import nju.software.wsjx.model.wsSegmentationModel.WssscyrModel;
-import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import nju.software.wsjx.parse.ParseSegment;
 import nju.software.wsjx.util.ListToString;
 
@@ -102,5 +100,9 @@ public class WsModelFactory {
         wsModel.setWswwSegment(ListToString.List2String(wsAnalyse.getWw()));
         wsModel.setWsqw(wsAnalyse.getWsnr());
         wsModel.setWsfl(ListToString.List2String(wsAnalyse.getFl()));
+    }
+
+    public static String getName() {
+        return name;
     }
 }

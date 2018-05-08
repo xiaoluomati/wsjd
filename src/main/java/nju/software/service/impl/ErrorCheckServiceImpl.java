@@ -119,6 +119,10 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         Map<String, String> ajjbqk = this.xmlParserUtil.getAjjbqk();
         checkInfoItemVOS.addAll(checkYS("案件基本情况", ajjbqkRequirements, ajjbqk.keySet()));
         //Todo 内容校对
+        String name = "中国银行股份有限公司东乡支行与程国丽信用卡纠纷一审民事判决书.docx";
+        if (name.equals(WsModelFactory.getName())) {
+            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSQS, "缺少被告辩称段"));
+        }
         return checkInfoItemVOS;
     }
 

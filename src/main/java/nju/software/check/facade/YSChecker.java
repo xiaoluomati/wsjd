@@ -20,7 +20,7 @@ public class YSChecker extends GeneralChecker {
     public YSChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
         super(jsonParserUtil, xmlParserUtil, wsModel);
         ssjlChecker = new YsssjlChecker(jsonParserUtil, xmlParserUtil, wsModel);
-        pjjgChecker = new PJJGChecker(jsonParserUtil, xmlParserUtil);
+        pjjgChecker = new PJJGChecker(jsonParserUtil, xmlParserUtil, wsModel);
     }
 
     @Override

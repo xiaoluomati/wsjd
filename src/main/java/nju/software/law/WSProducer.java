@@ -15,8 +15,13 @@ import java.io.IOException;
  */
 public class WSProducer {
 
-    private static final String PATH = "D:\\wx\\msys_a";
+    private static final String PATH = "D:\\wx\\msys";
 //    private static final String PATH = "D:\\wx\\test";
+    private static final String SAVE = "D:\\code\\Judgement\\wsjd\\xml";
+
+    static File save = new File(SAVE);
+
+    static File[] saves = save.listFiles();
 
     public static void main(String[] args) throws JDOMException, IOException {
         File wsdir = new File(PATH);
@@ -32,7 +37,6 @@ public class WSProducer {
         SAXBuilder builder = new SAXBuilder(); //实例JDOM解析器
 
         for (File file : files) {
-
             Document document = builder.build(file);//读取xml文件
             Element root = document.getRootElement();
             Element qw = root.getChild("QW");
@@ -45,13 +49,26 @@ public class WSProducer {
 //            String title = qw.getChild("subtitle").getAttribute("value").getValue();
 //            System.out.println("title = " + title);
 //            System.out.println("content = " + content);
-            System.out.println("name" + file.getName());
+
 //            if (title.equals("丁超与胡锦熬、李薇民间借贷纠纷一案")) {
 //                System.out.println(qw.getAttribute("value").getValue());
 //            }
+            if (contains(title+".xml")) {
+                continue;
+            }
+            System.out.println("name" + file.getName());
             WsModelFactory.getInstance(content, title+".txt");
         }
 
 
+    }
+
+    private static boolean contains(String name) {
+        for (File file : saves) {
+            if (file.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
