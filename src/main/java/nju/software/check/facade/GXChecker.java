@@ -20,7 +20,7 @@ public class GXChecker extends GeneralChecker {
     public GXChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
         super(jsonParserUtil, xmlParserUtil, wsModel);
         ssjlChecker = new GxssjlChecker(jsonParserUtil, xmlParserUtil, wsModel);
-        pjjgChecker = new PJJGChecker(jsonParserUtil, xmlParserUtil);
+        pjjgChecker = new PJJGChecker(jsonParserUtil, xmlParserUtil, wsModel);
     }
 
     @Override

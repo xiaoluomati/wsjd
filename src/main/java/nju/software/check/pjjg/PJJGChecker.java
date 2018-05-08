@@ -6,7 +6,13 @@ import nju.software.util.XmlParserUtil;
 import nju.software.vo.CheckInfoItemVO;
 import nju.software.vo.ErrorLevelEnum;
 import nju.software.vo.ErrorType;
+import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.WscpjgModel;
+import nju.software.wsjx.model.wsSegmentationModel.relateModel.WsCpjgssfModel;
+import nju.software.wsjx.service.model.WsCpjgssfjeModel;
+import nju.software.wsjx.service.model.WscpjgssfcdModel;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,10 +25,12 @@ public class PJJGChecker {
 
     private JsonParserUtil jsonParserUtil;
     private XmlParserUtil xmlParserUtil;
+    private WsModel wsModel;
 
-    public PJJGChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil) {
+    public PJJGChecker(JsonParserUtil jsonParserUtil, XmlParserUtil xmlParserUtil, WsModel wsModel) {
         this.jsonParserUtil = jsonParserUtil;
         this.xmlParserUtil = xmlParserUtil;
+        this.wsModel = wsModel;
     }
 
     public List<CheckInfoItemVO> check() {
@@ -42,6 +50,38 @@ public class PJJGChecker {
                 System.out.println(requirement + " in " + Arrays.toString(pjjg.keySet().toArray()));
             }
         }
+
+        WscpjgModel wscpjgModel = wsModel.getWscpjgModel();
+        if (wscpjgModel != null) {
+            WsCpjgssfModel ssfModel = wscpjgModel.getSsfModel();
+            if (ssfModel != null) {
+                List<WsCpjgssfjeModel> ssfjeModels = ssfModel.getSsfjeModels();
+                BigDecimal je = new BigDecimal("0");
+                for (WsCpjgssfjeModel ssfjeModel : ssfjeModels) {
+                    String value = ssfjeModel.getValue();
+                    if (value == null) continue;
+                    String price = value.substring(0, value.indexOf("元"));
+                    je = je.add(new BigDecimal(price));
+                }
+                BigDecimal cd = new BigDecimal("0");
+                List<WscpjgssfcdModel> ssfcdModels = ssfModel.getSsfcdModels();
+                for (WscpjgssfcdModel ssfcdModel : ssfcdModels) {
+                    String value = ssfcdModel.getCdje();
+                    if (value == null) continue;
+                    String price = value.substring(0, value.indexOf("元"));
+                    cd = cd.add(new BigDecimal(price));
+                }
+
+                if (!je.equals(cd)) {
+                    checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.SSWBTY, "案件受理费计算错误", "案件受理费承担部分金额总和应该与前文的金额总和相同", ErrorLevelEnum.LV_2));
+                }
+            }
+        }
         return checkInfoItemVOS;
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(new BigDecimal(1));
+//        System.out.println(new BigDecimal("1.23"));
+//    }
 }
