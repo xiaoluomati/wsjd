@@ -1,7 +1,10 @@
 package nju.software.service.impl;
 
+import nju.software.preProcess.DataProcess;
+import nju.software.preProcess.LabeledSentenceProcess;
 import nju.software.repository.LawRepository;
 import nju.software.service.LawManagerService;
+import nju.software.util.IOHelper;
 import nju.software.vo.LawItemVO;
 import nju.software.wsjd.model.lawModel.KuanModel;
 import nju.software.wsjd.model.lawModel.LawModel;
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 /**
@@ -21,10 +25,11 @@ public class LawManagerServiceImpl implements LawManagerService {
     @Autowired
     private LawRepository lawRepository;
 
+    private DataProcess dataProcess = new DataProcess();
+
     @Override
     @Transactional
     public List<LawItemVO> getLaw(List<LawItemVO> lawItemVOS) {
-
         List<LawItemVO> results = new ArrayList<>();
         for (LawItemVO vo : lawItemVOS){
             LawModel lawModel = lawRepository.findByLawname(vo.getName());
@@ -57,13 +62,10 @@ public class LawManagerServiceImpl implements LawManagerService {
             vo.setLawMap(lawmap);
             results.add(vo);
         }
-//        List<LawModel> lawModels = lawRepository.findAllByLawnameIn(lawnames);
-
-//        for (LawItemVO vo :lawItemVOS){
-//            LawModel lawModel = lawModels.get()
-//
-//        }
-
         return results;
+    }
+
+    public List<String> lawRecommend(String content, LabeledSentenceProcess labeledSentenceProcess) throws UnsupportedEncodingException {
+        return dataProcess.getRecommend(content,labeledSentenceProcess);
     }
 }

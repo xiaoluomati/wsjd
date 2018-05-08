@@ -1,7 +1,9 @@
 package nju.software.service;
 
+import nju.software.preProcess.LabeledSentenceProcess;
 import nju.software.vo.LawItemVO;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -16,4 +18,12 @@ public interface LawManagerService {
      * @return 将 value 填成法条内容
      */
     List<LawItemVO> getLaw(List<LawItemVO> lawItemVOS);
+
+    /**
+     *
+     * @param content 输入为文书的案件基本情况
+     * @param labeledSentenceProcess 输入为已经加载好的模型
+     * @return 输出为预测的一组法条
+     */
+    public List<String> lawRecommend(String content, LabeledSentenceProcess labeledSentenceProcess) throws UnsupportedEncodingException;
 }
