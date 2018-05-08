@@ -494,7 +494,7 @@ public class MsysAjjbqkParseRule extends GeneralAjjbqkCommonRule implements Ajjb
 		String sgdd=cps.getSgdd(sgxq);
 		String jdcsyr=cps.getJdcsyr(cmsslist,sgxq,bglist);
 		String jdcglr=cps.getJdcglr(cmsslist,sgxq,bglist);
-		String gajgrdyj=cps.getGajgrdyj(cmsslist);
+//		String gajgrdyj=cps.getGajgrdyj(cmsslist);
 		String shrjzd=cps.getShrjzd(wssscyrModellist);
 		String shrzy=cps.getShrzy(wssscyrModellist);
 		wsajjbqkModel.setSgxq(sgxq);
@@ -502,7 +502,7 @@ public class MsysAjjbqkParseRule extends GeneralAjjbqkCommonRule implements Ajjb
 		wsajjbqkModel.setSgdd(sgdd);
 		wsajjbqkModel.setJdcglr(jdcglr);
 		wsajjbqkModel.setJdcsyr(jdcsyr);
-		wsajjbqkModel.setGajgrdyj(gajgrdyj);
+//		wsajjbqkModel.setGajgrdyj(gajgrdyj);
 		wsajjbqkModel.setShrjzd(shrjzd);
 		wsajjbqkModel.setShrzy(shrzy);
 //		List<PjjeModel> jeModels = MoneyUtil.getJeModels(wsajjbqkModel.getYgscd(), true);

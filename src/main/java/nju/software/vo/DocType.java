@@ -7,6 +7,7 @@ import java.util.List;
  * Created by away on 2018/3/31.
  */
 public enum DocType {
+    YS_YSPT("民事判决书(第一审普通程序用)"),
     YS_BHQS("民事裁定书(驳回起诉用)"),
     YS_BHZJ("民事裁定书(驳回追加共同诉讼当事人申请用)"),
     YS_BCJSS("民事裁定书(不参加诉讼按撤诉处理用)"),
@@ -20,6 +21,9 @@ public enum DocType {
     YS_ZJSS("民事裁定书(终结诉讼用)"),
     YS_ZXCHFS("民事裁定书(准许撤回反诉用)"),
     YS_ZZCS("民事裁定书(准许撤诉用)"),
+    ES_ESGP("民事判决书(二审改判用)"),
+    ES_BFGP("民事判决书(部分改判用)"),
+    ES_WCYP("民事判决书(驳回上诉，维持原判用)"),
     ES_BCJESSS("民事裁定书(不参加二审诉讼按撤回上诉处理用)"),
     ES_ESBHQS("民事裁定书(二审驳回起诉用)"),
     ES_ESBZXCS("民事裁定书(二审不准许撤回上诉用)"),
@@ -72,8 +76,8 @@ public enum DocType {
     DSR_BRZSCX("民事裁定书(第三人撤销之诉并入再审程序用)"),
     SSFY_WBJACH("民事裁定书(未补交案件受理费按撤回起诉处理用)"),
     SSFY_WYJACH("民事裁定书(未预交案件受理费按撤回起诉处理用)"),
-    ZY_AWRZY("民事判决书(案外人执行异议之诉用)"),
-    ZY_SQZXRZY("民事判决书(申请执行人执行异议之诉用)")
+//    ZY_AWRZY("民事判决书(案外人执行异议之诉用)"),
+//    ZY_SQZXRZY("民事判决书(申请执行人执行异议之诉用)")
     ;
 
     public static final String YS_PREFIX = "YS";

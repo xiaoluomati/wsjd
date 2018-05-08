@@ -45,6 +45,10 @@ public class YSClassifier extends BaseClassifier {
 //        return null;
     }
 
+    protected boolean isYSPT(){
+        return ws.contains("判决");
+    }
+
     // 民事裁定书(驳回追加共同诉讼当事人申请用)
     protected boolean isBHZJ() {
         String BHZJ = "驳回" + CHINESE + "追加" + CHINESE;

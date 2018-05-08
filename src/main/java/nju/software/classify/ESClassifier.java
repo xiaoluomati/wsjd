@@ -3,6 +3,7 @@ package nju.software.classify;
 import nju.software.vo.DocType;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -13,6 +14,63 @@ import java.util.regex.Pattern;
  * Created by away on 2018/4/2.
  */
 public class ESClassifier extends BaseClassifier {
+
+//    public static void main(String[] args) {
+//        File file = new File("template/第二审程序");
+//        File[] files = file.listFiles();
+//
+//        for(File f:files){
+//            System.out.println("ES_(\"" + f.getName().substring(0,f.getName().indexOf("."))+"\")");
+//        }
+//    }
+
+//    public static void main(String[] args) {
+//        String[] strings = ("ES_ESGP(\"民事判决书(二审改判用)\"),\n" +
+//                "    ES_BFGP(\"民事判决书(部分改判用)\"),\n" +
+//                "    ES_WCYP(\"民事判决书(驳回上诉，维持原判用)\")").split(",");
+//        for (String s : strings) {
+//            String s1 = s.substring(s.indexOf("_")+1, s.indexOf("("));
+//            String s2 = s.substring(s.indexOf("\"")+1, s.lastIndexOf("\""));
+//            System.out.println("    /**\n" +
+//                    "     * "+ s2 +"\n" +
+//                    "     * @return\n" +
+//                    "     */\n" +
+//                    "    private boolean is"+s1+"(){\n" +
+//                    "\n" +
+//                    "    }");
+//        }
+//    }
+
+    /**
+     * 民事判决书(二审改判用)
+     * @return
+     */
+    private boolean isESGP(){
+        boolean isPJ = ws.contains("判决");
+        String p1 = "撤销";
+        return matchCpjg(p1) && isPJ;
+    }
+    /**
+     * 民事判决书(部分改判用)
+     * @return
+     */
+    private boolean isBFGP(){
+        boolean isPJ = ws.contains("判决");
+        String p1 = "维持.*第.*项";
+        String p2 = "撤销.*第.*项";
+        String p3 = "变更.*第.*项";
+        return matchCpjg(p1) && matchCpjg(p2) && matchCpjg(p3) && isPJ;
+    }
+    /**
+     * 民事判决书(驳回上诉，维持原判用)
+     * @return
+     */
+    private boolean isWCYP(){
+        boolean isPJ = ws.contains("判决");
+        String p1 = "维持原判";
+        return isPJ && matchCpjg(p1);
+    }
+
     @Override
     public DocType getType(WsModel wsModel,String ah) {
         return getType(DocType.ES_PREFIX, ah, wsModel);
@@ -119,4 +177,4 @@ public class ESClassifier extends BaseClassifier {
 
 
 
-    }
+ }

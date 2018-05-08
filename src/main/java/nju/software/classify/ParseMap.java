@@ -53,4 +53,8 @@ public class ParseMap {
     public String getCheckerName(String classname){
         return map.get(classname)[2];
     }
+
+    public static void main(String[] args) {
+        System.out.println(classnameKeys());
+    }
 }

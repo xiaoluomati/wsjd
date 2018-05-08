@@ -18,6 +18,8 @@ import java.util.regex.Pattern;
  */
 public abstract class BaseClassifier {
 
+    protected String ws;
+
     protected String ssjl;
 
     protected String cpjg;
@@ -65,6 +67,7 @@ public abstract class BaseClassifier {
         if(possibleDoctypeByLaws != null){
             return possibleDoctypeByLaws;
         }
+        this.ws = wsModel.getWswsSegment();
         this.ssjl = wsModel.getWsssjlSegment();
         this.cpjg = wsModel.getWscpjgSegment();
         this.cpgc = wsModel.getWscpfxgcSegment();
