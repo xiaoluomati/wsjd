@@ -125,6 +125,9 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#law">
                   法律依据
                 </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lawRecommend">
+                  法律推荐
+                </button>
                 <!--/*@thymesVar id="error" type="nju.software.vo.CheckInfoVO"*/-->
 
                 <div class="panel-group" id="accordion" role="tablist"
@@ -207,24 +210,34 @@
   <div class="modal fade" id="law" tabindex="-1" role="dialog" aria-labelledby="titleLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <!--<div class="modal-header">-->
-          <!--<h3 class="modal-title" id="titleLabel">法律依据</h3>-->
-        <!--</div>-->
-        <!--<div class="modal-body" th:each="law : ${lawList}">-->
-          <!--<h3 th:text="'《' + ${law.getName()} + '》'"></h3>-->
-          <!--&lt;!&ndash;/*@thymesVar id="item" type="java.util.Map"*/&ndash;&gt;-->
-          <!--<ol th:each="item : ${law.getLawMap()}">-->
-            <!--<li>-->
-              <!--<h5 th:text="${item.key}"></h5>-->
-            <!--</li>-->
-          <!--</ol>-->
-        <!--</div>-->
         <div class="modal-header">
           <h3 class="modal-title" id="titleLabel">法律依据</h3>
         </div>
         <!--/*@thymesVar id="lawList" type="java.util.List"*/-->
         <!--/*@thymesVar id="law" type="nju.software.vo.LawItemVO"*/-->
         <div class="modal-body" th:each="law : ${lawList}">
+          <h3 th:text="'《' + ${law.getName()} + '》'"></h3>
+          <!--/*@thymesVar id="item" type="java.util.Map"*/-->
+          <ol th:each="item : ${law.getLawMap()}">
+            <li>
+              <h5 th:text="${item.key}"></h5>
+              <p th:text="${item.value}"></p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="lawRecommend" tabindex="-1" role="dialog" aria-labelledby="titleLabelRecommend">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="titleLabelRecommend">法律推荐</h3>
+        </div>
+        <!--/*@thymesVar id="lawList" type="java.util.List"*/-->
+        <!--/*@thymesVar id="law" type="nju.software.vo.LawItemVO"*/-->
+        <div class="modal-body" th:each="law : ${recommendLawList}">
           <h3 th:text="'《' + ${law.getName()} + '》'"></h3>
           <!--/*@thymesVar id="item" type="java.util.Map"*/-->
           <ol th:each="item : ${law.getLawMap()}">

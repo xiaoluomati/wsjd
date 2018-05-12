@@ -65,6 +65,9 @@ public class PJJGChecker {
                 }
                 BigDecimal cd = new BigDecimal("0");
                 List<WscpjgssfcdModel> ssfcdModels = ssfModel.getSsfcdModels();
+                if (ssfcdModels == null) {
+                    return checkInfoItemVOS;
+                }
                 for (WscpjgssfcdModel ssfcdModel : ssfcdModels) {
                     String value = ssfcdModel.getCdje();
                     if (value == null) continue;

@@ -70,7 +70,36 @@ public class LawManagerServiceImpl implements LawManagerService {
         return results;
     }
 
-    public List<String> lawRecommend(String content, LabeledSentenceProcess labeledSentenceProcess) throws UnsupportedEncodingException {
-        return dataProcess.getRecommend(content,labeledSentenceProcess);
+    public List<LawItemVO> lawRecommend(String content, LabeledSentenceProcess labeledSentenceProcess) throws UnsupportedEncodingException {
+        List<String> laws = dataProcess.getRecommend(content,labeledSentenceProcess);
+        List<LawItemVO> lawItemVOS = new ArrayList<>();
+        for (String tmp : laws){
+            String lawname = tmp.split(" ")[0];
+            String tiao  = tmp.split(" ")[1];
+            int flag = -1;
+            for (int i=0;i<lawItemVOS.size();++i){
+                LawItemVO lawItemVO = lawItemVOS.get(i);
+                if (lawItemVO.getName().equals(lawname)){
+                    flag = i;
+                }
+            }
+            if (flag != -1){
+                LawItemVO lawItemVO = lawItemVOS.get(flag);
+                Map<String,String> map = lawItemVO.getLawMap();
+                map.put(tiao,"");
+                lawItemVO.setLawMap(map);
+                lawItemVOS.remove(flag);
+                lawItemVOS.add(lawItemVO);
+            }else {
+                LawItemVO lawItemVO = new LawItemVO();
+                Map<String,String> map = new HashMap<>();
+                map.put(tiao,"");
+                lawItemVO.setName(lawname);
+                lawItemVO.setLawMap(map);
+                lawItemVOS.add(lawItemVO);
+            }
+        }
+
+        return lawItemVOS;
     }
 }
