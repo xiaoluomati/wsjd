@@ -1,8 +1,11 @@
 package nju.software.controller;
 
+import nju.software.preProcess.DataProcess;
+import nju.software.preProcess.LabeledSentenceProcess;
 import nju.software.service.DocManagerService;
 import nju.software.service.ErrorCheckService;
 import nju.software.service.LawManagerService;
+import nju.software.util.LSPSingleton;
 import nju.software.util.MultipartFileUtil;
 import nju.software.vo.*;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +56,7 @@ public class DocController {
     }
 
     @RequestMapping("/result")
-    String result(@RequestParam("index") int index, Model model) {
+    String result(@RequestParam("index") int index, Model model) throws UnsupportedEncodingException {
         List<File> fileList = MultipartFileUtil.getFileList();
         File file = fileList.get(index);
 
@@ -62,7 +66,12 @@ public class DocController {
         // 空的law, 里面是要取的条目
         List<LawItemVO> lawItemVOList = docManagerService.getLaw(doc.getWscpfxgcModel().getFtModellist());
         // 包含了内容的 law
-        lawItemVOList = lawManagerService.getLaw(lawItemVOList);
+
+        //法条推荐
+        String ajjbqkcontent = doc.getWsajjbqSegment();
+        List<LawItemVO> recommendlawItemVOList = lawManagerService.lawRecommend(ajjbqkcontent, LSPSingleton.getInstance());
+        recommendlawItemVOList = lawManagerService.getLaw(recommendlawItemVOList);
+
 
         String name = file.getName();
         System.out.println("docType = " + docType);
@@ -77,6 +86,7 @@ public class DocController {
         model.addAttribute("docType", docType.getFileName());
         model.addAttribute("doc", doc);
         model.addAttribute("lawList", lawItemVOList);
+        model.addAttribute("recommendlawList",recommendlawItemVOList);
         model.addAttribute("error", checkInfoVO);
         model.addAttribute("typoMap", typoMap);
         model.addAttribute("typoNum", getTypoNum(typoMap));
