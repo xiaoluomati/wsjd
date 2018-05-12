@@ -4,7 +4,6 @@ import nju.software.preProcess.DataProcess;
 import nju.software.preProcess.LabeledSentenceProcess;
 import nju.software.repository.LawRepository;
 import nju.software.service.LawManagerService;
-import nju.software.util.IOHelper;
 import nju.software.vo.LawItemVO;
 import nju.software.wsjd.model.lawModel.KuanModel;
 import nju.software.wsjd.model.lawModel.LawModel;
@@ -31,8 +30,13 @@ public class LawManagerServiceImpl implements LawManagerService {
     @Transactional
     public List<LawItemVO> getLaw(List<LawItemVO> lawItemVOS) {
         List<LawItemVO> results = new ArrayList<>();
+//        System.out.println("lawItemVOS size = " + lawItemVOS.size());
+//        for (LawItemVO lawItemVO : lawItemVOS) {
+//            System.out.println(lawItemVO);
+//        }
         for (LawItemVO vo : lawItemVOS){
             LawModel lawModel = lawRepository.findByLawname(vo.getName());
+            System.out.println("lawModel = " + lawModel);
             if (lawModel == null) {
                 continue;
             }
@@ -57,6 +61,7 @@ public class LawManagerServiceImpl implements LawManagerService {
                         content.append(str);
                     }
                 }
+                System.out.println("content: " + content);
                 lawmap.put(key,content.toString());
             }
             vo.setLawMap(lawmap);

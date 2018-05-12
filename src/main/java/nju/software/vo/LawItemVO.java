@@ -37,4 +37,12 @@ public class LawItemVO {
     public void setLawMap(Map<String, String> lawMap) {
         this.lawMap = lawMap;
     }
+
+    @Override
+    public String toString() {
+        return "LawItemVO{" +
+                "name='" + name + '\'' +
+                ", lawMap=" + lawMap +
+                '}';
+    }
 }
