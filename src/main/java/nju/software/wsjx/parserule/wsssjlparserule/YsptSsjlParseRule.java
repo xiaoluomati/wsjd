@@ -17,7 +17,7 @@ public class YsptSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
     public WsssjlModel jxWsssjlModel(List<WssscyrModel> wssscyrModellist, String wsssjl) throws ParseException {
         SsjlParseRule msysSsjlParseRule = new MsysSsjlParseRule();
         WsssjlModel wsssjlModel = msysSsjlParseRule.jxWsssjlModel(wssscyrModellist, wsssjl);
-        String[] contentArray = wsssjl.split("，|,|\\.|。|、|;|；");
+        String[] contentArray = wsssjl.split("，|,|\\.|。|;|；");
         //原告和被告
         String ay = wsssjlModel.getAy();
         for (String s : contentArray) {
@@ -26,6 +26,8 @@ public class YsptSsjlParseRule extends GeneralSsjlCommonRule implements SsjlPars
                 if (index == -1) {
                     index = s.indexOf("诉");
                 }
+                System.out.print(getClass());
+                System.out.println(index);
                 wsssjlModel.setYg(s.substring(s.indexOf("原告") + 2, index));
                 wsssjlModel.setBg(s.substring(s.indexOf("被告") + 2, s.indexOf(ay)));
                 break;
