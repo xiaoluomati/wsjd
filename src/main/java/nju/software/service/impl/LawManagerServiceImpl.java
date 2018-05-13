@@ -44,14 +44,20 @@ public class LawManagerServiceImpl implements LawManagerService {
             Set<String> keys = lawmap.keySet();
             HashMap<String,TiaoModel> tiaoModels = lawModel.getContent();
             for (String key:keys){
+//                System.out.println("key = " + key);
                 StringBuilder content = new StringBuilder();
                 KuanModel kuanModel;
                 if (key.contains("款")){
                     int tmp = key.indexOf("条")+1;
                     String tiao = key.substring(0,tmp);
-                    String kuan = key.substring(tmp);
+                    String kuan;
+                    if (key.contains("项")) {
+                        kuan = key.substring(tmp, key.indexOf("款")+1);
+                    } else {
+                        kuan = key.substring(tmp);
+                    }
                     kuanModel = tiaoModels.get(tiao).getKuan().get(kuan);
-                }else {
+                } else {
                     kuanModel = tiaoModels.get(key).getKuan().get("第一款");
                 }
                 content.append(kuanModel.getContent());

@@ -67,8 +67,11 @@ public class DocController {
         lawItemVOList = lawManagerService.getLaw(lawItemVOList);
 
         //·¨ÌõÍÆ¼ö
-        String ajjbqkcontent = doc.getWsajjbqSegment();
-        List<LawItemVO> recommendlawItemVOList = lawManagerService.lawRecommend(ajjbqkcontent, LSPSingleton.getInstance());
+        String content = doc.getWsajjbqSegment();
+        if (content == null || content.equals("")) {
+            content = doc.getWsqw();
+        }
+        List<LawItemVO> recommendlawItemVOList = lawManagerService.lawRecommend(content, LSPSingleton.getInstance());
         recommendlawItemVOList = lawManagerService.getLaw(recommendlawItemVOList);
 
 

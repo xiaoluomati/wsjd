@@ -11,6 +11,7 @@ import nju.software.util.Synonym;
 import nju.software.util.XmlParserUtil;
 import nju.software.vo.*;
 import nju.software.wsjx.model.wsSegmentationModel.WsModel;
+import nju.software.wsjx.model.wsSegmentationModel.WswsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -89,6 +90,12 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
 
     private List<CheckInfoItemVO> checkWs(){
         List<CheckInfoItemVO> checkInfoItemVOS = new ArrayList<>();
+        WswsModel wswsModel = wsModel.getWswsModel();
+        String segment = wsModel.getWswsSegment();
+        if (wswsModel == null || segment == null || segment.equals("")) {
+            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "È±ÉÙÎÄÊ×"));
+        }
+
         final String ahRequirements = this.jsonParserUtil.getAhRequirements();
         String ah = this.xmlParserUtil.getAh();
         if(ah == null){
