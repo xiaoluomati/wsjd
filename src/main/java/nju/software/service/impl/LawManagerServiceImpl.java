@@ -108,4 +108,48 @@ public class LawManagerServiceImpl implements LawManagerService {
 
         return lawItemVOS;
     }
+
+    @Override
+    public List<LawItemVO> deduplication(List<LawItemVO> lawItemVOList, List<LawItemVO> recommendLawItemVOList) {
+        List<LawItemVO> result = new ArrayList<>();
+        for (LawItemVO recommendLawItemVO : recommendLawItemVOList) {
+            String lawName = recommendLawItemVO.getName();
+            Map<String, String> recommendLawMap = recommendLawItemVO.getLawMap();
+            Map<String, String> lawMap = containsLawName(lawItemVOList, lawName);
+            if (lawMap == null) {
+                // 放入不包含的法律
+                result.add(recommendLawItemVO);
+            } else {
+                Map<String, String> resultMap = new HashMap<>();
+                for (Map.Entry<String, String> lawMapEntry : recommendLawMap.entrySet()) {
+                    // 放入不包含的法条
+                    if (!containsLaw(lawMapEntry.getKey(), lawMap)) {
+                        resultMap.put(lawMapEntry.getKey(), lawMapEntry.getValue());
+                    }
+                }
+                if (resultMap.keySet().size() != 0) {
+                    result.add(new LawItemVO(lawName, resultMap));
+                }
+            }
+        }
+        return result;
+    }
+
+    private Map<String, String> containsLawName(List<LawItemVO> lawItemVOList, String name) {
+        for (LawItemVO lawItemVO : lawItemVOList) {
+            if (name.equals(lawItemVO.getName())) {
+                return lawItemVO.getLawMap();
+            }
+        }
+        return null;
+    }
+
+    private boolean containsLaw(String name, Map<String, String> lawMap) {
+        for (String s : lawMap.keySet()) {
+            if (s.equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

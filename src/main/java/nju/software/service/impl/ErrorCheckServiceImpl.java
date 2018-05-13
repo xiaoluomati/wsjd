@@ -93,10 +93,9 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         WswsModel wswsModel = wsModel.getWswsModel();
         String segment = wsModel.getWswsSegment();
         if (wswsModel == null || segment == null || segment.equals("")) {
-            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "缺少文首"));
+            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "缺少文首", "裁判文书需要包括文文首", ErrorLevelEnum.LV_3));
         }
 
-        final String ahRequirements = this.jsonParserUtil.getAhRequirements();
         String ah = this.xmlParserUtil.getAh();
         if(ah == null){
             checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.JGQS, "缺少案号"));
@@ -126,10 +125,10 @@ public class ErrorCheckServiceImpl implements ErrorCheckService {
         Map<String, String> ajjbqk = this.xmlParserUtil.getAjjbqk();
         checkInfoItemVOS.addAll(checkYS("案件基本情况", ajjbqkRequirements, ajjbqk.keySet()));
         //Todo 内容校对
-        String name = "中国银行股份有限公司东乡支行与程国丽信用卡纠纷一审民事判决书.docx";
-        if (name.equals(WsModelFactory.getName())) {
-            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSQS, "缺少被告辩称段"));
-        }
+//        String name = "中国银行股份有限公司东乡支行与程国丽信用卡纠纷一审民事判决书.docx";
+//        if (name.equals(WsModelFactory.getName())) {
+//            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.YSQS, "缺少被告辩称段"));
+//        }
         return checkInfoItemVOS;
     }
 

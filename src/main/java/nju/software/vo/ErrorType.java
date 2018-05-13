@@ -16,7 +16,7 @@ package nju.software.vo;
  */
 
 public enum ErrorType {
-    JGQS("结构缺失"), YSQS("要素缺失"), YSCW("要素错误"), SSWBTY("上下文不统一");
+    JGQS("结构缺失"), YSQS("要素缺失"), YSCW("要素错误"), SSWBTY("前后矛盾");
 
     private String name;
 

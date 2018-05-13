@@ -11,7 +11,7 @@ public class LawItemVO {
     private String name;
 
     // 法律条款名称及其内容, 如 map.put("第二百零四条第一款", ......);
-    // 先支持到款, 列出款式项的内容也列出
+    // 先支持到款, 列出款时项的内容也列出
     private Map<String, String> lawMap;
 
     public LawItemVO(String name, Map<String, String> lawMap) {

@@ -72,6 +72,8 @@ public class DocController {
             content = doc.getWsqw();
         }
         List<LawItemVO> recommendlawItemVOList = lawManagerService.lawRecommend(content, LSPSingleton.getInstance());
+        recommendlawItemVOList = lawManagerService.deduplication(lawItemVOList, recommendlawItemVOList);
+
         recommendlawItemVOList = lawManagerService.getLaw(recommendlawItemVOList);
 
 

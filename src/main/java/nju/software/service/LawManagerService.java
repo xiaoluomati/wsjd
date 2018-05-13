@@ -25,5 +25,7 @@ public interface LawManagerService {
      * @param labeledSentenceProcess 输入为已经加载好的模型
      * @return 输出为预测的一组法条
      */
-    public List<LawItemVO> lawRecommend(String content, LabeledSentenceProcess labeledSentenceProcess) throws UnsupportedEncodingException;
+    List<LawItemVO> lawRecommend(String content, LabeledSentenceProcess labeledSentenceProcess) throws UnsupportedEncodingException;
+
+    List<LawItemVO> deduplication(List<LawItemVO> lawItemVOList, List<LawItemVO> recommendlawItemVOList);
 }
