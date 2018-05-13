@@ -73,8 +73,16 @@ public abstract class SSJLChecker {
                         Method method = wsssjlModel.getClass().getDeclaredMethod(methodName);
                         String checkName = (String) method.invoke(wsssjlModel);
 //                        System.out.println("checkName: " + checkName);
-                        if (!trueName.equals(checkName)) {
-                            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.SSWBTY, name + "名称错误", "名称应为: " + trueName, ErrorLevelEnum.LV_2));
+                        // 如果有多个人
+                        if (checkName.contains("、")) {
+                            if (!checkName.contains(trueName)) {
+                                System.out.println("checkName = " + checkName);
+                                System.out.println("trueName = " + trueName);
+                                checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.SSWBTY, name + "名称错误", name + "名称应为: " + trueName, ErrorLevelEnum.LV_2));
+                            }
+                        }
+                        else if (!trueName.equals(checkName)) {
+                            checkInfoItemVOS.add(new CheckInfoItemVO(ErrorType.SSWBTY, name + "名称错误", name + "名称应为: " + trueName, ErrorLevelEnum.LV_2));
                         }
                     } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
@@ -85,4 +93,13 @@ public abstract class SSJLChecker {
     }
 
     public abstract List<CheckInfoItemVO> check();
+
+    private boolean containsSSCYRName(String name, List<WssscyrModel> wssscyrModels) {
+        for (WssscyrModel wssscyrModel : wssscyrModels) {
+            if (wssscyrModel.getSscyr().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
